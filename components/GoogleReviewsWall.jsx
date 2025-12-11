@@ -160,9 +160,9 @@ export default function GoogleReviewsWall() {
         Real reviews pulled directly from our Google Business Profiles.
       </p>
       <div className="mt-6 grid gap-6 md:grid-cols-2">
-        {places.map((p) => (
+        {places.map((p, i) => (
           <LocationReviews
-            key={p.placeId}
+            key={`${p.placeId || p.title || i}`}
             title={p.title}
             placeId={p.placeId}
           />

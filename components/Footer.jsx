@@ -1,118 +1,284 @@
+"use client";
 // components/Footer.jsx
+import { usePathname } from "next/navigation";
 import GoogleReviewsWall from "./GoogleReviewsWall";
-import { SERVICE_AREAS } from "@/app/config";
+import { SERVICE_AREAS, PHONE_HREF, PHONE_NUMBER } from "@/app/config";
 import GoogleReviewsMulti from "./GoogleReviewsMulti";
 export default function Footer() {
+  const pathname = usePathname();
+  const galleryTheme = pathname?.startsWith("/our-work");
+  const palette = galleryTheme
+    ? {
+        footerShell: "border-slate-800 bg-slate-950 text-white",
+        innerWrap: "border-slate-800 bg-gradient-to-b from-slate-950/70 to-slate-900",
+        textStrong: "text-white",
+        textMuted: "text-white/70",
+        textSoft: "text-white/60",
+        linkHover: "hover:text-white",
+        panelBorder: "border-slate-800",
+      }
+    : {
+        footerShell: "border-slate-200 bg-white text-slate-900",
+        innerWrap: "border-slate-200 bg-gradient-to-b from-white to-slate-50",
+        textStrong: "text-slate-900",
+        textMuted: "text-slate-700",
+        textSoft: "text-slate-600",
+        linkHover: "hover:text-slate-900",
+        panelBorder: "border-slate-200",
+      };
   return (
     <footer
-      className="mt-16 border-t bg-white"
+      className={`mt-16 border-t ${palette.footerShell}`}
       itemScope
       itemType="https://schema.org/LocalBusiness"
     >
       {/* Real Google Reviews */}
       <GoogleReviewsWall />
 
-      {/* Footer cols */}
-      <div className="container-x py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Business info */}
-        <div>
-          <div className="font-semibold" itemProp="name">
-            Wallpaper Removal Pro
-          </div>
-          <p className="mt-2 text-sm text-gray-600">
-            Serving {SERVICE_AREAS.join(" · ")}
-          </p>
-
-          {/* Hours */}
+      {/* Modern footer */}
+      <div className={`border-t ${palette.innerWrap}`}>
+        <div className="container-x py-10">
+          {/* Brand + CTA */}
           <div
-            className="mt-3 text-sm text-gray-700"
-            itemProp="openingHoursSpecification"
+            className={`flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-8 border-b ${palette.panelBorder}`}
           >
-            <div className="font-medium text-gray-900">🕘 Hours</div>
-            <meta itemProp="opens" content="08:00" />
-            <meta itemProp="closes" content="21:00" />
-            <p itemProp="openingHours">Mon–Sun: 8:00 AM – 9:00 PM</p>
+            <div className="flex items-center gap-4">
+              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-rose-500 via-orange-400 to-amber-300 p-[2px] shadow-lg">
+                <div
+                  className={`h-full w-full rounded-[14px] ${
+                    galleryTheme ? "bg-slate-950" : "bg-white"
+                  } flex items-center justify-center`}
+                >
+                  <img
+                    src="/logo.png"
+                    alt="Popcorn Ceiling Removal Burlington"
+                    className="h-8 w-8 object-contain"
+                  />
+                </div>
+              </div>
+              <div className="min-w-0">
+                <div className={`text-lg font-semibold truncate ${palette.textStrong}`}>
+                  Popcorn Ceiling Removal Burlington
+                </div>
+                <div className={`text-sm truncate ${palette.textSoft}`}>
+                  Smooth, paint-ready ceilings in 24h
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={PHONE_HREF}
+                className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/60"
+              >
+                📞 {PHONE_NUMBER}
+              </a>
+              <a
+                href="/quote/"
+                className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/60"
+              >
+                Book Site Visit
+              </a>
+            </div>
           </div>
 
-          {/* Address */}
-          <address
-            className="mt-3 not-italic text-sm text-gray-700"
-            itemProp="address"
-            itemScope
-            itemType="https://schema.org/PostalAddress"
+          {/* Burlington-focused columns */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
+            {/* Burlington Services */}
+            <div>
+              <div className={`font-semibold ${palette.textStrong}`}>Burlington Services</div>
+              <ul className={`mt-3 space-y-2 text-sm ${palette.textMuted}`}>
+                <li><a href="/popcorn-ceiling-removal/burlington/" className={palette.linkHover}>Popcorn Ceiling Removal in Burlington</a></li>
+                <li><a href="/services/popcorn-ceiling-removal/" className={palette.linkHover}>Popcorn Removal (GTA & Halton)</a></li>
+                <li><a href="/services/interior-painting/" className={palette.linkHover}>Ceiling Painting in Burlington</a></li>
+                <li><a href="/services/drywall-installation/" className={palette.linkHover}>Drywall & Patching in Burlington</a></li>
+                <li><a href="/services/wallpaper-removal/" className={palette.linkHover}>Wallpaper Removal in Burlington</a></li>
+              </ul>
+              <p className={`mt-3 text-sm ${palette.textSoft}`}>Local Burlington specialists for ceiling painting, drywall patching and wallpaper removal—fast quotes and paint‑ready finishes.</p>
+            </div>
+
+            {/* Neighbourhoods we serve */}
+            <div>
+              <div className={`font-semibold ${palette.textStrong}`}>
+                Neighbourhoods we serve
+              </div>
+              <ul className={`mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm ${palette.textMuted}`}>
+                <li>
+                  <a
+                    href="/popcorn-ceiling-removal/burlington/"
+                    className={palette.linkHover}
+                  >
+                    Downtown Burlington
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/popcorn-ceiling-removal/burlington/"
+                    className={palette.linkHover}
+                  >
+                    Aldershot
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/popcorn-ceiling-removal/burlington/"
+                    className={palette.linkHover}
+                  >
+                    Tyandaga
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/popcorn-ceiling-removal/burlington/"
+                    className={palette.linkHover}
+                  >
+                    Headon Forest
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/popcorn-ceiling-removal/burlington/"
+                    className={palette.linkHover}
+                  >
+                    Millcroft
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/popcorn-ceiling-removal/burlington/"
+                    className={palette.linkHover}
+                  >
+                    Brant Hills
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/popcorn-ceiling-removal/burlington/"
+                    className={palette.linkHover}
+                  >
+                    The Orchard
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/popcorn-ceiling-removal/burlington/"
+                    className={palette.linkHover}
+                  >
+                    Appleby
+                  </a>
+                </li>
+              </ul>
+              <p className={`mt-4 text-sm ${palette.textSoft}`}>
+                Also serving: Oakville · Hamilton · Mississauga · Etobicoke ·
+                Milton · Grimsby · North York
+              </p>
+            </div>
+
+            {/* Contact & Quotes */}
+            <div>
+              <div className={`font-semibold ${palette.textStrong}`}>Contact & Quotes</div>
+              <ul className={`mt-3 space-y-2 text-sm ${palette.textMuted}`}>
+                <li>
+                  <a
+                    href="/quote/"
+                    className={palette.linkHover}
+                  >
+                    Get a Fast Quote
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/our-work/"
+                    className={palette.linkHover}
+                  >
+                    Before & After Gallery
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/our-process/"
+                    className={palette.linkHover}
+                  >
+                    Our 24h Smooth Ceiling Process
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/contact/"
+                    className={palette.linkHover}
+                  >
+                    Concierge Team
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/service-areas/"
+                    className={palette.linkHover}
+                  >
+                    All Service Areas
+                  </a>
+                </li>
+              </ul>
+
+              {/* Location + Hours */}
+              <div
+                className="mt-5"
+                itemProp="address"
+                itemScope
+                itemType="https://schema.org/PostalAddress"
+              >
+                <address className={`mt-2 not-italic text-sm ${palette.textMuted}`}>
+                  <a
+                    className="block hover:underline"
+                    href="https://maps.google.com/?q=3321+Mainway,+Burlington,+ON+L7M+1A6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open address in Google Maps"
+                  >
+                    <span itemProp="streetAddress">3321 Mainway</span>,{" "}
+                    <span itemProp="addressLocality">Burlington</span>,{" "}
+                    <span itemProp="addressRegion">ON</span>{" "}
+                    <span itemProp="postalCode">L7M 1A6</span>
+                  </a>
+                  <meta itemProp="addressCountry" content="CA" />
+                </address>
+                <div
+                  className={`mt-3 text-sm ${palette.textMuted}`}
+                  itemProp="openingHoursSpecification"
+                >
+                  <div className={`font-medium ${palette.textStrong}`}>🕘 Hours</div>
+                  <meta itemProp="opens" content="08:00" />
+                  <meta itemProp="closes" content="18:00" />
+                  <p itemProp="openingHours">Mon–Sun: 8:00 AM – 6:00 PM</p>
+                </div>
+                <p className={`mt-3 text-sm ${palette.textSoft}`}>
+                  Burlington-first: Downtown, Aldershot, Millcroft, Tyandaga,
+                  Headon Forest, Brant Hills, The Orchard, Appleby.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom bar */}
+          <div
+            className={`flex flex-col md:flex-row md:items-center md:justify-between gap-4 pt-6 border-t ${palette.panelBorder}`}
           >
-            <div className="font-medium text-gray-900">📍 Address</div>
-            <a
-              className="mt-1 block hover:underline"
-              href="https://maps.google.com/?q=2394+Haines+Rd,+Mississauga,+ON+L4Y+1Y6"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open address in Google Maps"
-            >
-              <span itemProp="streetAddress">2394 Haines Rd</span>,{" "}
-              <span itemProp="addressLocality">Mississauga</span>,{" "}
-              <span itemProp="addressRegion">ON</span>{" "}
-              <span itemProp="postalCode">L4Y 1Y6</span>
-            </a>
-            <meta itemProp="addressCountry" content="CA" />
-          </address>
-
-          <p className="mt-3 text-sm text-gray-600">
-            © {new Date().getFullYear()}
-          </p>
-        </div>
-
-        {/* Company */}
-        <div className="md:text-center">
-          <div className="font-semibold ">Company</div>
-          <ul className="mt-3 space-y-2 text-sm">
-            <li>
-              <a href="/contact/" className="hover:underline">
-                Contact
+            <p className={`text-sm ${palette.textSoft}`}>
+              © {new Date().getFullYear()} Popcorn Ceiling Removal Burlington.
+              Smooth, paint-ready ceilings—local Burlington crew.
+            </p>
+            <div className="flex items-center gap-3">
+              <a
+                href={PHONE_HREF}
+                className="inline-flex items-center justify-center bg-red-600 hover:bg-red-500 text-white font-bold px-4 py-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/60"
+              >
+                Call {PHONE_NUMBER}
               </a>
-            </li>
-            <li>
-              <a href="/about/" className="hover:underline">
-                About us
-              </a>
-            </li>
-            <li>
-              <a href="/blog/" className="hover:underline">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a href="/our-work/" className="hover:underline">
-                Before &amp; After
-              </a>
-            </li>
-            <li>
-              <a href="/quote/" className="hover:underline">
+              <a
+                href="/quote/"
+                className="inline-flex items-center justify-center bg-red-600 hover:bg-red-500 text-white font-bold px-4 py-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/60"
+              >
                 Get Quote
               </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Legal + Social (kept) */}
-        <div className="md:text-center md:justify-self-center md:flex md:flex-col md:items-center">
-          <div className="font-semibold">Legal</div>
-          <p className="mt-3 text-sm text-gray-600">All rights reserved.</p>
-
-          <div className="mt-4 w-full">
-            <div className="text-sm font-medium mb-2 md:justify-center md:flex">
-              Follow us
-            </div>
-            <div className="md:flex md:justify-center">
-              <SocialButtons
-                instagram="https://www.instagram.com/wallpaperremovalpro"
-                facebook="https://www.facebook.com/share/17bsRz3MTi/?mibextid=wwXIfr"
-                size={60}
-                icon={26}
-                gap={12}
-                variant="solid"
-                className="mb-[calc(env(safe-area-inset-bottom)+24px)] md:mb-0"
-              />
             </div>
           </div>
         </div>

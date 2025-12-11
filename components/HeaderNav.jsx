@@ -5,14 +5,13 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { PHONE_HREF, PHONE_NUMBER } from "@/app/config";
 
-/* Accent used only for nav/dropdowns (CTAs unchanged) */
+/* Accent palette shared across nav + dropdown shells */
 const ACCENT = {
-  text: "text-red-700",
-  textStrong: "text-red-800",
-  ring: "ring-red-500/15",
-  border: "border-red-200",
-  bgSoft: "bg-red-50",
-  linkHover: "hover:text-red-800",
+  text: "text-slate-500",
+  textStrong: "text-slate-900",
+  ring: "ring-rose-500/25",
+  border: "border-slate-200/80",
+  linkHover: "hover:text-slate-900",
 };
 
 const SAFE_VW_PX = 24; // safe padding from viewport edges
@@ -104,12 +103,38 @@ export default function HeaderNav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileLocationsOpen, setMobileLocationsOpen] = useState(false);
+  const [showOnlyMenu, setShowOnlyMenu] = useState(false);
+  const showOnlyMenuRef = useRef(false);
 
   useEffect(() => {
     setMobileOpen(false);
     setMobileServicesOpen(false);
     setMobileLocationsOpen(false);
   }, [pathname]);
+
+  // show only the menu bar when the user scrolls past threshold (use hysteresis)
+  useEffect(() => {
+    let ticking = false;
+    const ENTER = 200; // activate when scrolling past this
+    const LEAVE = 50; // deactivate when above this
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const y = window.scrollY || window.pageYOffset;
+          const next = showOnlyMenuRef.current ? y > LEAVE : y > ENTER;
+          if (next !== showOnlyMenuRef.current) {
+            showOnlyMenuRef.current = next;
+            setShowOnlyMenu(next);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const isActive = (href) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -139,155 +164,253 @@ export default function HeaderNav() {
   const crumbs = buildCrumbs(pathname);
 
   return (
-    <header className="sticky top-0 z-50">
-      {/* Row 1: taller + stylish glassy header */}
-      <div className="border-b bg-gradient-to-r from-white via-white to-red-50/60 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 shadow-[0_10px_30px_-20px_rgba(0,0,0,.55)]">
-        <div className="container-x py-2 md:py-3 flex h-24 md:h-28 items-center gap-3">
-          <Link
-            href="/"
-            className="flex items-center gap-2 min-w-0"
-            title="Popcorn ceiling Removal EPF Pro Services — Home"
-          >
-            <img
-              src="/logo.png"
-              alt="Popcorn ceiling removal EPF Pro Services"
-              className="w-auto h-14 md:h-16 object-contain"
-            />
-            <span className="underline decoration-red-500 text-lg md:text-2xl font-semibold leading-none whitespace-nowrap truncate text-slate-800">
-              Popcorn Ceiling Removal
-            </span>
-          </Link>
-
-          {/* Desktop/tablet CTAs */}
-          <div className="hidden md:flex items-center gap-3 ml-auto">
-            <a
-              href={PHONE_HREF}
-              className="btn-cta whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
-              title="Call for a fast popcorn ceiling removal estimate"
+    <header className="sticky top-0 z-50 shadow-[0_25px_70px_rgba(15,23,42,0.25)]">
+      {/* Announcement / reach strip */}
+      <div
+        className={[
+          "bg-gradient-to-r from-slate-950 via-slate-900 to-rose-900 text-white text-[12px] sm:text-sm border-b border-white/10 transition duration-300 overflow-hidden",
+          showOnlyMenu
+            ? "h-0 opacity-0 pointer-events-none"
+            : "h-auto opacity-100 pointer-events-auto",
+        ].join(" ")}
+      >
+        <div className="container-x flex flex-wrap items-center gap-3 py-2">
+          <div className="flex items-center gap-2 tracking-[0.28em] uppercase text-[10px] sm:text-[11px] text-white/70">
+            <span className="text-base text-white/90">✦</span>
+            Modern Finish Crew
+          </div>
+          <span className="flex items-center gap-2 text-white/80">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              className="text-white/70"
             >
-              📞 {PHONE_NUMBER}
-            </a>
+              <path
+                d="M12 22s8-4.5 8-11A8 8 0 1 0 4 11c0 6.5 8 11 8 11z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <circle cx="12" cy="11" r="2.5" fill="currentColor" />
+            </svg>
+            Serving GTA + Halton Region
+          </span>
+          <div className="ml-auto flex items-center gap-3">
             <Link
-              href="/quote/"
-              className="btn-cta whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
-              title="Get a free popcorn ceiling removal quote"
+              href="/our-work/"
+              className="inline-flex items-center gap-1 text-white/90 hover:text-white"
             >
-              Get Quote
+              Case Studies →
+            </Link>
+            <Link
+              href="/contact/"
+              className="inline-flex items-center gap-1 text-white/90 hover:text-white"
+            >
+              Concierge Team →
             </Link>
           </div>
-
-          {/* Mobile hamburger */}
-          <button
-            type="button"
-            className="lg:hidden ml-auto inline-flex items-center justify-center rounded-xl p-2 ring-1 ring-slate-300/60 shadow-sm bg-white/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((v) => !v)}
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M4 7h16M4 12h16M4 17h16"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
         </div>
       </div>
 
-      {/* Row 2: right-aligned menu */}
-      <div className="hidden lg:block border-b bg-gradient-to-r from-red-50/60 via-white to-red-50/60">
-        <nav
-          className="container-x py-3 flex items-center gap-2 text-[15px] justify-end"
-          aria-label="Primary navigation"
-        >
-          <NavItem href="/" label="HOME" active={isActive("/")} />
-          <NavItem href="/about/" label="ABOUT" active={isActive("/about/")} />
-
-          {/* SERVICES — narrow vertical column */}
-          <SmoothDropdown
-            label="SERVICES"
-            active={isActive("/services/")}
-            align="right"
-            widthPx={SERVICES_PANEL_W}
+      {/* Primary glass header */}
+      <div className="border-b border-white/60 bg-white/80 backdrop-blur-xl supports-[backdrop-filter]:bg-white/65 transition-all duration-300">
+        <div className="container-x">
+          {/* Brand block + CTAs + Hamburger (hide when showOnlyMenu) */}
+          <div
+            className={[
+              "overflow-hidden transition-all duration-300",
+              showOnlyMenu ? "h-0 opacity-0" : "h-auto opacity-100 py-4",
+            ].join(" ")}
           >
-            <Panel>
-              <div className="flex flex-col gap-2 max-h-[70vh] overflow-auto pr-1">
-                {services.map((s) => (
-                  <MenuItemCard key={s.href} href={s.href} label={s.label} />
-                ))}
-              </div>
-              <PanelFooter>
-                <DropdownLink href="/services/" label="All Services →" bold />
+            <div className="flex items-center gap-4">
+              <Link
+                href="/"
+                className="flex flex-1 items-center gap-3 rounded-3xl p-1 pr-4 hover:bg-white/80 transition"
+                title="Popcorn Ceiling Removal Burlington Ontario— Home"
+              >
+                <div className="h-20 w-20 md:h-24 md:w-24 rounded-2xl bg-gradient-to-br from-rose-500 via-orange-400 to-amber-300 p-[2px] shadow-[0_15px_35px_rgba(244,63,94,0.45)]">
+                  <div className="h-full w-full rounded-[26px] bg-white flex items-center justify-center">
+                    <img
+                      src="/logo.png"
+                      alt="Popcorn Ceiling Removal Burlington Ontario"
+                      className="h-12 w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 object-contain"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col min-w-0 sm:items-start items-center text-center sm:text-left">
+                  <span className="text-lg md:text-2xl font-semibold text-slate-900 leading-tight">
+                    Popcorn Ceiling Removal
+                    <span className="block sm:inline"> Burlington</span>
+                  </span>
+                  <span className="text-[11px] uppercase tracking-[0.4em] text-slate-500">
+                    serving Burlington, Ontario
+                  </span>
+                  <span className="text-[12px] text-slate-500">
+                    Smooth ceilings, paint-ready in 24h.
+                  </span>
+                </div>
+              </Link>
+
+              {/* Desktop/tablet CTAs */}
+              <div className="hidden md:flex items-center gap-2 ml-auto">
+                <a
+                  href={PHONE_HREF}
+                  className="inline-flex items-center gap-2 border-2 border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-md hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/50 transition"
+                  title="Call for a fast popcorn ceiling removal estimate"
+                >
+                  <span className="text-base">☎</span>
+                  {PHONE_NUMBER}
+                </a>
                 <Link
                   href="/quote/"
-                  className="text-sm font-semibold text-slate-700 hover:text-slate-900"
+                  className="inline-flex items-center gap-2 bg-red-600 px-5 py-2 text-sm font-bold text-white shadow-lg hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/70 transition"
+                  title="Get a free popcorn ceiling removal quote"
                 >
-                  Free Quote →
+                  Book Site Visit
                 </Link>
-              </PanelFooter>
-            </Panel>
-          </SmoothDropdown>
-
-          <NavItem
-            href="/our-work/"
-            label="OUR WORK"
-            active={isActive("/our-work/")}
-          />
-
-          {/* LOCATIONS */}
-          <SmoothDropdown
-            label="LOCATIONS"
-            active={
-              isActive("/service-areas/") ||
-              locations.some((l) => isActive(l.href))
-            }
-            align="right"
-            widthPx={LOCATIONS_MEGA_W}
-          >
-            <Panel>
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
-                <DropdownLink href="/service-areas/" label="All Areas →" bold />
-                {locations.map((l) => (
-                  <MenuItemCard key={l.href} href={l.href} label={l.label} />
-                ))}
               </div>
-            </Panel>
-          </SmoothDropdown>
 
-          <NavItem
-            href="/our-process/"
-            label="OUR PROCESS"
-            active={isActive("/our-process/")}
-          />
-          <NavItem
-            href="/contact/"
-            label="CONTACT"
-            active={isActive("/contact/")}
-          />
-          <NavItem href="/blog/" label="BLOG" active={isActive("/blog/")} />
-        </nav>
+              {/* Mobile hamburger */}
+              <button
+                type="button"
+                className="lg:hidden inline-flex items-center justify-center p-3 ring-1 ring-slate-200/80 shadow-sm bg-white/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/50 ml-auto md:ml-3"
+                aria-label="Toggle menu"
+                aria-expanded={mobileOpen}
+                onClick={() => setMobileOpen((v) => !v)}
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 7h16M4 12h16M4 17h16"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {/* Desktop nav */}
+          <div
+            className={[
+              "hidden lg:flex items-center justify-between transition-all duration-300",
+              showOnlyMenu ? "py-2" : "pb-4",
+            ].join(" ")}
+          >
+            <nav
+              className="flex items-center gap-1 text-[13px] tracking-[0.2em]"
+              aria-label="Primary navigation"
+            >
+              <NavItem href="/" label="HOME" active={isActive("/")} />
+              <NavItem
+                href="/about/"
+                label="ABOUT"
+                active={isActive("/about/")}
+              />
+
+              {/* SERVICES */}
+              <SmoothDropdown
+                label="SERVICES"
+                active={isActive("/services/")}
+                align="left"
+                widthPx={SERVICES_PANEL_W}
+              >
+                <Panel>
+                  <div className="flex flex-col gap-2 max-h-[70vh] overflow-auto pr-1">
+                    {services.map((s) => (
+                      <MenuItemCard
+                        key={s.href}
+                        href={s.href}
+                        label={s.label}
+                      />
+                    ))}
+                  </div>
+                  <PanelFooter>
+                    <DropdownLink
+                      href="/services/"
+                      label="All Services →"
+                      bold
+                    />
+                    <Link
+                      href="/quote/"
+                      className="inline-flex items-center px-4 py-2 bg-red-600 text-sm font-bold text-white hover:bg-red-700 transition"
+                    >
+                      Schedule Quote →
+                    </Link>
+                  </PanelFooter>
+                </Panel>
+              </SmoothDropdown>
+
+              <NavItem
+                href="/our-work/"
+                label="OUR WORK"
+                active={isActive("/our-work/")}
+              />
+
+              {/* LOCATIONS */}
+              <SmoothDropdown
+                label="LOCATIONS"
+                active={
+                  isActive("/service-areas/") ||
+                  locations.some((l) => isActive(l.href))
+                }
+                align="left"
+                widthPx={LOCATIONS_MEGA_W}
+              >
+                <Panel>
+                  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+                    <DropdownLink
+                      href="/service-areas/"
+                      label="All Areas →"
+                      bold
+                    />
+                    {locations.map((l) => (
+                      <MenuItemCard
+                        key={l.href}
+                        href={l.href}
+                        label={l.label}
+                      />
+                    ))}
+                  </div>
+                </Panel>
+              </SmoothDropdown>
+
+              <NavItem
+                href="/our-process/"
+                label="OUR PROCESS"
+                active={isActive("/our-process/")}
+              />
+              <NavItem
+                href="/contact/"
+                label="CONTACT"
+                active={isActive("/contact/")}
+              />
+            </nav>
+          </div>
+        </div>
       </div>
 
-      {/* Row 3: Breadcrumb stripe (blue) */}
+      {/* Breadcrumb ribbon */}
       {pathname !== "/" && (
         <>
           <BreadcrumbJsonLd crumbs={crumbs} />
-          <div className="border-b border-[#3EC5F1] bg-[#00AEEF] text-slate-100">
+          <div className="border-b border-slate-200 bg-slate-50/90 backdrop-blur">
             <nav
               aria-label="Breadcrumb"
-              className="container-x py-1 text-[13px] leading-5"
+              className="container-x py-1.5 text-[13px] leading-5 text-slate-500"
             >
               <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
                 {crumbs.map((c, i) => {
                   const isLast = i === crumbs.length - 1;
                   return (
                     <div key={c.href} className="flex items-center shrink-0">
-                      {i > 0 && <span className="mx-2 opacity-70">/</span>}
+                      {i > 0 && <span className="mx-2 text-slate-400">/</span>}
                       {isLast ? (
                         <span
-                          className="font-semibold"
+                          className="font-semibold text-slate-900"
                           aria-current="page"
                           title={c.label}
                         >
@@ -296,7 +419,7 @@ export default function HeaderNav() {
                       ) : (
                         <Link
                           href={c.href}
-                          className="underline decoration-slate-900/30 underline-offset-2 hover:decoration-slate-900/60 hover:text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 rounded"
+                          className="rounded px-1 text-rose-600 hover:text-rose-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/30"
                           title={c.label}
                         >
                           {c.label}
@@ -314,12 +437,28 @@ export default function HeaderNav() {
       {/* Mobile drawer */}
       <div
         className={[
-          "lg:hidden border-b bg-white/95 backdrop-blur transition-[max-height] overflow-hidden",
-          mobileOpen ? "max-h-[75vh]" : "max-h-0",
+          "lg:hidden border-b border-slate-900/40 bg-slate-950 text-white/90 backdrop-blur transition-[max-height] overflow-hidden",
+          mobileOpen ? "max-h-[80vh]" : "max-h-0",
         ].join(" ")}
         aria-hidden={!mobileOpen}
       >
-        <div className="container-x py-3">
+        <div className="container-x py-4 space-y-4">
+          <div className="grid gap-2 text-base">
+            <a
+              href={PHONE_HREF}
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/30 bg-white/10 px-4 py-3 font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 hover:bg-white/15 transition"
+            >
+              <span className="text-base">☎</span>
+              Call {PHONE_NUMBER}
+            </a>
+            <Link
+              href="/quote/"
+              className="inline-flex items-center justify-center bg-red-600 px-4 py-3 font-bold text-white shadow-lg hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 transition"
+            >
+              Book Site Visit
+            </Link>
+          </div>
+
           <nav className="space-y-1 text-[16px]" aria-label="Mobile">
             <MobileLink href="/" label="Home" active={isActive("/")} />
             <MobileLink
@@ -382,15 +521,24 @@ function NavItem({ href, label, active }) {
       href={href}
       aria-current={active ? "page" : undefined}
       className={[
-        "px-3 py-2 rounded-xl transition-all",
-        "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30",
-        active
-          ? `bg-white ${ACCENT.textStrong} shadow-[0_8px_20px_-12px_rgba(0,0,0,0.35)] ring-1 ${ACCENT.ring}`
-          : `hover:bg-white/70 ${ACCENT.linkHover}`,
+        "group relative px-3 py-2 rounded-full text-[11px] font-semibold tracking-[0.28em]",
+        "transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/30",
+        active ? ACCENT.textStrong : `${ACCENT.text} ${ACCENT.linkHover}`,
       ].join(" ")}
       title={label}
     >
-      {label}
+      <span className="relative inline-block">
+        {label}
+        <span
+          aria-hidden="true"
+          className={[
+            "absolute left-0 -bottom-1 h-1 w-full rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-300 transition-transform duration-200 origin-left",
+            active
+              ? "scale-x-100 opacity-90"
+              : "scale-x-0 opacity-0 group-hover:opacity-70 group-hover:scale-x-100",
+          ].join(" ")}
+        />
+      </span>
     </Link>
   );
 }
@@ -435,15 +583,33 @@ function SmoothDropdown({
         aria-haspopup="menu"
         aria-expanded={open}
         className={[
-          "px-3 py-2 rounded-xl transition-all inline-flex items-center gap-1",
-          "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30",
-          active
-            ? `bg-white ${ACCENT.textStrong} shadow-[0_8px_20px_-12px_rgba(0,0,0,0.35)] ring-1 ${ACCENT.ring}`
-            : `hover:bg-white/70 ${ACCENT.linkHover}`,
+          "group relative inline-flex items-center gap-2 px-3 py-2 rounded-full text-[11px] font-semibold tracking-[0.28em]",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/30 transition-colors",
+          active || open
+            ? ACCENT.textStrong
+            : `${ACCENT.text} ${ACCENT.linkHover}`,
         ].join(" ")}
       >
-        <span>{label}</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" className="opacity-70">
+        <span className="relative inline-block">
+          {label}
+          <span
+            aria-hidden="true"
+            className={[
+              "absolute left-0 -bottom-1 h-1 w-full rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-300 transition-transform duration-200 origin-left",
+              active || open
+                ? "scale-x-100 opacity-90"
+                : "scale-x-0 opacity-0 group-hover:opacity-70 group-hover:scale-x-100",
+            ].join(" ")}
+          />
+        </span>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          className={
+            open ? "opacity-100 rotate-180 transition" : "opacity-70 transition"
+          }
+        >
           <path
             d="M7 10l5 5 5-5"
             fill="none"
@@ -475,9 +641,9 @@ function SmoothDropdown({
 function Panel({ children }) {
   return (
     <div
-      className={`p-3 md:p-4 rounded-2xl border ${ACCENT.border} bg-white shadow-xl ring-1 ${ACCENT.ring} min-w-[320px]`}
+      className={`p-4 md:p-5 rounded-3xl border ${ACCENT.border} bg-white/95 shadow-[0_45px_85px_-45px_rgba(15,23,42,0.9)] ring-1 ${ACCENT.ring} min-w-[320px] backdrop-blur`}
     >
-      <div className={`h-1.5 w-full rounded-full ${ACCENT.bgSoft} mb-3`} />
+      <div className="h-1.5 w-16 rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-300 mb-4" />
       {children}
     </div>
   );
@@ -496,15 +662,22 @@ function MenuItemCard({ href, label }) {
       title={label}
       aria-label={label}
       className={[
-        "group p-3 rounded-xl border bg-white",
+        "group p-4 rounded-2xl border bg-gradient-to-br from-white via-slate-50 to-white",
         ACCENT.border,
-        "hover:bg-red-50/70 hover:border-red-300",
-        "shadow-[inset_0_1px_0_rgba(255,255,255,.6),0_8px_18px_-12px_rgba(0,0,0,.35)]",
-        "transition",
+        "hover:-translate-y-0.5 hover:shadow-[0_25px_55px_-35px_rgba(15,23,42,0.8)]",
+        "transition duration-200",
       ].join(" ")}
     >
-      <div className="font-semibold text-slate-900 group-hover:text-red-800">
-        {label}
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <div className="font-semibold text-slate-900 group-hover:text-rose-600">
+            {label}
+          </div>
+          <p className="text-sm text-slate-500">View details →</p>
+        </div>
+        <span className="text-rose-500 opacity-0 group-hover:opacity-100 transition">
+          ↗
+        </span>
       </div>
     </Link>
   );
@@ -517,9 +690,9 @@ function DropdownLink({ href, label, bold }) {
       role="menuitem"
       title={label}
       className={[
-        "block px-3 py-2 rounded-xl text-[15px] transition",
-        bold ? "font-semibold text-slate-900" : "text-slate-700",
-        `hover:bg-slate-50 ${ACCENT.linkHover} focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30`,
+        "block px-3 py-2 rounded-2xl text-[15px] transition",
+        bold ? "font-semibold text-slate-900" : ACCENT.text,
+        `hover:bg-slate-100/70 ${ACCENT.linkHover} focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/30`,
       ].join(" ")}
     >
       {label}
@@ -534,8 +707,10 @@ function MobileLink({ href, label, active }) {
     <Link
       href={href}
       className={[
-        "block w-full px-3 py-2 rounded-xl",
-        active ? "bg-slate-100 font-semibold" : "hover:bg-slate-50",
+        "block w-full px-4 py-3 font-medium transition",
+        active
+          ? "bg-white/15 text-white"
+          : "text-white/80 hover:bg-white/5 hover:text-white",
       ].join(" ")}
     >
       {label}
@@ -545,14 +720,14 @@ function MobileLink({ href, label, active }) {
 
 function MobileDisclosure({ label, open, setOpen, items, isActive }) {
   return (
-    <div className="rounded-xl border border-slate-200/60">
+    <div className="border border-white/10 bg-white/5">
       <button
         type="button"
-        className="w-full flex items-center justify-between px-3 py-2"
+        className="w-full flex items-center justify-between px-4 py-3 text-base font-medium"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
-        <span className="font-medium">{label}</span>
+        <span>{label}</span>
         <svg
           width="18"
           height="18"
@@ -572,23 +747,23 @@ function MobileDisclosure({ label, open, setOpen, items, isActive }) {
       <div
         className={
           open
-            ? "max-h-96 overflow-hidden transition-[max-height]"
-            : "max-h-0 overflow-hidden transition-[max-height]"
+            ? "max-h-96 overflow-hidden transition-[max-height] duration-300"
+            : "max-h-0 overflow-hidden transition-[max-height] duration-300"
         }
       >
-        <div className="p-1 pt-0">
-          {items.map((i) => (
+        <div className="p-2 pt-0 space-y-1">
+          {items.map((item) => (
             <Link
-              key={"href" in i ? i.href : i.label}
-              href={"href" in i ? i.href : "#"}
+              key={item.href}
+              href={item.href}
               className={[
-                "block px-3 py-2 rounded-lg text-[15px]",
-                isActive("href" in i ? i.href : "")
-                  ? "bg-slate-100 font-semibold"
-                  : "hover:bg-slate-50",
+                "block px-3 py-2 text-[15px]",
+                isActive(item.href)
+                  ? "bg-white/15 text-white font-semibold"
+                  : "text-white/80 hover:bg-white/5 hover:text-white",
               ].join(" ")}
             >
-              {"label" in i ? i.label : i}
+              {item.label}
             </Link>
           ))}
         </div>
