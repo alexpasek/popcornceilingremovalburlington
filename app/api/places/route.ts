@@ -1,6 +1,8 @@
 // Next.js App Router API (server-only)
 import { NextResponse } from "next/server";
 
+export const runtime = "edge";
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const placeId = searchParams.get("placeId");
