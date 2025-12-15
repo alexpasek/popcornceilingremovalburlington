@@ -1,20 +1,20 @@
 import Link from "next/link";
-import { CONTACT } from "@/app/config";
-import { ServiceCopy } from "@/components/LocalSEOCopy";
+import { PHONE_HREF, PHONE_NUMBER } from "@/app/config";
 import { cities } from "@/data/cities";
+import { ServiceCopy } from "@/components/LocalSEOCopy";
 
 export const revalidate = 86400;
 
 export const metadata = {
-  title: "Interior Painting — Wallpaper Removal Pro",
+  title: "Interior Painting Burlington | Popcorn Ceiling Removal Burlington",
   description:
-    "GTA interior painting with sharp lines and durable finishes. Walls, trim, and ceilings—dust-controlled prep, Level 5 surfaces, and a clean, guaranteed result.",
-  alternates: { canonical: "/services/painting" },
+    "Modern interior painting for Burlington homes. Design-focused walls, ceilings and trim with dust-controlled prep, Level 5 smoothing and premium coatings.",
+  alternates: { canonical: "/services/interior-painting/" },
   openGraph: {
-    title: "Interior Painting — Clean Lines & Durable Finishes (GTA)",
+    title: "Burlington Interior Painting — Popcorn Ceiling Removal Burlington",
     description:
-      "Professional interior painting for walls, trim, and ceilings. Careful prep, smooth surfaces, premium coatings, tidy work, and a written warranty.",
-    url: "/services/painting",
+      "Professional interior painting with Level 5 prep, sharp lines and premium coatings. Burlington-focused crew pairing paint projects with popcorn ceiling smoothing.",
+    url: "/services/interior-painting/",
     type: "article",
   },
   robots: { index: true, follow: true },
@@ -27,14 +27,18 @@ function JsonLd() {
     "@graph": [
       {
         "@type": "Service",
-        name: "Interior Painting",
+        name: "Interior Painting Burlington",
         serviceType: [
           "Interior Painting",
-          "Wall & Ceiling Painting",
+          "Ceiling Painting",
           "Trim & Doors Painting",
           "Level 5 Prep & Priming",
         ],
         areaServed,
+        provider: {
+          "@type": "LocalBusiness",
+          name: "Popcorn Ceiling Removal Burlington",
+        },
         offers: {
           "@type": "Offer",
           priceCurrency: "CAD",
@@ -47,10 +51,18 @@ function JsonLd() {
         mainEntity: [
           {
             "@type": "Question",
-            name: "How do you keep lines sharp and finishes durable?",
+            name: "Do you prep walls to Level 5?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "We focus on meticulous prep (filling, sanding, caulking), high-adhesion primers, and proven topcoats for the right sheen and durability.",
+              text: "Yes. We skim, sand with HEPA extraction, and inspect under raking light before painting so designer colours lay perfectly.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can you paint ceilings and trim too?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Absolutely. Ceilings, walls, baseboards, casings, doors, accent walls—finished with matching sheens and straight tapelines.",
             },
           },
           {
@@ -58,42 +70,16 @@ function JsonLd() {
             name: "Is prep dust-controlled?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes—containment, floor and vent protection, vacuum-assist sanding, and a full tidy clean-up.",
+              text: "Containment, floor & vent protection, vacuum-sanding and tidy clean-ups so Burlington homes stay livable.",
             },
           },
           {
             "@type": "Question",
-            name: "Do you handle ceilings, trim, and doors too?",
+            name: "How fast is quoting?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes—ceilings, walls, baseboards, casings, doors, frames, and feature walls, including Level 5 smoothing when needed.",
+              text: "Same-day photo estimate with on-site confirmation before scheduling.",
             },
-          },
-          {
-            "@type": "Question",
-            name: "How fast can I get a quote?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Same-day photo estimate by text/email with on-site confirmation for final scope and schedule.",
-            },
-          },
-        ],
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "/" },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Services",
-            item: "/services",
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: "Interior Painting",
-            item: "/services/painting",
           },
         ],
       },
@@ -109,197 +95,167 @@ function JsonLd() {
   );
 }
 
+const heroStats = [
+  { label: "Rooms refreshed", value: "350+" },
+  { label: "Condos repainted", value: "50+" },
+  { label: "Popcorn + paint", value: "24h turnover" },
+  { label: "Finish level", value: "Level 5" },
+];
+
+const paintPillars = [
+  {
+    title: "Design-friendly prep",
+    copy:
+      "We deliver glued, skimmed walls ready for designer whites and bold feature colours. Level 5 skim coat and daylight inspection keep surfaces flawless.",
+    bullets: [
+      "Level 5 skim & HEPA sanding",
+      "Feathered seams, caulked trim",
+      "Primer matched to finish coats",
+    ],
+  },
+  {
+    title: "Popcorn + paint pairing",
+    copy:
+      "Our crew can smooth ceilings and paint them in one mobilization. Popcorn removal, Level 5 skim, then premium ceiling flats or velvety sheens.",
+    bullets: [
+      "Dust containment + floor protection",
+      "Ceiling + wall colour coordination",
+      "Pot light or repair blending",
+    ],
+  },
+  {
+    title: "Condo + custom workflow",
+    copy:
+      "Elevator bookings, hallway protection, and daily tidy-ups keep Burlington condos and custom homes photo-ready while we repaint.",
+    bullets: [
+      "Quiet-hour friendly crew",
+      "Daily SMS/photo updates",
+      "Designer communication welcome",
+    ],
+  },
+];
+
 export default function Page() {
-  const images = Array.from(
-    { length: 6 },
-    (_, i) => `/services/painting/${i + 1}.webp`
-  );
+  const cityPills = cities.slice(0, 12);
+  const images = ["/services/painting/1.webp"];
 
   return (
-    <div className="container-x py-10">
-      <JsonLd />
+    <div className="bg-gradient-to-b from-slate-900/5 via-white to-slate-50">
+      <div className="container-x py-12 space-y-16">
+        <JsonLd />
 
-      {/* HERO */}
-      <header className="max-w-5xl">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Interior Painting
+        {/* HERO */}
+        <section className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-start">
+          <div className="space-y-5">
+            <p className="inline-flex items-center gap-2 rounded-full bg-red-50 px-4 py-1 text-sm font-semibold text-red-700">
+              Popcorn Ceiling Removal Burlington • Interior Painting
+            </p>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+              Interior painting, Level 5 prep, and smooth ceilings for Burlington homes.
             </h1>
-            <p className="mt-3 text-gray-700">
-              Sharp lines, durable finishes, and modern colours for walls, trim,
-              and ceilings. Careful prep, Level 5 smoothing where needed, and a
-              clean, guaranteed result.
+            <p className="text-lg text-slate-700">
+              Pair your popcorn ceiling removal with designer-level painting. We prep walls, ceilings, and trim, then apply premium coatings for modern Burlington spaces.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a href={PHONE_HREF} className="btn-cta">
+                📞 {PHONE_NUMBER}
+              </a>
+              <Link href="/quote/" className="btn-cta">
+                Book a site visit
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {heroStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-2xl border border-slate-200 bg-white p-4 text-center"
+                >
+                  <div className="text-2xl font-semibold text-slate-900">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-slate-600">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-[32px] border border-slate-200 bg-white/90 p-6 shadow-xl">
+            <img
+              src={images[0]}
+              alt="Burlington interior painting with smooth ceilings"
+              className="w-full h-80 object-cover rounded-2xl"
+              loading="lazy"
+            />
+            <p className="mt-4 text-sm text-slate-600">
+              Serving Downtown Burlington, Aldershot, Millcroft, Tyandaga, Headon Forest, Brant Hills, The Orchard, Appleby.
             </p>
           </div>
-          <div className="flex gap-3">
-            <a className="btn-cta" href={CONTACT.phoneHref}>
-              📞 (647) 923-6784
-            </a>
-            <a className="btn-cta" href="/quote/">
-              Get my quote
-            </a>
-          </div>
-        </div>
+        </section>
 
-        {/* City pills (internal links for local SEO) */}
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-          {cities.map((c) => (
+        {/* CITY PILLS */}
+        <section className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+          {cityPills.map((c) => (
             <Link key={c.slug} href={`/${c.slug}/`} className="pill">
               {c.name}
             </Link>
           ))}
-        </div>
-      </header>
+        </section>
 
-      {/* WHY US */}
-      <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="card p-6 bg-white">
-          <h3 className="text-xl font-semibold">Flawless Lines</h3>
-          <p className="text-gray-600 mt-2">
-            Crisp cut-ins, consistent coverage, and smooth finishes without lap
-            marks or flashing.
-          </p>
-        </div>
-        <div className="card p-6 bg-white">
-          <h3 className="text-xl font-semibold">Durable Systems</h3>
-          <p className="text-gray-600 mt-2">
-            Correct primers and topcoats for high-traffic rooms, kitchens/baths,
-            and trim—long-lasting and easy to clean.
-          </p>
-        </div>
-        <div className="card p-6 bg-white">
-          <h3 className="text-xl font-semibold">Dust-Controlled Prep</h3>
-          <p className="text-gray-600 mt-2">
-            Containment, floor & vent protection, vacuum-assist sanding, and a
-            tidy handover.
-          </p>
-        </div>
-      </section>
+        {/* PILLARS */}
+        <section className="grid gap-6 lg:grid-cols-3">
+          {paintPillars.map((pillar) => (
+            <article
+              key={pillar.title}
+              className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-amber-50/40 p-6 shadow-sm"
+            >
+              <h3 className="text-xl font-semibold text-slate-900">
+                {pillar.title}
+              </h3>
+              <p className="mt-3 text-sm text-slate-700">{pillar.copy}</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                {pillar.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-red-500" />
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </section>
 
-      {/* GALLERY — unchanged */}
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {images.map((s, i) => (
-          <img
-            key={i}
-            src={s}
-            alt={`Interior Painting project ${i + 1}`}
-            className="w-full h-56 object-cover rounded-2xl border shadow"
-            data-lightbox="true"
+        {/* SERVICE COPY */}
+        <section className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm">
+          <ServiceCopy
+            city="Burlington"
+            service="Interior Painting"
+            pageUrl="https://popcorn-ceiling-removal-burlington.com/services/interior-painting/"
           />
-        ))}
-      </div>
+        </section>
 
-      {/* PROCESS */}
-      <section className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="card p-6 bg-white">
-          <h2 className="text-2xl font-semibold">Our Painting Process</h2>
-          <ul className="mt-3 space-y-2 text-gray-700 list-disc pl-5">
-            <li>
-              Setup & protection: plastic containment, floors & vents masked
-            </li>
-            <li>
-              Surface prep: filling, sanding, caulking, spot-priming; Level 5
-              smoothing if needed
-            </li>
-            <li>
-              Coatings: correct primer + topcoats for each surface and sheen
-            </li>
-            <li>
-              Quality check under critical light; tidy clean-up and handover
-            </li>
-          </ul>
-        </div>
-        <div className="card p-6 bg-white">
-          <h2 className="text-2xl font-semibold">Rooms & Surfaces</h2>
-          <ul className="mt-3 space-y-2 text-gray-700 list-disc pl-5">
-            <li>Living rooms, bedrooms, kitchens, baths, hallways, stairs</li>
-            <li>Ceilings, walls, accent walls, baseboards, casings, doors</li>
-            <li>
-              Minor drywall repairs, stain blocking, water-stain touch-ups
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      {/* LOCAL KEYWORDS / COVERAGE */}
-      <section className="mt-10 card p-6 bg-white">
-        <h2 className="text-2xl font-semibold">GTA Coverage</h2>
-        <p className="mt-2 text-gray-700">
-          Toronto (Annex, Leaside, The Beaches, High Park, North York,
-          Etobicoke, Scarborough), Mississauga (Port Credit, Clarkson, Erin
-          Mills), Oakville, Burlington, Milton, Hamilton, Stoney Creek,
-          Ancaster, Grimsby, Vaughan, Richmond Hill.
-        </p>
-      </section>
-
-      {/* CTA */}
-      <section className="mt-10 card p-6 bg-white flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h3 className="text-xl font-semibold">
-            Ready for clean, modern interiors?
-          </h3>
-        </div>
-        <div className="flex gap-3">
-          <a className="btn-cta" href={CONTACT.phoneHref}>
-            📞 (647) 923-6784
-          </a>
-          <a className="btn-cta" href="/quote/">
-            Get my quote
-          </a>
-        </div>
-      </section>
-
-      {/* Long-form local copy */}
-      <ServiceCopy service="Interior Painting" />
-
-      {/* FAQ (visible; mirrors JSON-LD) */}
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold">FAQ</h2>
-        <details className="card p-6 bg-white mt-4">
-          <summary className="font-medium">
-            How do you ensure sharp lines?
-          </summary>
-          <p className="mt-2 text-gray-700">
-            Proper tape techniques, steady cut-ins, and controlling wet edges to
-            avoid lap marks.
-          </p>
-        </details>
-        <details className="card p-6 bg-white mt-4">
-          <summary className="font-medium">What products do you use?</summary>
-          <p className="mt-2 text-gray-700">
-            High-adhesion primers and durable topcoats matched to each room’s
-            traffic and moisture needs.
-          </p>
-        </details>
-        <details className="card p-6 bg-white mt-4">
-          <summary className="font-medium">
-            Do you repair minor drywall issues first?
-          </summary>
-          <p className="mt-2 text-gray-700">
-            Yes—holes, dents, tape lifts, and stains are addressed before
-            priming and painting.
-          </p>
-        </details>
-        <details className="card p-6 bg-white mt-4">
-          <summary className="font-medium">How fast is the estimate?</summary>
-          <p className="mt-2 text-gray-700">
-            Same-day photo estimate; on-site visit to confirm final scope and
-            schedule.
-          </p>
-        </details>
-      </section>
-
-      {/* STICKY MOBILE CTA */}
-      <div className=" ">
-        <div className="bg-white/95 backdrop-blur border shadow-xl rounded-2xl p-3 flex items-center justify-between gap-3">
-          <a href={CONTACT.phoneHref} className="btn-cta flex-1 text-center">
-            📞 Call (647) 923-6784
-          </a>
-          <a href="/quote/" className="btn-cta flex-1 text-center">
-            Get my quote
-          </a>
-        </div>
+        {/* CTA */}
+        <section className="rounded-3xl border border-red-600 bg-gradient-to-br from-red-700 to-red-500 p-8 text-white shadow-lg">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-white/70">
+                Ready for Burlington-bright interiors?
+              </p>
+              <h2 className="mt-1 text-3xl font-bold">
+                Paint your home after popcorn removal.
+              </h2>
+              <p className="mt-2 text-sm text-white/80">
+                Share photos, get a same-day estimate, and book a Level 5 prep + paint crew anywhere in Burlington.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a href={PHONE_HREF} className="btn-cta bg-white text-red-600">
+                📞 {PHONE_NUMBER}
+              </a>
+              <Link href="/quote/" className="btn-cta bg-white text-red-600">
+                Get my quote
+              </Link>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

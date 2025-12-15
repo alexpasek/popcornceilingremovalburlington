@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { CityCopy } from "@/components/LocalSEOCopy";
-export const metadata = { title: "Toronto — Wallpaper Removal Pro" };
+export const metadata = {
+  title: "Toronto Popcorn Ceiling Removal | Popcorn Ceiling Removal Burlington",
+  description:
+    "Popcorn Ceiling Removal Burlington serves Toronto with popcorn scraping, drywall, and interior painting. Smooth ceilings and tidy finishes for GTA homes.",
+};
 export default function City() {
   const images = Array.from({ length: 6 }, (_, i) => `/home/${i + 1}.webp`); //cities/toronto path for images for this page
   const hidden = Array.from({ length: 120 }).map((_, i) => (
@@ -17,7 +21,7 @@ export default function City() {
         <Link href="/">Home</Link> / Toronto
       </nav>
       <h1 className="text-3xl font-bold">
-        Toronto — Wallpaper, Popcorn Ceiling, Drywall & Painting
+        Toronto — popcorn ceiling removal, drywall & painting
       </h1>
       <p className="mt-2 text-gray-700">
         Trusted contractor for wallpaper removal, dust‑free popcorn ceiling

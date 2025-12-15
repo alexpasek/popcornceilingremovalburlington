@@ -12,20 +12,20 @@ import {
   PHONE_NUMBER,
   PHONE_HREF,
 } from "./config";
-import ChatWidgetAgent from "@/components/ChatWidgetAgent";
 import ReviewScroller from "@/components/ReviewScroller";
 import HeaderNav from "@/components/HeaderNav"; // ✅ NEW
 import Footer from "@/components/Footer";
 export const metadata = {
   title: {
-    default: "Wallpaper Removal Pro — GTA",
-    template: "%s — Wallpaper Removal Pro",
+    default: "Popcorn Ceiling Removal Burlington | Smooth Ceilings in 24h",
+    template: "%s | Popcorn Ceiling Removal Burlington",
     metadataBase: new URL(
-      process.env.NEXT_PUBLIC_SITE_URL || "https://epf-2025.pages.dev"
+      process.env.NEXT_PUBLIC_SITE_URL ||
+        "https://popcorn-ceiling-removal-burlington.com"
     ),
   },
   description:
-    "Wallpaper removal, popcorn ceiling removal, drywall installation & repair, and interior painting across the GTA.",
+    "Burlington-first crew for popcorn ceiling removal, drywall, wallpaper stripping, and interior painting. Dust-controlled, Level 5 smooth, photo quotes in hours.",
 };
 
 
@@ -54,7 +54,6 @@ export default function RootLayout({ children }) {
         <SEOJsonLd />
       </head>
       <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900">
-        <ChatWidgetAgent />
         <HeaderNav /> {/* ✅ use the client header */}
         <TrustBar />
         <main className="flex-1">{children}</main>

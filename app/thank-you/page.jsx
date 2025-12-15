@@ -2,7 +2,9 @@ import { PHONE_HREF } from "../config";
 
 // app/thank-you/page.jsx
 export const metadata = {
-  title: "Thank You | Wallpaper Removal Pro",
+  title: "Thank You | Popcorn Ceiling Removal Burlington",
+  description:
+    "Thanks for contacting Popcorn Ceiling Removal Burlington. We’ll follow up quickly about your popcorn smoothing project.",
   robots: { index: false },
 };
 

@@ -12,16 +12,15 @@ import {
   PHONE_NUMBER,
   PHONE_HREF,
 } from "./config";
-import ChatWidgetAgent from "@/components/ChatWidgetAgent";
 import ReviewScroller from "@/components/ReviewScroller";
 
 export const metadata = {
   title: {
-    default: "Wallpaper Removal Pro — GTA",
-    template: "%s — Wallpaper Removal Pro",
+    default: "Popcorn Ceiling Removal Burlington | Smooth Ceilings in 24h",
+    template: "%s | Popcorn Ceiling Removal Burlington",
   },
   description:
-    "Wallpaper removal, popcorn ceiling removal, drywall installation & repair, and interior painting across the GTA.",
+    "Local Burlington crew for popcorn ceiling removal, drywall finishing, wallpaper removal, and interior painting. Dust-controlled, Level 5 prep and tidy finishes.",
 };
 
 export default function RootLayout({ children }) {
@@ -49,9 +48,6 @@ export default function RootLayout({ children }) {
         <SEOJsonLd />
       </head>
       <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900">
-        {/*ai widget*/}
-        <ChatWidgetAgent />
-
         <Header />
         <TrustBar />
         <main className="flex-1">{children}</main>
@@ -76,11 +72,11 @@ function Header() {
         <Link href="/" className="flex items-center gap-2 min-w-0">
           <img
             src="/logo.png"
-            alt="Wallpaper Removal Pro"
+            alt="Popcorn Ceiling Removal Burlington"
             className="w-auto h-14 md:h-15 object-contain"
           />
           <span className="text-lg md:text-xl font-semibold leading-none whitespace-nowrap truncate">
-            Wallpaper Removal Pro
+            Popcorn Ceiling Removal Burlington
           </span>
         </Link>
         <div className="hidden md:flex items-center gap-3 ml-auto">
@@ -171,7 +167,7 @@ function Footer() {
       <div className="container-x py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <div className="font-semibold" itemProp="name">
-            Wallpaper Removal Pro
+            Popcorn Ceiling Removal Burlington
           </div>
           <p className="mt-2 text-sm text-gray-600">
             Serving {SERVICE_AREAS.join(" · ")}

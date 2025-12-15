@@ -1,19 +1,18 @@
-import Link from "next/link";
-import { cities } from "@/data/cities";
-import { PHONE_HREF, PHONE_NUMBER } from "./config";
-import QuoteForm from "@/components/QuoteForm"; 
+import QuoteForm from "@/components/QuoteForm";
 import ReviewScroller from "@/components/ReviewScroller";
+import { PHONE_HREF, PHONE_NUMBER } from "./config";
+
 export const revalidate = 86400;
 
 export const metadata = {
-  title: "Wallpaper Removal • Popcorn Ceiling • Drywall • Painting — GTA",
+  title: "Popcorn Ceiling Removal Burlington | Smooth Ceilings in 24h",
   description:
-    "Dust-controlled wallpaper removal, popcorn ceiling smoothing to Level 5, drywall finishing, and interior painting across the GTA. Fast estimates, clear scope, and a written warranty.",
+    "Local Burlington crew for popcorn ceiling removal, Level 5 skim coating, drywall repairs and ceiling painting. Dust control, fast quotes and written warranty.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Wallpaper • Popcorn Ceiling • Drywall • Painting — GTA",
+    title: "Popcorn Ceiling Removal Burlington — Level 5 Finish",
     description:
-      "GTA pros for wallpaper removal, popcorn ceiling smoothing (Level 5), drywall and painting. Dust-controlled, tidy, and guaranteed.",
+      "Burlington specialists for popcorn ceiling scraping, skim coat repairs, drywall finishing and ceiling painting. Photo quote in hours, paint-ready in 24h.",
     url: "/",
     type: "website",
   },
@@ -21,73 +20,87 @@ export const metadata = {
 };
 
 function JsonLd() {
-  const areaServed = cities.map((c) => c.name);
+  const base =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://popcorn-ceiling-removal-burlington.com";
   const data = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": "https://example.com/#business",
-        "name": "Wallpaper Removal Pro",
-        "url": "https://example.com/",
-        "telephone": PHONE_NUMBER,
-        "areaServed": areaServed,
-        "image": "https://example.com/og.webp",
-        "priceRange": "$$",
-        "serviceArea": { "@type": "AdministrativeArea", "name": "Greater Toronto Area" },
-        "description":
-          "Dust-controlled wallpaper removal, popcorn ceiling smoothing to Level 5, drywall finishing, and interior painting across the GTA.",
+        "@id": `${base}/#business`,
+        name: "Popcorn Ceiling Removal Burlington",
+        url: base,
+        telephone: PHONE_NUMBER,
+        areaServed: [
+          "Burlington",
+          "Oakville",
+          "Hamilton",
+          "Milton",
+          "Mississauga",
+        ],
+        image: `${base}/og.webp`,
+        priceRange: "$$",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "3321 Mainway",
+          addressLocality: "Burlington",
+          addressRegion: "ON",
+          postalCode: "L7M 1A6",
+          addressCountry: "CA",
+        },
+        description:
+          "Dust-controlled popcorn ceiling removal, Level 5 skim coat, drywall repair and ceiling painting for Burlington homes.",
       },
       {
         "@type": "Service",
-        "name": "Wallpaper Removal & Popcorn Ceiling Smoothing",
-        "serviceType": [
-          "Wallpaper Removal",
+        name: "Popcorn Ceiling Removal & Level 5 Skim Coat",
+        serviceType: [
           "Popcorn Ceiling Removal",
-          "Drywall Taping & Skim Coat (Level 5)",
-          "Interior Painting"
+          "Ceiling Skim Coating",
+          "Drywall & Plaster Repairs",
+          "Interior Painting",
         ],
-        "areaServed": areaServed,
-        "provider": { "@id": "https://example.com/#business" }
+        areaServed: "Burlington, Ontario",
+        provider: { "@id": `${base}/#business` },
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
+        mainEntity: [
           {
             "@type": "Question",
-            "name": "Is the work dust-controlled?",
-            "acceptedAnswer": {
+            name: "Can you finish a typical Burlington ceiling in 24 hours?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "Yes. We isolate rooms, use plastic containment, vacuum-assist sanding, and a tidy clean-up so your home stays livable."
-            }
+              text: "Yes. Bedrooms and living rooms under 400 sq ft can be scraped, skimmed, sanded and primed within 24 hours with a two-person crew.",
+            },
           },
           {
             "@type": "Question",
-            "name": "Do you handle painted or stubborn wallpaper?",
-            "acceptedAnswer": {
+            name: "Do you handle painted popcorn or plaster?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "We score, steam or gel-soften, remove backing and adhesive, wash the substrate, repair, skim-coat to Level 5 if needed, then prime."
-            }
+              text: "We test a small area, score heavy paint and skim over plaster seams to keep the surface smooth before priming.",
+            },
           },
           {
             "@type": "Question",
-            "name": "What about asbestos in old popcorn?",
-            "acceptedAnswer": {
+            name: "How do you control dust?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "If a ceiling is pre-1990s or suspect, we recommend testing before disturbance. We only proceed with safe methods and proper containment."
-            }
+              text: "Poly containment, floor & vent protection, vacuum-assist sanding and HEPA air scrubbers keep Burlington homes livable during work.",
+            },
           },
           {
             "@type": "Question",
-            "name": "How fast can I get an estimate?",
-            "acceptedAnswer": {
+            name: "What is the warranty?",
+            acceptedAnswer: {
               "@type": "Answer",
-              "text": "Same-day phone/text estimates with photos. Site visit available for final scope and schedule."
-            }
-          }
-        ]
-      }
-    ]
+              text: "Three-year workmanship warranty covering cracks, peeling or visible seams caused by our labour.",
+            },
+          },
+        ],
+      },
+    ],
   };
   return (
     <script
@@ -98,213 +111,399 @@ function JsonLd() {
   );
 }
 
+const highlightStats = [
+  { value: "580+", label: "Halton ceilings smoothed" },
+  { value: "24h", label: "Bedrooms & living rooms paint-ready" },
+  { value: "Level 5", label: "Skim coat and daylight check" },
+  { value: "Solid Work", label: " local Burlington crew" },
+];
+
+const processSteps = [
+  {
+    title: "Prep & protection",
+    text: "Furniture wrap, floor/rail coverings, vent masking and pressure-fit containment so dust stays put.",
+  },
+  {
+    title: "Removal + skim coat",
+    text: "Texture removal, repairs, Level 5 skim and vacuum-assisted sanding. We re-skim spots that flash under daylight.",
+  },
+  {
+    title: "Prime, inspect, clean",
+    text: "High-build primer, raking-light inspection, punch-list fixes and spotless clean-up ready for paint crews or ours.",
+  },
+];
+
+const burlingtonAreas = [
+  "Downtown Burlington",
+  "Aldershot",
+  "Tyandaga",
+  "Brant Hills",
+  "Headon Forest",
+  "Millcroft",
+  "The Orchard",
+  "Tansley",
+  "Roseland",
+  "Shoreacres",
+  "Elizabeth Gardens",
+  "Mountainside",
+  "Palmer",
+  "Alton Village",
+];
+
+const resourceLinks = [
+  {
+    title: "Building permits & inspections",
+    url: "https://www.burlington.ca/en/building-and-renovating/building-permits.aspx",
+    desc: "City of Burlington guidelines for ceiling/drywall permits and inspections.",
+  },
+  {
+    title: "Halton Waste Management",
+    url: "https://www.halton.ca/for-residents/recycling-waste/halton-waste-management-site",
+    desc: "Local disposal site info for texture or drywall debris, adhesives and primers.",
+  },
+  {
+    title: "Local paint & supply shops",
+    url: "https://www.benjaminmoore.com/en-ca/store-locator/10007338/burlington-paint-decorating",
+    desc: "Benjamin Moore Burlington Paint & Decorating plus Sherwin-Williams on Fairview.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Can you start with just photos?",
+    a: "Yes. Text us ceiling measurements + photos for a labour-only range. We confirm scope on-site before work begins.",
+  },
+  {
+    q: "Do you work on evenings or weekends?",
+    a: "We book daytime 8am–6pm but can stage multi-day projects so rooms go back into service nightly when requested.",
+  },
+  {
+    q: "What about painted popcorn or plaster swirls?",
+    a: "We score or skim over heavy paint, spray warm water where safe, then skim to Level 5 so plaster blends with drywall.",
+  },
+  {
+    q: "Is asbestos testing required?",
+    a: "If the ceiling predates the 1990s we recommend a lab test before disturbance. We can refer Burlington labs.",
+  },
+];
+
+const seoParagraphs = [
+  "Popcorn Ceiling Removal Burlington is a local crew focused on Halton Region ceilings. We prep rooms with plastic containment, protect floors and vents, and use HEPA extraction so your family can stay home during the project.",
+  "Most Burlington bungalows and two-storey homes mix drywall and plaster. We skim both substrates to the same Level 5 finish so raking light down the hallway stays even, even if pot lights were recently added.",
+  "Need more than scraping? We handle drywall board replacement, settlement crack stitching, framing adjustments, and stain blocking before paint to restore ceilings after water damage or renovations.",
+  "Our team works across Aldershot, Tyandaga, Millcroft, Headon Forest, The Orchard, and downtown condos with elevator bookings. Expect a schedule-confirming text the day before, a written scope, and photo updates.",
+];
+
+const videoHighlights = [
+  "HEPA vacuum sanding keeps rooms livable",
+  "Level 5 skim coat blends drywall + plaster",
+  "Raking-light inspection before we wrap",
+  "Floor + furniture protection stays down until final clean",
+];
+
+const videoSeoCopy = [
+  "Popcorn ceiling removal in Burlington starts with dust control: poly containment, floor wrap and vent masks so families in Aldershot or Millcroft can keep living at home.",
+  "After scraping, we skim every seam to Level 5 so raking sunlight off Lake Ontario doesn’t flash old tape lines. The video shows that final skim and sanding pass.",
+  "Once primed, ceilings are paint-ready within 24 hours, letting Burlington homeowners jump right into colour coats without calling another crew.",
+];
+
+const postReviewCopy = [
+  "Heritage pockets in Roseland and Shoreacres often hide plaster crowns around beams—we skim these to the same sheen as newer drywall so sunlight off the lake doesn’t highlight seams.",
+  "Tyandaga splits and Millcroft two-storeys usually have double-height foyers. We bring adjustable scaffold and cover railings so the work wraps in a day without scuffs.",
+  "Downtown Burlington condos need elevator bookings and quiet hours. We stage material in bins, protect hallways, and finish ceilings in 1–2 visits to minimize board meetings and concierge check-ins.",
+];
+
 export default function Page() {
-  const imgs = Array.from({ length: 8 }, (_, i) => `/home/${i + 1}.webp`);
-
   return (
-    <div className="container-x py-10">
+    <div className="bg-gradient-to-b from-slate-900/5 via-white to-slate-50">
       <JsonLd />
-
-      {/* HERO */}
-      <header className="max-w-5xl">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Wallpaper • Popcorn Ceiling • Drywall • Painting
-            </h1>
-            <p className="mt-3 text-lg text-gray-700">
-              Dust-controlled, schedule-reliable, and finished{" "}
-              <strong>Level 5 smooth</strong>. Clear scope, daily updates, and a
-              written warranty.
+      <div className="container-x py-12 space-y-16">
+        {/* Hero + contact form */}
+        <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] items-start rounded-[32px] border border-red-100 bg-gradient-to-br from-rose-50 via-white to-amber-50/70 p-8 shadow-xl">
+          <div className="space-y-6">
+            <p className="inline-flex items-center gap-2 rounded-full bg-red-50 px-4 py-1 text-sm font-semibold text-red-700">
+              Burlington crew • Popcorn Ceiling Removal & Level 5 Skim
+            </p>
+            <div>
+              <h1 className="text-4xl font-bold leading-tight text-slate-900 md:text-5xl">
+                Smooth ceilings for Burlington homes in 24 hours.
+              </h1>
+              <p className="mt-4 text-lg text-slate-700">
+                Dust-controlled popcorn ceiling removal, drywall repairs and ceiling painting by a local insured crew. Fast quotes, tidy protection and a written warranty on every job.
+              </p>
+            </div>
+            <ul className="grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
+              <li className="flex items-start gap-2">
+                <span className="mt-1 h-2 w-2 rounded-full bg-red-500" />
+                Same-day photo estimates & site visits.
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1 h-2 w-2 rounded-full bg-red-500" />
+                Level 5 skim, prime & daylight inspection.
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1 h-2 w-2 rounded-full bg-red-500" />
+                Poly containment + HEPA extraction dust control.
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1 h-2 w-2 rounded-full bg-red-500" />
+                WSIB + $2M liability coverage.
+              </li>
+            </ul>
+            <div className="flex flex-wrap items-center gap-4">
+              <a href={PHONE_HREF} className="btn-cta text-base">
+                📞 {PHONE_NUMBER}
+              </a>
+              <a href="/quote/" className="btn-cta text-base">
+                Book a site visit
+              </a>
+              <div className="text-sm text-slate-500">
+                Halton Region • 8am–6pm, 7 days a week
+              </div>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {highlightStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm"
+                >
+                  <div className="text-2xl font-semibold text-slate-900">{stat.value}</div>
+                  <div className="text-sm text-slate-600">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-3xl border border-red-100 bg-white/90 p-6 shadow-2xl backdrop-blur">
+            <h2 className="text-2xl font-semibold text-slate-900">
+              Get my Burlington quote
+            </h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Send photos + ceiling sizes. We reply with a labour-only range and confirmation call.
+            </p>
+            <QuoteForm />
+            <p className="mt-4 text-xs text-slate-500">
+              By submitting you agree to a quick follow-up call/text to review scope.
             </p>
           </div>
-          <div className="flex gap-3">
-            <a href={PHONE_HREF} className="btn-cta">
-              📞 {PHONE_NUMBER}
-            </a>
-            <a href="/quote/" className="btn-cta">
-              Get My Quote
-            </a>
+        </section>
+
+        {/* Video proof */}
+        <section className="grid gap-8 lg:grid-cols-2 lg:items-stretch rounded-[32px] border border-slate-200 bg-white p-8 shadow-2xl">
+          <div className="order-1 space-y-6">
+            <p className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-100 to-amber-100 px-4 py-1 text-sm font-semibold text-amber-800">
+              Popcorn ceiling removal · Burlington
+            </p>
+            <h2 className="text-3xl font-bold text-slate-900">
+            Popcorn ceiling removal Burlington:real Burlington ceilings going Level 5.
+            </h2>
+            <div className="space-y-4 text-sm text-slate-700">
+              {videoSeoCopy.map((copy, idx) => (
+                <p key={idx}>{copy}</p>
+              ))}
+            </div>
+            <ul className="space-y-2 text-sm text-slate-700">
+              {videoHighlights.map((point) => (
+                <li key={point} className="flex items-start gap-2 rounded-2xl bg-gradient-to-r from-rose-50 to-white px-4 py-3">
+                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <div className="rounded-2xl border border-slate-200 bg-slate-900/90 p-4 text-white shadow-lg">
+              <p className="text-xs uppercase tracking-wide text-white/70">Neighbourhood note</p>
+              <p className="mt-1 text-sm">
+                Shot between Guelph Line and Upper Middle. Tyandaga, Headon Forest and Roseland get the same quick setup—crew arrives at 8 AM, ceilings prime-ready by dusk.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a href={PHONE_HREF} className="btn-cta border border-red-200 bg-white text-red-600">
+                📞 {PHONE_NUMBER}
+              </a>
+              <a href="/quote/" className="btn-cta bg-gradient-to-r from-red-600 to-amber-500 text-white">
+                Book my walkthrough
+              </a>
+            </div>
           </div>
-        </div>
+          <div className="order-2 relative overflow-hidden rounded-[28px] border border-slate-200 bg-slate-900/90 shadow-2xl h-full min-h-[320px] max-h-[920px]">
+            <video
+              className="absolute inset-0 h-full w-full object-cover"
+              src="/video/IMG_1470.mov"
+              poster="/home/1.webp"
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+            >
+              Your browser does not support the video tag.
+            </video>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+            <div className="absolute top-4 left-4 rounded-2xl bg-white/90 p-4 text-slate-900 shadow-xl">
+              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Real Burlington ceiling removal
+              </p>
+              <p className="text-base font-semibold">
+                Protection stays down; ceilings go paint-ready within a day.
+              </p>
+            </div>
+            <div className="absolute bottom-4 right-4 rounded-2xl bg-gradient-to-br from-red-500 to-amber-400 p-4 text-sm font-semibold text-white shadow-xl">
+              3 rooms · 24 hours · Level 5 finish
+            </div>
+          </div>
+        </section>
 
-        {/* City pills (internal linking for local SEO) */}
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-          {cities.map((c) => (
-            <Link key={c.slug} href={`/${c.slug}/`} className="pill">
-              {c.name}
-            </Link>
-          ))}
-        </div>
-      </header>
+        {/* Local proof after reviews */}
+        <section className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-amber-50 to-slate-50 p-6 shadow-lg">
+          <div className="grid gap-8 md:grid-cols-2">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-red-600">Burlington context</p>
+              <h2 className="mt-2 text-2xl font-bold text-slate-900">What we notice on local ceilings</h2>
+              <div className="mt-4 space-y-4 text-sm text-slate-700">
+                {postReviewCopy.map((copy, idx) => (
+                  <p key={idx}>{copy}</p>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-inner">
+              <h3 className="text-lg font-semibold text-slate-900">Local quick facts</h3>
+              <ul className="mt-4 space-y-3 text-sm text-slate-700">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
+                  Most Burlington two-storey foyers are 18 ft high—we bring scaffold and wrap stairs to protect new railings.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
+                  Condos on Lakeshore require elevator booking forms—we complete them for you and carry materials in sealed bins.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
+                  Many Brant Hills homes have previous pot-light patches; we skim entire runs so you don’t see telegraphing.
+                </li>
+              </ul>
+              <div className="mt-4 rounded-2xl border border-red-100 bg-gradient-to-r from-rose-50 to-white p-4 text-xs text-slate-600">
+                Need a permit? Burlington building services confirms no permit is required for cosmetic popcorn removal, but we can coordinate if insulation or framing gets replaced.
+              </div>
+            </div>
+          </div>
+        </section>
 
-      {/* WHY US / PROOF */}
-      <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="card p-6 bg-white">
-          <h3 className="text-xl font-semibold">Dust-Controlled</h3>
-          <p className="text-gray-600 mt-2">
-            Plastic containment, floor & vent protection, vacuum-assist sanding,
-            and spotless clean-up.
-          </p>
-        </div>
-        <div className="card p-6 bg-white">
-          <h3 className="text-xl font-semibold">Level 5 Finish</h3>
-          <p className="text-gray-600 mt-2">
-            Skim-coat & feather, critical-light check, prime & re-skim where
-            needed—so ceilings look perfect in daylight.
-          </p>
-        </div>
-        <div className="card p-6 bg-white">
-          <h3 className="text-xl font-semibold">Trusted & Guaranteed</h3>
-          <p className="text-gray-600 mt-2">
-            Written scope, start/finish plan, and a 3-year workmanship warranty.
-            Insured & WSIB covered.
-          </p>
-        </div>
-      </section>
+        {/* Process */}
+        <section className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-amber-50 to-slate-50 p-8 shadow-lg">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-red-600">
+                Our 3-phase plan
+              </p>
+              <h2 className="text-3xl font-bold text-slate-900">
+                Burlington-friendly process, zero surprises.
+              </h2>
+            </div>
+            <p className="text-sm text-slate-600 max-w-xl">
+              Daily updates, schedule check-ins and a clean turnover each night so you can keep living in the space while we work.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {processSteps.map((step, idx) => (
+              <article key={step.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-inner">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  Step {idx + 1}
+                </div>
+                <h3 className="mt-2 text-lg font-semibold text-slate-900">{step.title}</h3>
+                <p className="mt-2 text-sm text-slate-600">{step.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      {/* YOUR EXISTING GALLERY — unchanged */}
-      <div className="py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {imgs.map((s, i) => (
-          <img
-            data-lightbox="true"
-            key={i}
-            src={s}
-            alt={`GTA project ${i + 1}`}
-            className="w-full h-56 object-cover rounded-2xl border shadow"
-          />
-        ))}
-      </div>
+        {/* SEO copy & neighbourhood grid */}
+        <section className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-6 shadow-md">
+            <h2 className="text-2xl font-bold text-slate-900">Local SEO-rich copy (for Google + homeowners)</h2>
+            <div className="mt-4 space-y-4 text-sm text-slate-700">
+              {seoParagraphs.map((p, idx) => (
+                <p key={idx}>{p}</p>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-amber-50/60 p-6 shadow-md">
+            <h3 className="text-xl font-semibold text-slate-900">Burlington neighbourhoods</h3>
+            <p className="mt-2 text-sm text-slate-600">
+              We work in condos, bungalows and custom builds across:
+            </p>
+            <ul className="mt-4 grid grid-cols-2 gap-2 text-sm text-slate-700">
+              {burlingtonAreas.map((area) => (
+                <li key={area} className="rounded-full bg-slate-100 px-3 py-1">
+                  {area}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-      {/*quote form*/}
-      <section className="mt-10 card p-6 bg-white">
-        <h2 className="text-2xl font-semibold">Get a Fast Quote</h2>
-        <p className="mt-2 text-gray-700">
-          Share a few details and we’ll reply quickly with scope, timeline, and
-          a clear estimate.
-        </p>
-        <div className="mt-6">
-          <QuoteForm />
-        </div>
-      </section>
+        {/* Resources */}
+        <section className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-6 shadow-md">
+          <h2 className="text-2xl font-bold text-slate-900">Local resources</h2>
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
+            {resourceLinks.map((link) => (
+              <a
+                key={link.title}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl border border-slate-200 bg-gradient-to-r from-white to-slate-100 p-5 text-sm text-slate-700 transition hover:border-red-400"
+              >
+                <div className="text-base font-semibold text-slate-900">{link.title}</div>
+                <p className="mt-2 text-sm text-slate-600">{link.desc}</p>
+              </a>
+            ))}
+          </div>
+        </section>
 
-      {/* SERVICE STACK / SALES COPY */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="card p-6 bg-white">
-          <h2 className="text-2xl font-semibold">
-            Wallpaper Removal (Clean Substrate)
-          </h2>
-          <ul className="mt-3 space-y-2 text-gray-700 list-disc pl-5">
-            <li>
-              Score → steam/gel soften → remove top layer & backing → adhesive
-              wash
-            </li>
-            <li>Repairs & skim-coat as needed → prime with bonding sealer</li>
-            <li>
-              Optional: paint finish (ceilings/walls), trim caulking & finishing
-            </li>
-          </ul>
-        </div>
-        <div className="card p-6 bg-white">
-          <h2 className="text-2xl font-semibold">
-            Popcorn Ceiling to Smooth (Level 5)
-          </h2>
-          <ul className="mt-3 space-y-2 text-gray-700 list-disc pl-5">
-            <li>
-              Containment & protection, scrape or encapsulate where appropriate
-            </li>
-            <li>
-              Full skim-coat & sanding to Level 5, critical-light inspection
-            </li>
-            <li>
-              Prime & paint ready finish; pot-light/fixture patches blended
-            </li>
-          </ul>
-        </div>
-      </section>
+        {/* FAQ */}
+        <section className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-amber-50/70 p-6 shadow-lg">
+          <h2 className="text-2xl font-bold text-slate-900">FAQ — Popcorn ceiling removal Burlington</h2>
+          <div className="mt-4 space-y-4">
+            {faqs.map((faq) => (
+              <details key={faq.q} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <summary className="cursor-pointer text-lg font-semibold text-slate-900">
+                  {faq.q}
+                </summary>
+                <p className="mt-2 text-sm text-slate-700">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
 
-      {/* NEIGHBORHOODS (keywords only, no links needed) */}
-      <section className="mt-10 card p-6 bg-white">
-        <h2 className="text-2xl font-semibold">GTA Coverage</h2>
-        <p className="mt-2 text-gray-700">
-          Toronto (Annex, Leaside, The Beaches, High Park, North York,
-          Etobicoke, Scarborough), Mississauga (Port Credit, Clarkson, Erin
-          Mills), Oakville, Burlington, Milton, Hamilton, Stoney Creek,
-          Ancaster, Grimsby, Vaughan, Richmond Hill.
-        </p>
-      </section>
-
-      {/* SOCIAL PROOF + CTA */}
-      <section className="mt-10 card p-6 bg-white flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h3 className="text-xl font-semibold">
-            Ready for a guaranteed, dust-controlled job?
-          </h3>
-          <p className="text-gray-600">
-            Fast estimate with photos. Clear plan & schedule.
-          </p>
-        </div>
-        <div className="flex gap-3">
-          <a href={PHONE_HREF} className="btn-cta">
-            📞 {PHONE_NUMBER}
-          </a>
-          <a href="/quote/" className="btn-cta">
-            Get My Quote
-          </a>
-        </div>
-      </section>
-
-      {/* FAQ (visible content + matches JSON-LD) */}
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold">FAQ</h2>
-        <details className="card p-6 bg-white mt-4">
-          <summary className="font-medium">
-            Is the work dust-controlled?
-          </summary>
-          <p className="mt-2 text-gray-700">
-            Yes—containment, vent masking, vacuum-assist sanding, and full
-            clean-up.
-          </p>
-        </details>
-        <details className="card p-6 bg-white mt-4">
-          <summary className="font-medium">
-            Do you handle painted or stubborn wallpaper?
-          </summary>
-          <p className="mt-2 text-gray-700">
-            We score, steam/gel-soften, remove the backing and glue, repair,
-            then skim-coat and prime.
-          </p>
-        </details>
-        <details className="card p-6 bg-white mt-4">
-          <summary className="font-medium">
-            What about asbestos in old popcorn?
-          </summary>
-          <p className="mt-2 text-gray-700">
-            We recommend testing when in doubt and only proceed with safe,
-            contained methods.
-          </p>
-        </details>
-        <details className="card p-6 bg-white mt-4">
-          <summary className="font-medium">
-            How fast can I get an estimate?
-          </summary>
-          <p className="mt-2 text-gray-700">
-            Same-day phone/text estimate with photos; on-site visit for final
-            scope and schedule.
-          </p>
-        </details>
-      </section>
-
-      {/* STICKY MOBILE CTA
-      
-      */}
-      <div className="bg-white/95 backdrop-blur border shadow-xl rounded-2xl p-3 flex items-center justify-between gap-3">
-        <a href={PHONE_HREF} className="btn-cta flex-1 text-center">
-          📞 Call {PHONE_NUMBER}
-        </a>
-        <a href="/quote/" className="btn-cta flex-1 text-center">
-          Get My Quote
-        </a>
+        {/* Final CTA */}
+        <section className="rounded-3xl border border-red-600 bg-gradient-to-br from-red-700 to-red-500 p-8 text-white shadow-lg">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-white/80">
+                Ready when you are
+              </p>
+              <h2 className="mt-1 text-3xl font-bold">
+                Let’s schedule your Burlington ceiling makeover.
+              </h2>
+              <p className="mt-2 text-sm text-white/80 max-w-xl">
+                Fast quote, clear start/finish plan, and paint-ready ceilings that brighten every room.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={PHONE_HREF}
+                className="inline-flex items-center justify-center bg-white text-red-600 font-bold px-6 py-3 rounded-lg shadow-lg ring-1 ring-white/30 hover:translate-y-[-1px] transition-transform"
+              >
+                📞 {PHONE_NUMBER}
+              </a>
+              <a
+                href="/quote/"
+                className="inline-flex items-center justify-center bg-white text-red-600 font-bold px-6 py-3 rounded-lg shadow-2xl ring-1 ring-red-600/10 hover:scale-[1.02] transition-transform"
+              >
+                Get a fast quote
+              </a>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

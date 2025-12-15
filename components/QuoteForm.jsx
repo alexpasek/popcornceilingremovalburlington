@@ -72,11 +72,11 @@ export default function QuoteForm() {
       <button
         type="submit"
         disabled={sending}
-        className="btn-cta md:col-span-2 w-full px-6 py-4 rounded-2xl text-white
-                   bg-gradient-to-b from-blue-500 to-blue-700 shadow-lg
-                   disabled:opacity-70"
+        className="md:col-span-2 w-full px-6 py-4 text-white font-bold
+                   bg-red-600 hover:bg-red-700 shadow-lg transition
+                   disabled:opacity-70 disabled:cursor-not-allowed"
       >
-        {sending ? "Sending..." : "Send"}
+        {sending ? "Sending..." : "Send My Request"}
       </button>
 
       {status && <p className="text-sm md:col-span-2 text-red-600">{status}</p>}

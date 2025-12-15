@@ -16,7 +16,6 @@ const ACCENT = {
 
 const SAFE_VW_PX = 24; // safe padding from viewport edges
 const SERVICES_PANEL_W = 420; // narrow column for Services
-const LOCATIONS_MEGA_W = 860; // roomy grid for Locations
 
 /* ---------- Breadcrumb helpers ---------- */
 
@@ -102,14 +101,12 @@ export default function HeaderNav() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [mobileLocationsOpen, setMobileLocationsOpen] = useState(false);
   const [showOnlyMenu, setShowOnlyMenu] = useState(false);
   const showOnlyMenuRef = useRef(false);
 
   useEffect(() => {
     setMobileOpen(false);
     setMobileServicesOpen(false);
-    setMobileLocationsOpen(false);
   }, [pathname]);
 
   // show only the menu bar when the user scrolls past threshold (use hysteresis)
@@ -149,17 +146,6 @@ export default function HeaderNav() {
     { href: "/services/interior-painting/", label: "Interior Painting" },
   ];
 
-  const locations = [
-    { href: "/popcorn-removal/mississauga/", label: "Mississauga" },
-    { href: "/popcorn-ceiling-removal/toronto/", label: "Toronto" },
-    { href: "/popcorn-ceiling-removal/oakville/", label: "Oakville" },
-    { href: "/popcorn-ceiling-removal/burlington/", label: "Burlington" },
-    { href: "/popcorn-ceiling-removal/hamilton/", label: "Hamilton" },
-    { href: "/popcorn-ceiling-removal/milton/", label: "Milton" },
-    { href: "/popcorn-ceiling-removal/etobicoke/", label: "Etobicoke" },
-    { href: "/grimsby/", label: "Grimsby" },
-    { href: "/st-catharines/", label: "St. Catharines" },
-  ];
 
   const crumbs = buildCrumbs(pathname);
 
@@ -177,7 +163,7 @@ export default function HeaderNav() {
         <div className="container-x flex flex-wrap items-center gap-3 py-2">
           <div className="flex items-center gap-2 tracking-[0.28em] uppercase text-[10px] sm:text-[11px] text-white/70">
             <span className="text-base text-white/90">✦</span>
-            Modern Finish Crew
+            Popcorn Ceiling Removal Burlington
           </div>
           <span className="flex items-center gap-2 text-white/80">
             <svg
@@ -350,34 +336,6 @@ export default function HeaderNav() {
                 active={isActive("/our-work/")}
               />
 
-              {/* LOCATIONS */}
-              <SmoothDropdown
-                label="LOCATIONS"
-                active={
-                  isActive("/service-areas/") ||
-                  locations.some((l) => isActive(l.href))
-                }
-                align="left"
-                widthPx={LOCATIONS_MEGA_W}
-              >
-                <Panel>
-                  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
-                    <DropdownLink
-                      href="/service-areas/"
-                      label="All Areas →"
-                      bold
-                    />
-                    {locations.map((l) => (
-                      <MenuItemCard
-                        key={l.href}
-                        href={l.href}
-                        label={l.label}
-                      />
-                    ))}
-                  </div>
-                </Panel>
-              </SmoothDropdown>
-
               <NavItem
                 href="/our-process/"
                 label="OUR PROCESS"
@@ -480,16 +438,6 @@ export default function HeaderNav() {
               href="/our-work/"
               label="Our Work"
               active={isActive("/our-work/")}
-            />
-            <MobileDisclosure
-              label="Locations"
-              open={mobileLocationsOpen}
-              setOpen={setMobileLocationsOpen}
-              items={[
-                { href: "/service-areas/", label: "All Areas" },
-                ...locations,
-              ]}
-              isActive={(href) => isActive(href)}
             />
             <MobileLink
               href="/our-process/"

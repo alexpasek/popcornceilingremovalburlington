@@ -6,19 +6,19 @@ import QuoteForm from "@/components/QuoteForm";
 
 export const revalidate = 86400;
 
-const BRAND = "EPF Pro Services";
-const HERO_IMG = "/contact/popcorn-ceiling-removal.png";
+const BRAND = "Popcorn Ceiling Removal Burlington";
+const HERO_IMG = "/popcorn-ceilingremoval-burlington.PNG";
 
 export const metadata = {
-  title: `Contact — ${BRAND} | Popcorn Ceiling Removal & Level 5 Finishes`,
+  title: `Contact — ${BRAND} | Level 5 Smooth Finishes`,
   description:
-    "Contact EPF Pro Services for dust-controlled popcorn ceiling removal (Level 5 smooth), drywall finishing, wallpaper removal, and interior painting. Fast estimates across Mississauga, Toronto, Oakville, Burlington, Hamilton, Milton, Etobicoke, Grimsby, and St. Catharines.",
+    "Contact Popcorn Ceiling Removal Burlington for dust-controlled popcorn ceiling removal (Level 5 smooth), drywall finishing, stucco ceiling removal, and ceiling painting. Fast estimates across Burlington, Oakville, Hamilton, Milton, and Halton Region.",
   keywords: [
     "popcorn ceiling removal",
     "ceiling smoothing",
     "Level 5 finish",
     "drywall finishing",
-    "Mississauga",
+    "Burlington",
     "Oakville",
     "Hamilton",
     "Toronto",
@@ -59,33 +59,32 @@ function JsonLd() {
         "@id": "/#org",
         name: BRAND,
         url: "/",
-        email: CONTACT?.email || "info@epfproservices.com",
+        email: CONTACT?.email || "info@popcornceilingremovalburlington.com",
         telephone: CONTACT?.phoneNumber || "+1 (647) 923-6784",
         sameAs: [],
       },
       {
         "@type": "LocalBusiness",
-        "@id": "/#loc-mississauga",
-        name: `${BRAND} — Mississauga`,
+        "@id": "/#loc-burlington",
+        name: `${BRAND}`,
         url: "/contact/",
         telephone: CONTACT?.phoneNumber || "+1 (647) 923-6784",
-        email: CONTACT?.email || "info@epfproservices.com",
+        email: CONTACT?.email || "info@popcornceilingremovalburlington.com",
         branchOf: { "@id": "/#org" },
         address: {
           "@type": "PostalAddress",
-          streetAddress: "6855 Glenerin Dr, Unit 33",
-          addressLocality: "Mississauga",
+          streetAddress: "3321 Mainway",
+          addressLocality: "Burlington",
           addressRegion: "ON",
-          postalCode: "L5N 1P6",
+          postalCode: "L7M 1A6",
           addressCountry: "CA",
         },
         areaServed: [
-          "Mississauga",
-          "Toronto",
-          "Oakville",
           "Burlington",
+          "Oakville",
+          "Hamilton",
           "Milton",
-          "Etobicoke",
+          "Mississauga",
         ],
       },
       {
@@ -94,7 +93,7 @@ function JsonLd() {
         name: `${BRAND} — Stoney Creek`,
         url: "/contact/",
         telephone: CONTACT?.phoneNumber || "+1 (647) 923-6784",
-        email: CONTACT?.email || "info@epfproservices.com",
+        email: CONTACT?.email || "info@popcornceilingremovalburlington.com",
         branchOf: { "@id": "/#org" },
         address: {
           "@type": "PostalAddress",
@@ -150,27 +149,43 @@ export default function ContactPage() {
     <div className="container-x py-10">
       <JsonLd />
 
-      {/* HERO — image-first, full height, shows entire image (object-contain) */}
-      <header className="rounded-3xl overflow-hidden border border-black/10 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)] bg-white">
-        <div className="grid grid-cols-1 md:grid-cols-[1.35fr,1fr] gap-0 md:gap-8 items-stretch">
-          {/* IMAGE COLUMN */}
-          <figure className="relative h-[360px] md:h-[560px] lg:h-[680px] bg-gradient-to-br from-sky-50 via-white to-rose-50 ring-1 ring-black/5 md:rounded-r-3xl">
-            <Image
-              src={HERO_IMG}
-              alt="Popcorn ceiling removal — dust-controlled setup, EPF Pro Services"
-              fill
-              priority
-              // Show entire image without cropping:
-              className="object-contain p-4 md:p-6 lg:p-8 drop-shadow-sm"
-              sizes="(min-width: 1024px) 60vw, (min-width: 768px) 60vw, 100vw"
-            />
-            {/* Decorative color rays */}
-            <div className="pointer-events-none absolute -top-20 -left-16 h-72 w-72 rounded-full bg-rose-300/25 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-16 -right-24 h-72 w-72 rounded-full bg-blue-300/25 blur-3xl" />
-          </figure>
+      {/* CONTACT FORM FIRST */}
+      <section className="mb-10 rounded-[32px] border border-red-100 bg-gradient-to-br from-rose-50 via-white to-amber-50/70 p-6 md:p-10 shadow-xl">
+        <div className="grid gap-8 lg:grid-cols-[1fr,1.1fr] items-start">
+          <div className="space-y-4">
+            <p className="inline-flex items-center gap-2 rounded-full bg-red-50 px-4 py-1 text-xs font-semibold text-red-700">
+              Contact & Quotes
+            </p>
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Get a fast popcorn ceiling removal quote.
+            </h1>
+            <p className="text-sm text-slate-600">
+              Share a few details and photos. We reply with labour-only
+              ballparks and confirm a site visit for Burlington, Oakville,
+              Mississauga, Hamilton, Milton and nearby cities.
+            </p>
+            <div className="flex flex-wrap gap-3 text-sm text-slate-600">
+              <span className="inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 shadow">
+                📸 Photo-friendly
+              </span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 shadow">
+                🛠️ Level 5 skim
+              </span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-white/80 px-3 py-1 shadow">
+                🧹 Dust-controlled
+              </span>
+            </div>
+          </div>
+          <div className="rounded-3xl border border-red-100 bg-white p-6 shadow-lg">
+            <QuoteForm />
+          </div>
+        </div>
+      </section>
 
-          {/* COPY COLUMN */}
-          <div className="p-6 md:p-10 bg-[radial-gradient(90%_120%_at_100%_0%,#eff6ff_0%,transparent_60%)]">
+      {/* HERO — copy + image */}
+      <header className="rounded-[40px] border border-black/10 bg-white/90 shadow-[0_35px_90px_-35px_rgba(15,23,42,0.5)] overflow-hidden">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center p-6 md:p-10">
+          <div className="order-2 lg:order-1 space-y-4">
             <span className="inline-flex items-center gap-2 rounded-full bg-blue-600/10 text-blue-800 px-3 py-1 text-xs font-semibold ring-1 ring-blue-600/20">
               ⭐ Popcorn Ceiling Removal • Level 5 Smooth
             </span>
@@ -207,19 +222,19 @@ export default function ContactPage() {
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={CONTACT.phoneHref}
-                className="btn-cta bg-blue-600 hover:bg-blue-700 text-white"
+                className="btn-cta bg-red-600 hover:bg-red-700 text-white"
               >
                 📞 {CONTACT.phoneNumber}
               </a>
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="btn-cta bg-rose-600 hover:bg-rose-700 text-white"
+                className="btn-cta border border-red-200 text-red-700 hover:border-red-500"
               >
                 ✉️ {CONTACT.email}
               </a>
               <Link
                 href="/quote/"
-                className="btn-cta bg-emerald-600 hover:bg-emerald-700 text-white"
+                className="btn-cta bg-red-600 hover:bg-red-700 text-white"
               >
                 Get My Quote
               </Link>
@@ -230,54 +245,79 @@ export default function ContactPage() {
               Milton, Etobicoke, Grimsby, St. Catharines.
             </p>
           </div>
+
+          <figure className="order-1 lg:order-2 relative">
+            <div className="absolute inset-0 scale-95 rounded-[36px] bg-gradient-to-r from-rose-200/40 via-white to-amber-200/50 blur-3xl" />
+            <div className="relative overflow-hidden rounded-[36px] border border-slate-200 bg-white shadow-2xl">
+              <img
+                src={HERO_IMG}
+                alt="Popcorn ceiling removal Burlington"
+                className="w-full object-cover"
+                loading="eager"
+              />
+            </div>
+          </figure>
         </div>
       </header>
 
-      {/* ADDRESS INFORMATION — colorful cards */}
-      <section className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="p-6 rounded-2xl bg-white ring-1 ring-blue-100">
+      {/* ADDRESS INFORMATION — Burlington-first */}
+      <section className="mt-10 grid grid-cols-1 gap-6">
+        <div className="p-6 rounded-2xl bg-white ring-1 ring-blue-100 space-y-4">
           <h2 className="text-2xl font-semibold text-blue-900">
-            Address Information
+            Contact & Quotes
           </h2>
-          <h3 className="mt-4 text-lg font-medium text-slate-900">
-            Mississauga
-          </h3>
-          <address className="not-italic text-slate-700">
-            6855 Glenerin Dr, Unit 33
-            <br />
-            Mississauga, ON L5N 1P6
-          </address>
-          <p className="mt-2">
-            <a
-              className="underline text-blue-700 hover:text-blue-900"
-              href="https://maps.google.com/?q=6855%20Glenerin%20Dr%2C%20Unit%2033%2C%20Mississauga%2C%20ON%20L5N%201P6"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Open in Google Maps
-            </a>
-          </p>
-        </div>
+          <ul className="text-sm text-slate-700 space-y-2">
+            <li>
+              <Link className="text-blue-700 underline" href="/quote/">
+                Get a Fast Quote
+              </Link>
+            </li>
+            <li>
+              <Link className="text-blue-700 underline" href="/our-work/">
+                Before & After Gallery
+              </Link>
+            </li>
+            <li>
+              <Link className="text-blue-700 underline" href="/our-process/">
+                Our 24h Smooth Ceiling Process
+              </Link>
+            </li>
+            <li>
+              <Link className="text-blue-700 underline" href="/contact/">
+                Concierge Team
+              </Link>
+            </li>
+            <li>
+              <Link className="text-blue-700 underline" href="/service-areas/">
+                All Service Areas
+              </Link>
+            </li>
+          </ul>
 
-        <div className="p-6 rounded-2xl bg-white ring-1 ring-rose-100">
-          <h2 className="sr-only">Stoney Creek address</h2>
-          <h3 className="mt-1 text-lg font-medium text-slate-900">
-            Stoney Creek
-          </h3>
-          <address className="not-italic text-slate-700">
-            37 Dalegrove Crescent
-            <br />
-            Stoney Creek, ON L8J 3R5
-          </address>
-          <p className="mt-2">
-            <a
-              className="underline text-rose-700 hover:text-rose-900"
-              href="https://maps.google.com/?q=37%20Dalegrove%20Crescent%2C%20Stoney%20Creek%2C%20ON%20L8J%203R5"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Open in Google Maps
-            </a>
+          <div>
+            <p className="text-sm font-semibold text-slate-900">
+              3321 Mainway, Burlington, ON L7M 1A6
+            </p>
+            <p className="mt-1 text-sm text-slate-700">
+              <a
+                href="https://maps.google.com/?q=3321%20Mainway%2C%20Burlington%2C%20ON%20L7M%201A6"
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-700 underline"
+              >
+                Open in Google Maps
+              </a>
+            </p>
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold text-slate-900">🕘 Hours</p>
+            <p className="text-sm text-slate-700">Mon–Sun: 8:00 AM – 6:00 PM</p>
+          </div>
+
+          <p className="text-sm text-slate-600">
+            Burlington-first: Downtown, Aldershot, Millcroft, Tyandaga, Headon
+            Forest, Brant Hills, The Orchard, Appleby.
           </p>
         </div>
       </section>
@@ -323,21 +363,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* QUOTE FORM (your component) */}
-      <section className="mt-10 p-6 md:p-8 rounded-2xl ring-1 ring-blue-100 bg-gradient-to-br from-blue-50 via-white to-emerald-50">
-        <h2 className="text-2xl font-semibold">Request a Fast Estimate</h2>
-        <p className="mt-2 text-slate-700">
-          Include room sizes / Popcorn ceiling painted/not painted / ceiling
-          height. For urgent jobs, text{CONTACT.phone}
-          <a className="underline" href={CONTACT.phoneHref}>
-            {CONTACT.phoneNumber}
-          </a>
-          .
-        </p>
-        <div className="mt-6">
-          <QuoteForm />
-        </div>
-      </section>
+   
 
       {/* LOCAL LINKS — Service → City (static URLs for SEO) */}
       <section className="mt-10 p-6 rounded-2xl bg-white ring-1 ring-slate-200">
@@ -371,32 +397,7 @@ export default function ContactPage() {
         </ul>
       </section>
 
-      {/* CTA BAR — high contrast */}
-      <section className="mt-10 p-6 rounded-2xl bg-blue-600 text-white flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h3 className="text-xl font-semibold">
-            Ready for smooth, modern ceilings?
-          </h3>
-          <p className="opacity-90">
-            Send a couple photos and get a clear plan with timeline.
-          </p>
-        </div>
-        <div className="flex gap-3">
-          <a
-            href={CONTACT.phoneHref}
-            className="btn-cta bg-white text-blue-700 hover:bg-slate-100"
-          >
-            📞 {CONTACT.phoneNumber}
-          </a>
-          <Link
-            href="/quote/"
-            className="btn-cta bg-emerald-400 hover:bg-emerald-300 text-blue-900"
-          >
-            Get My Quote
-          </Link>
-        </div>
-      </section>
-
+     
       {/* Mobile quick actions */}
       <div className="fixed bottom-4 right-4 z-40 flex gap-2 md:hidden">
         <a

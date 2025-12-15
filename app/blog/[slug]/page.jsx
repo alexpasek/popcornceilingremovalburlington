@@ -4,7 +4,14 @@ import { posts } from '@/data/posts';
 export function generateStaticParams(){ return posts.map(p=>({slug:p.slug})); }
 export function generateMetadata({ params }){
   const post = posts.find(p=>p.slug===params.slug);
-  return { title: post ? `${post.title} — Wallpaper Removal Pro` : 'Post — Wallpaper Removal Pro' };
+  return {
+    title: post
+      ? `${post.title} | Popcorn Ceiling Removal Burlington Blog`
+      : "Popcorn Ceiling Removal Burlington Blog",
+    description: post
+      ? `${post.title} — insights from Popcorn Ceiling Removal Burlington.`
+      : "Articles from Popcorn Ceiling Removal Burlington about smooth ceilings.",
+  };
 }
 
 export default function Post({ params }){

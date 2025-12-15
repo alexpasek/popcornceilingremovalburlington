@@ -82,7 +82,7 @@ export default function AboutPage() {
       <section className="container-x py-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1.5fr,1fr] gap-8 items-start">
           {/* Left: Hero */}
-          <div>
+          <div className="flex flex-col justify-between h-full">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
               About{" "}
               <span className="text-red-600">

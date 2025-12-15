@@ -1,172 +1,164 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
-function stars(n = 0) {
-  const full = Math.round(n ?? 0);
-  return Array.from({ length: 5 }, (_, i) => (
-    <svg
-      key={i}
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      className={
-        i < full
-          ? "fill-amber-400 text-amber-400"
-          : "fill-gray-200 text-gray-200"
-      }
-    >
-      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z" />
-    </svg>
-  ));
+function Stars({ value = 5, size = 18 }) {
+  const full = Math.round(value ?? 5);
+  return (
+    <span className="flex items-center gap-0.5">
+      {Array.from({ length: 5 }, (_, i) => (
+        <svg
+          key={i}
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          className={
+            i < full
+              ? "fill-amber-400 text-amber-400"
+              : "fill-slate-200 text-slate-200"
+          }
+        >
+          <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z" />
+        </svg>
+      ))}
+    </span>
+  );
 }
 
 function ReviewCard({ r }) {
   return (
-    <div className="p-4 rounded-xl border border-gray-200 bg-white shadow-sm">
-      <div className="flex items-center gap-3">
+    <div className="p-5 bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
+      <div className="flex items-start gap-3">
         {r.profilePhotoUrl ? (
           <img
             src={r.profilePhotoUrl}
-            alt=""
-            className="w-8 h-8 rounded-full object-cover"
+            alt={r.author}
+            className="w-10 h-10 rounded-full object-cover flex-shrink-0"
           />
         ) : (
-          <div className="w-8 h-8 rounded-full bg-gray-200" />
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 flex-shrink-0" />
         )}
-        <div className="text-sm">
-          <div className="font-medium text-gray-900">{r.author}</div>
-          <div className="flex items-center gap-1">
-            {stars(r.rating)}
-            <span className="text-xs text-gray-500">{r.time}</span>
+        <div className="flex-1 min-w-0">
+          <div className="font-semibold text-slate-900">{r.author}</div>
+          <div className="flex items-center gap-2 mt-1">
+            <Stars value={r.rating} size={14} />
+            <span className="text-xs text-slate-500">{r.time}</span>
           </div>
-        </div>
-      </div>
-      {r.text && (
-        <p className="mt-3 text-[15px] text-gray-700 leading-relaxed">
-          {r.text}
-        </p>
-      )}
-    </div>
-  );
-}
-
-function MapChip({ lat, lng, placeId }) {
-  const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_BROWS_KEY;
-  if (!lat || !lng || !key) return null;
-  const url = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=13&size=640x220&scale=2&markers=color:red|${lat},${lng}&key=${key}`;
-  const mapsLink = `https://www.google.com/maps?place_id=${placeId}`;
-  return (
-    <a
-      href={mapsLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block rounded-xl overflow-hidden border border-black/10 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/30"
-    >
-      <img src={url} alt="Map" className="w-full h-auto" />
-    </a>
-  );
-}
-
-function LocationReviews({ title, placeId }) {
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    fetch(`/api/places?placeId=${encodeURIComponent(placeId)}`)
-      .then((r) => r.json())
-      .then(setData)
-      .catch(() => setData(null));
-  }, [placeId]);
-
-  const writeUrl = `https://search.google.com/local/writereview?placeid=${placeId}`; // official pattern
-  const mapsUrl = `https://www.google.com/maps?place_id=${placeId}`;
-
-  return (
-    <div className="p-5 rounded-2xl border border-gray-200 bg-white shadow-[0_24px_60px_-30px_rgba(0,0,0,.35)]">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h4 className="text-lg font-bold text-gray-900">{title}</h4>
-          {data ? (
-            <div className="mt-1 flex items-center gap-3">
-              <div className="flex">{stars(data.rating)}</div>
-              <div className="text-sm text-gray-700">
-                <span className="font-semibold">{data.rating?.toFixed(1)}</span>{" "}
-                ({data.userRatingCount} reviews)
-              </div>
-            </div>
-          ) : (
-            <div className="mt-1 h-5 w-44 bg-gray-100 rounded" />
+          {r.text && (
+            <p className="mt-3 text-sm text-slate-700 leading-relaxed line-clamp-4">
+              {r.text}
+            </p>
           )}
         </div>
-
-        <div className="flex gap-2">
-          <a
-            href={writeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-cta"
-          >
-            Write a review
-          </a>
-          <a
-            href={mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline"
-          >
-            View on Google
-          </a>
-        </div>
-      </div>
-
-      {data?.location && (
-        <div className="mt-4">
-          <MapChip
-            lat={data.location.latitude}
-            lng={data.location.longitude}
-            placeId={placeId}
-          />
-        </div>
-      )}
-
-      <div className="mt-4 grid gap-3 md:grid-cols-3">
-        {data?.reviews?.length
-          ? data.reviews.map((r, i) => <ReviewCard key={i} r={r} />)
-          : Array.from({ length: 3 }).map((_, i) => (
-              <div
-                key={i}
-                className="h-32 rounded-xl bg-gray-50 border border-gray-200"
-              />
-            ))}
       </div>
     </div>
   );
 }
 
 export default function GoogleReviewsWall() {
-  const places = [
-    {
-      title: "Mississauga — Popcorn Ceiling Removal",
-      placeId: process.env.NEXT_PUBLIC_GBP_MISS ?? "",
-    },
-    {
-      title: "Hamilton / Stoney Creek — Popcorn Ceiling Removal",
-      placeId: process.env.NEXT_PUBLIC_GBP_HAM ?? "",
-    },
-  ];
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Force Burlington place id (fallback)
+  const placeId = process.env.NEXT_PUBLIC_BURLINGTON_PLACE_ID || "ChIJgbcp2yJhK4gRpTzm90fDtH8";
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/places?placeId=${encodeURIComponent(placeId)}`)
+      .then((r) => r.json())
+      .then((res) => {
+        setData(res);
+        setLoading(false);
+      })
+      .catch(() => {
+        setData(null);
+        setLoading(false);
+      });
+  }, [placeId]);
+
+  const writeUrl = `https://search.google.com/local/writereview?placeid=${placeId}`;
+  const mapsUrl = `https://www.google.com/maps?place_id=${placeId}`;
+
   return (
-    <section id="google-reviews" className="container-x py-10">
-      <h3 className="text-2xl font-semibold">What clients say on Google</h3>
-      <p className="text-gray-600 mt-1">
-        Real reviews pulled directly from our Google Business Profiles.
-      </p>
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
-        {places.map((p, i) => (
-          <LocationReviews
-            key={`${p.placeId || p.title || i}`}
-            title={p.title}
-            placeId={p.placeId}
-          />
-        ))}
+    <section className="border-t border-slate-200 bg-gradient-to-b from-white to-slate-50">
+      <div className="container-x py-12">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 border border-red-200 text-red-700 text-xs font-semibold uppercase tracking-wider mb-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              Verified Google Reviews
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              What Burlington Homeowners Say
+            </h2>
+            <p className="mt-2 text-slate-600">
+              Real reviews from our Burlington customers—smooth ceilings, paint-ready in 24h
+            </p>
+          </div>
+
+          {!loading && data && (
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <div className="text-right">
+                <div className="flex items-center gap-2">
+                  <Stars value={data.rating} size={20} />
+                  <span className="text-2xl font-bold text-slate-900">
+                    {data.rating?.toFixed(1)}
+                  </span>
+                </div>
+                <div className="text-sm text-slate-600 mt-1">
+                  {data.userRatingCount} reviews
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Reviews Grid */}
+        {loading ? (
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div
+                key={i}
+                className="h-48 bg-slate-100 border border-slate-200 animate-pulse"
+              />
+            ))}
+          </div>
+        ) : data?.reviews?.length ? (
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {data.reviews.map((r, i) => (
+              <ReviewCard key={i} r={r} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12 bg-white border border-slate-200">
+            <p className="text-slate-600">
+              Add <code className="px-2 py-1 bg-slate-100 text-sm">NEXT_PUBLIC_BURLINGTON_PLACE_ID</code> to{" "}
+              <code className="px-2 py-1 bg-slate-100 text-sm">.env.local</code>
+            </p>
+          </div>
+        )}
+
+        {/* CTA Buttons */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href={writeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/60 transition"
+          >
+            Write a Review on Google
+          </a>
+          <a
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center border-2 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 font-bold px-6 py-3 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 transition"
+          >
+            View on Google Maps
+          </a>
+        </div>
       </div>
     </section>
   );

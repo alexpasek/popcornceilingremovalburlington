@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 
 const HERO_COPY = {
   title: "Burlington crews • popcorn removal • drywall • paint",
-  body: "Level 5 popcorn ceiling removal Burlington homeowners search for, plus drywall installation, skim coating, and interior painting — all completed by our Halton-based Modern Finish Crew.",
+  body: "Level 5 popcorn ceiling removal Burlington homeowners search for, plus drywall installation, skim coating, and interior painting — all completed by the Popcorn Ceiling Removal Burlington crew.",
   cta: { label: "Book Burlington site visit", href: "/quote/" },
   phone: { label: "Call or text 289-428-1663", href: "tel:2894281663" },
 };
@@ -68,14 +68,14 @@ export default function GalleryClient({ photos, filters }) {
                   <div className="flex h-full w-full items-center justify-center rounded-[18px] bg-slate-950">
                     <img
                       src="/logo.png"
-                      alt="Modern Finish Crew logo"
+                      alt="Popcorn Ceiling Removal Burlington logo"
                       className="h-9 w-9 object-contain"
                     />
                   </div>
                 </div>
                 <div className="text-left">
                   <p className="text-sm uppercase tracking-[0.4em] text-white/70">
-                    Modern Finish Crew
+                    Popcorn Ceiling Removal Burlington
                   </p>
                   <p className="text-base font-semibold text-white">
                     Burlington popcorn ceiling team
@@ -137,6 +137,7 @@ export default function GalleryClient({ photos, filters }) {
               key={photo.id}
               className={[
                 "group relative overflow-hidden rounded-3xl border border-white/5 bg-white/5 shadow-[0_20px_80px_rgba(2,6,23,0.55)]",
+                "transition-all duration-500 ease-out [transform-style:preserve-3d] hover:-translate-y-2 hover:shadow-[0_40px_120px_rgba(2,6,23,0.65)] hover:[transform:perspective(1400px)_rotateX(1deg)_rotateY(-1deg)_translateY(-8px)]",
                 colSpan,
                 rowSpan,
               ].join(" ")}
@@ -146,7 +147,7 @@ export default function GalleryClient({ photos, filters }) {
                 alt={photo.alt}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
-                className="h-full w-full object-cover brightness-90 transition duration-500 group-hover:scale-105 group-hover:brightness-110"
+                className="h-full w-full object-cover brightness-[1.08] contrast-[1.05] saturate-[1.1] transition duration-500 group-hover:scale-105 group-hover:brightness-[1.2] group-hover:contrast-[1.15]"
                 priority={index < 4}
                 data-lightbox="true"
               />

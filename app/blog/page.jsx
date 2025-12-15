@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { posts } from '@/data/posts';
-export const metadata={title:'Blog — Wallpaper Removal Pro'};
+export const metadata = {
+  title: 'Popcorn Ceiling Removal Burlington Blog',
+  description:
+    'Guides, timelines, and pricing insights from Popcorn Ceiling Removal Burlington covering popcorn removal, drywall, painting, and wallpaper.',
+};
 export default function Blog(){
   return(<div className='container-x py-10'>
     <h1 className='text-3xl font-bold'>Blog</h1>

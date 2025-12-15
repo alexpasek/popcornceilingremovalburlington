@@ -5,15 +5,100 @@ import { cities } from "@/data/cities";
 import { ServiceCopy } from "@/components/LocalSEOCopy";
 
 export const metadata = {
-  title:
-    "Wallpaper Removal — Dust-Controlled Adhesive Wash, Skim-Coat, Paint-Ready",
+  title: "Wallpaper & Popcorn Removal Burlington | Glue-Free, Level 5 Smooth",
   description:
-    "Pro wallpaper removal across the GTA. Full adhesive wash, drywall repairs, skim-coat, primer and a smooth, paint-ready finish. Tidy crews, HEPA control, 3-year warranty.",
+    "Burlington wallpaper removal and popcorn ceiling smoothing. Full adhesive wash, Level 5 skim, HEPA dust control and design-ready primer for modern interiors.",
 };
 
 const PAGE_URL =
   "https://wallpaper-final.pages.dev/services/wallpaper-removal/"; // set your custom domain when ready
 const phoneHref = (CONTACT && CONTACT.phoneHref) || "tel:+16479236784";
+const phoneNumber = (CONTACT && CONTACT.phoneNumber) || "(647) 923-6784";
+
+const heroStats = [
+  { label: "Rooms refreshed", value: "420+" },
+  { label: "Condos in Burlington", value: "65+" },
+  { label: "Popcorn + wallpaper", value: "1–2 days" },
+  { label: "Finish level", value: "Level 5" },
+];
+
+const servicePillars = [
+  {
+    title: "Wallpaper removal + design-ready skim",
+    copy:
+      "Score, steam or enzyme-lift even vinyl/grasscloth papers, remove backing, and wash adhesive until the water runs clear so designer paints bond perfectly.",
+    bullets: [
+      "Glue wash (no flashing)",
+      "Level 4/5 skim & HEPA sanding",
+      "Stain-block primer for bold colour",
+    ],
+  },
+  {
+    title: "Popcorn ceiling removal pairing",
+    copy:
+      "Brighten ceilings while walls are open. We scrape or encapsulate texture, Level 5 skim, and leave ceilings paint-ready within 24h.",
+    bullets: [
+      "Containment + floor protection",
+      "Raking-light inspection",
+      "Optional ceiling paint finish",
+    ],
+  },
+  {
+    title: "Condo + custom-home workflow",
+    copy:
+      "Elevator bookings, corridor protection, quiet-hour sanding, and daily tidy-ups keep Burlington condos and custom builds tidy during the refresh.",
+    bullets: [
+      "Elevator + concierge coordination",
+      "Daily SMS/photo updates",
+      "WSIB + $2M liability",
+    ],
+  },
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Prep & protect",
+    text:
+      "Poly containment, floor & railing wrap, vent masking, and labeled hardware so everything returns exactly as found.",
+  },
+  {
+    step: "02",
+    title: "Lift & wash",
+    text:
+      "Score seams, steam or enzyme soften, remove facing/backing, then wash adhesive until the surface is bondable.",
+  },
+  {
+    step: "03",
+    title: "Skim & smooth",
+    text:
+      "Repair seams, Level 4/5 skim, vacuum-assisted sanding, and daylight inspection to catch telegraphing before primer.",
+  },
+  {
+    step: "04",
+    title: "Prime & finish",
+    text:
+      "High-build primer, stain blocking where needed, and optional paint or limewash so designers can install new palettes immediately.",
+  },
+];
+
+const designNotes = [
+  {
+    title: "Neutral gallery walls",
+    copy:
+      "Glue-free skim coats take designer whites and gallery lighting without flashing seams—ideal for condo feature walls and main-floor art displays.",
+  },
+  {
+    title: "Statement ceilings",
+    copy:
+      "Pair wallpaper removal with popcorn smoothing and satin ceiling paint so light reflects evenly across open-concept spaces.",
+  },
+  {
+    title: "Texture swap",
+    copy:
+      "Replace dated paper with limewash or specialty plaster. We deliver a seamless canvas so premium finishes don’t telegraph old seams.",
+  },
+];
 
 export default function Page() {
   const images = Array.from(
@@ -32,403 +117,230 @@ export default function Page() {
   const cityLinks = cities.filter((c) => topCities.includes(c.slug));
 
   return (
-    <div className="container-x py-10">
-      {/* HERO */}
-      <header className="max-w-5xl">
-        <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
-          Wallpaper Removal — Clean, Paint-Ready Walls
-        </h1>
-        <p className="mt-4 text-gray-700 text-lg">
-          Tidy, dust-controlled removal with <strong>full adhesive wash</strong>
-          , repairs, <strong>Level 4/5 skim-coat</strong>, and primer — your
-          walls are ready for fresh paint. Most rooms done in 1–2 days.{" "}
-          <strong>3-year warranty.</strong>
-        </p>
-        <div className="mt-6 flex gap-3 flex-wrap">
-          <a className="btn-cta" href={phoneHref}>
-            📞 (647) 923-6784
-          </a>
-          <a className="btn-cta" href="/quote/">
-            Get my quote
-          </a>
-        </div>
-
-        {/* Jump links for UX */}
-        <nav className="mt-6 text-sm text-gray-600 flex flex-wrap gap-3">
-          <a href="#proof" className="underline">
-            Proof
-          </a>
-          <a href="#why-us" className="underline">
-            Why us
-          </a>
-          <a href="#process" className="underline">
-            Process
-          </a>
-          <a href="#pricing" className="underline">
-            Typical costs
-          </a>
-          <a href="#faqs" className="underline">
-            FAQs
-          </a>
-          <Link href="/service-areas" className="underline">
-            Service areas
-          </Link>
-        </nav>
-      </header>
-
-      {/* TRUST STRIP */}
-      <section className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
-        {[
-          ["Dust-controlled", "HEPA + protection"],
-          ["Adhesive washed", "No glue flashing"],
-          ["Skim-coat & repair", "Level 4/5 finish"],
-          ["3-year warranty", "Workmanship covered"],
-        ].map(([h, t]) => (
-          <div key={h} className="card p-4 bg-white">
-            <div className="font-semibold">{h}</div>
-            <div className="text-gray-700 text-sm">{t}</div>
+    <div className="bg-gradient-to-b from-slate-900/5 via-white to-slate-50">
+      <div className="container-x py-12 space-y-16">
+        {/* HERO */}
+        <section className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-start">
+          <div className="space-y-5">
+            <p className="inline-flex items-center gap-2 rounded-full bg-red-50 px-4 py-1 text-sm font-semibold text-red-700">
+              Burlington • Wallpaper + Popcorn Removal
+            </p>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+              Wallpaper removal & popcorn smoothing for Burlington interiors.
+            </h1>
+            <p className="text-lg text-slate-700">
+              Adhesive-free walls and smooth ceilings ready for paint, limewash,
+              or new designer papers. We prep Burlington homes and condos with
+              Level 5 skim, HEPA dust control, and concierge-friendly workflows.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a href={phoneHref} className="btn-cta">
+                📞 {phoneNumber}
+              </a>
+              <Link href="/quote/" className="btn-cta">
+                Book a site visit
+              </Link>
+            </div>
           </div>
-        ))}
-      </section>
-
-      {/* PROOF IMAGES */}
-      <section id="proof" className="mt-10">
-        <h2 className="text-2xl font-semibold">Recent Work</h2>
-        <p className="text-gray-700 mt-1">
-          A few projects from homes and condos around the GTA.
-        </p>
-        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {images.map((src, i) => (
-            <img
-              key={src}
-              src={src}
-              alt={`Wallpaper removal project ${
-                i + 1
-              } — adhesive wash and skim-coat`}
-              className="w-full h-56 object-cover rounded-2xl border shadow"
-              loading="lazy"
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* WHY US */}
-      <section id="why-us" className="grid md:grid-cols-3 gap-4 mt-10">
-        {[
-          [
-            "Complete adhesive wash",
-            "We wash until water stops foaming so primer bonds properly — no flashing or failure.",
-          ],
-          [
-            "Level 4/5 skim-coat",
-            "Feathered repairs checked under raking light. Smooth walls that actually look painted — not patched.",
-          ],
-          [
-            "Condo-friendly workflow",
-            "We book elevators, protect corridors, and work cleanly within building rules.",
-          ],
-        ].map(([h, t]) => (
-          <div key={h} className="card p-5 bg-white">
-            <div className="text-lg font-semibold">{h}</div>
-            <p className="text-gray-700">{t}</p>
+          <div className="rounded-[32px] border border-slate-200 bg-white/90 p-6 shadow-xl">
+            <div className="grid gap-4 sm:grid-cols-2">
+              {heroStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-2xl border border-slate-200 p-4 text-center"
+                >
+                  <div className="text-2xl font-semibold text-slate-900">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-slate-600">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-sm text-slate-600">
+              Serving Downtown Burlington, Aldershot, Millcroft, Tyandaga,
+              Headon Forest, Brant Hills, The Orchard, Appleby.
+            </p>
           </div>
-        ))}
-      </section>
+        </section>
 
-      {/* PROCESS */}
-      <section id="process" className="prose max-w-none mt-10">
-        <h2>Our Process</h2>
-        <ol>
-          <li>
-            <strong>Protect</strong> floors & furniture, seal vents, set up HEPA
-            dust control.
-          </li>
-          <li>
-            <strong>Test & soften</strong> (steam or enzyme) after scoring seams
-            to prevent substrate damage.
-          </li>
-          <li>
-            <strong>Lift facing & backing</strong>, then{" "}
-            <strong>fully wash adhesive</strong> (critical for primer adhesion).
-          </li>
-          <li>
-            <strong>Repairs + skim-coat</strong> to Level 4/5, sanded and
-            checked under raking light.
-          </li>
-          <li>
-            <strong>Prime</strong> with stain-blocking primer and leave a
-            smooth, paint-ready surface (or we paint it).
-          </li>
-        </ol>
-      </section>
-
-      {/* TYPICAL COSTS / PACKAGES */}
-      <section id="pricing" className="mt-10">
-        <h2 className="text-2xl font-semibold">Typical Project Sizes</h2>
-        <div className="mt-4 grid md:grid-cols-3 gap-4">
-          {[
-            [
-              "Single Room",
-              "From $650–$750",
-              ["Wash glue", "Repairs & skim as needed", "Primer"],
-            ],
-            [
-              "Condo Feature Wall",
-              "From $650–$850",
-              ["Fast turn-around", "Minimal disruption", "Paint-ready"],
-            ],
-            [
-              "Whole Room (papered)",
-              "From $1200–$2,400",
-              ["Multiple walls", "Level 4/5 skim", "Primer included"],
-            ],
-          ].map(([title, price, bullets]) => (
-            <div key={title} className="card p-5 bg-white">
-              <div className="flex items-baseline justify-between">
-                <h3 className="font-semibold text-lg">{title}</h3>
-                <div className="text-sm text-gray-600">{price}</div>
-              </div>
-              <ul className="list-disc ml-5 mt-3 text-gray-700">
-                {bullets.map((b) => (
-                  <li key={b}>{b}</li>
+        {/* SERVICE PILLARS */}
+        <section className="grid gap-6 lg:grid-cols-3">
+          {servicePillars.map((pillar) => (
+            <article
+              key={pillar.title}
+              className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-amber-50/40 p-6 shadow-sm"
+            >
+              <h3 className="text-xl font-semibold text-slate-900">
+                {pillar.title}
+              </h3>
+              <p className="mt-3 text-sm text-slate-700">{pillar.copy}</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                {pillar.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-red-500" />
+                    {bullet}
+                  </li>
                 ))}
               </ul>
-              <div className="mt-4 flex gap-2">
-                <a href="/quote/" className="btn-cta">
-                  Get my quote
-                </a>
-                <a href={phoneHref} className="btn-cta">
-                  📞 Call now
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="text-gray-600 text-sm mt-2">
-          *Final pricing depends on square footage, glue condition, repairs, and
-          finish level. Free onsite estimates.
-        </p>
-      </section>
-
-      {/* SOCIAL PROOF / MINI CASE STUDIES */}
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold">
-          Before & After — Real GTA Projects
-        </h2>
-        <div className="mt-4 grid md:grid-cols-3 gap-4">
-          {[
-            [
-              "Leslieville semi",
-              "Vinyl over paint, heavy glue. Full wash + Level 4 skim. 2 days.",
-            ],
-            [
-              "Port Credit townhouse",
-              "Two layers removed, repaired torn drywall, prime & paint-ready.",
-            ],
-            [
-              "Yorkville condo",
-              "Delicate grasscloth; controlled steam, repairs, sealed & primed.",
-            ],
-          ].map(([h, t]) => (
-            <article key={h} className="card p-5 bg-white">
-              <h3 className="font-semibold">{h}</h3>
-              <p className="text-gray-700">{t}</p>
             </article>
           ))}
-        </div>
-      </section>
+        </section>
 
-      {/* SERVICE AREAS PROMO (keep chips off this page, link to hub) */}
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold">Areas We Serve</h2>
-        <p className="mt-2 text-gray-700">
-          We work across the GTA — including{" "}
-          {cityLinks.map((c, idx) => (
-            <span key={c.slug}>
-              <Link className="underline" href={`/service-areas/${c.slug}`}>
-                {c.name}
+        {/* GALLERY */}
+        <section id="proof">
+          <div className="flex flex-col gap-3 text-center mb-6">
+            <p className="inline-flex items-center gap-2 self-center rounded-full bg-slate-900 text-white px-4 py-1 text-xs font-semibold uppercase tracking-wide">
+              Burlington transformations
+            </p>
+            <h2 className="text-3xl font-bold text-slate-900">
+              Wallpaper + popcorn removal before & afters
+            </h2>
+            <p className="text-sm text-slate-600 max-w-3xl mx-auto">
+              Downtown condos, Aldershot living rooms, Millcroft foyers—glue-free
+              walls and smooth ceilings ready for any palette.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {images.map((src, i) => (
+              <div
+                key={src}
+                className="group relative overflow-hidden rounded-3xl border border-slate-200 shadow-lg"
+              >
+                <img
+                  src={src}
+                  alt={`Burlington wallpaper removal project ${i + 1}`}
+                  className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent opacity-80" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                  <p className="text-xs uppercase tracking-wide text-amber-300">
+                    {
+                      [
+                        "Downtown Burlington",
+                        "Aldershot",
+                        "Millcroft",
+                        "Tyandaga",
+                        "Headon Forest",
+                        "Brant Hills",
+                      ][i % 6]
+                    }
+                  </p>
+                  <p className="text-lg font-semibold">
+                    Wallpaper & popcorn removal
+                  </p>
+                  <p className="text-sm text-slate-100">
+                    Adhesive wash · Level 5 skim · Prime & paint-ready
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PROCESS */}
+        <section
+          id="process"
+          className="rounded-[32px] border border-slate-200 bg-white/90 p-8 shadow-lg"
+        >
+          <div className="text-center mb-8">
+            <p className="inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-amber-700">
+              Visual process
+            </p>
+            <h2 className="text-3xl font-bold text-slate-900">
+              How we go from dated paper to a smooth Burlington canvas
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-4">
+            {processSteps.map((step) => (
+              <div
+                key={step.title}
+                className="rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-5 shadow-sm"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-red-600 text-white flex items-center justify-center font-semibold">
+                    {step.step}
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900">
+                    {step.title}
+                  </h3>
+                </div>
+                <p className="mt-3 text-sm text-slate-700">{step.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* DESIGN NOTES */}
+        <section className="grid gap-6 lg:grid-cols-3">
+          {designNotes.map((note) => (
+            <article
+              key={note.title}
+              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <h3 className="text-xl font-semibold text-slate-900">
+                {note.title}
+              </h3>
+              <p className="mt-3 text-sm text-slate-700">{note.copy}</p>
+            </article>
+          ))}
+        </section>
+
+        {/* SERVICE AREAS */}
+        <section className="rounded-[32px] border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-6 shadow-sm">
+          <h2 className="text-2xl font-bold text-slate-900">
+            Wallpaper + popcorn removal across Burlington & GTA
+          </h2>
+          <p className="mt-2 text-sm text-slate-600">
+            Elevator-friendly workflow for condos and tidy setups for detached homes.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {cityLinks.map((city) => (
+              <Link
+                key={city.slug}
+                href={`/service-areas/${city.slug}/`}
+                className="pill"
+              >
+                {city.name}
               </Link>
-              {idx < cityLinks.length - 1 ? ", " : ""}
-            </span>
-          ))}{" "}
-          and more.
-        </p>
-        <div className="mt-4">
-          <Link href="/service-areas" className="btn-cta">
-            Browse all service areas →
-          </Link>
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
 
-      {/* EXISTING LOCAL SEO COPY BLOCK */}
-      <ServiceCopy service="Wallpaper Removal" />
+        {/* SEO COPY */}
+        <section className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm">
+          <ServiceCopy
+            city="Burlington"
+            service="Wallpaper Removal & Popcorn Smoothing"
+            pageUrl={PAGE_URL}
+          />
+        </section>
 
-      {/* STRONG CLOSER */}
-      <section className="card p-6 bg-white mt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h3 className="text-xl font-semibold">
-            Ready for dust-controlled removal?
-          </h3>
-          <p className="text-gray-600">Get a firm quote and schedule today.</p>
-        </div>
-        <div className="flex gap-3">
-          <a className="btn-cta" href={phoneHref}>
-            📞 (647) 923-6784
-          </a>
-          <a className="btn-cta" href="/quote/">
-            Get my quote
-          </a>
-        </div>
-      </section>
-
-      {/* MOBILE STICKY CTA (matches site button style) */}
-
-      {/* JSON-LD (Service + Breadcrumb + FAQ + HowTo) */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "Service",
-              name: "Wallpaper removal",
-              serviceType: "Wallpaper removal",
-              category: "Home Improvement",
-              provider: {
-                "@type": "LocalBusiness",
-                name: "Wallpaper Removal Pro",
-              },
-              areaServed: "Greater Toronto Area, Canada",
-              url: PAGE_URL,
-              hasOfferCatalog: {
-                "@type": "OfferCatalog",
-                name: "Wallpaper removal packages",
-                itemListElement: [
-                  {
-                    "@type": "Offer",
-                    name: "Single room",
-                    priceSpecification: {
-                      "@type": "PriceSpecification",
-                      priceCurrency: "CAD",
-                    },
-                  },
-                  {
-                    "@type": "Offer",
-                    name: "Feature wall",
-                    priceSpecification: {
-                      "@type": "PriceSpecification",
-                      priceCurrency: "CAD",
-                    },
-                  },
-                  {
-                    "@type": "Offer",
-                    name: "Whole room",
-                    priceSpecification: {
-                      "@type": "PriceSpecification",
-                      priceCurrency: "CAD",
-                    },
-                  },
-                ],
-              },
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "HowTo",
-              name: "How to remove wallpaper cleanly",
-              step: [
-                {
-                  "@type": "HowToStep",
-                  name: "Protect surfaces",
-                  text: "Cover floors and furniture, seal vents, set up HEPA.",
-                },
-                {
-                  "@type": "HowToStep",
-                  name: "Test and soften",
-                  text: "Score seams, choose steam or enzyme remover.",
-                },
-                {
-                  "@type": "HowToStep",
-                  name: "Lift and wash glue",
-                  text: "Remove facing/backing and wash adhesive fully.",
-                },
-                {
-                  "@type": "HowToStep",
-                  name: "Repair and skim",
-                  text: "Feather repairs, Level 4/5 skim-coat, sand and inspect.",
-                },
-                {
-                  "@type": "HowToStep",
-                  name: "Prime for paint",
-                  text: "Stain-blocking primer; leave paint-ready surface.",
-                },
-              ],
-              totalTime: "P1D",
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: [
-                {
-                  "@type": "Question",
-                  name: "How long does removal take?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Most rooms are done in 1–2 days depending on glue condition and repairs.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Will the walls be paint-ready?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Yes — we fully wash adhesive, repair and skim-coat, then prime.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Do you work in condos?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Yes. We book elevators, protect corridors and follow building rules.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Is adhesive removal really necessary?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Absolutely. Skipping the wash causes primer failure and visible flashing.",
-                  },
-                },
-              ],
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: PAGE_URL.replace("/services/wallpaper-removal/", "/"),
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Services",
-                  item: PAGE_URL.replace("/wallpaper-removal/", ""),
-                },
-                {
-                  "@type": "ListItem",
-                  position: 3,
-                  name: "Wallpaper Removal",
-                  item: PAGE_URL,
-                },
-              ],
-            },
-          ]),
-        }}
-      />
+        {/* CTA */}
+        <section className="rounded-3xl border border-red-600 bg-gradient-to-br from-red-700 to-red-500 p-8 text-white shadow-lg">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-white/70">
+                Ready for a fresh Burlington palette?
+              </p>
+              <h2 className="mt-1 text-3xl font-bold">
+                Book wallpaper + popcorn removal.
+              </h2>
+              <p className="mt-2 text-sm text-white/80">
+                We’ll prep your space for new paint, limewash or designer wallcoverings—glue-free and dust-controlled.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a href={phoneHref} className="btn-cta bg-white text-red-600">
+                📞 {phoneNumber}
+              </a>
+              <Link href="/quote/" className="btn-cta bg-white text-red-600">
+                Get my quote
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
