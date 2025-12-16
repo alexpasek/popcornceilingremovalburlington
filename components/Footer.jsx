@@ -87,7 +87,7 @@ export default function Footer() {
             <div>
               <div className={`font-semibold ${palette.textStrong}`}>Burlington Services</div>
               <ul className={`mt-3 space-y-2 text-sm ${palette.textMuted}`}>
-                <li><a href="/popcorn-ceiling-removal/burlington/" className={palette.linkHover}>Popcorn Ceiling Removal in Burlington</a></li>
+                <li><a href="/services/popcorn-ceiling-removal/burlington/aldershot/" className={palette.linkHover}>Popcorn Ceiling Removal in Burlington</a></li>
                 <li><a href="/services/popcorn-ceiling-removal/" className={palette.linkHover}>Popcorn Removal (GTA & Halton)</a></li>
                 <li><a href="/services/interior-painting/" className={palette.linkHover}>Ceiling Painting in Burlington</a></li>
                 <li><a href="/services/drywall-installation/" className={palette.linkHover}>Drywall & Patching in Burlington</a></li>
@@ -104,7 +104,7 @@ export default function Footer() {
               <ul className={`mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm ${palette.textMuted}`}>
                 <li>
                   <a
-                    href="/popcorn-ceiling-removal/burlington/"
+                    href="/services/popcorn-ceiling-removal/burlington/downtown-burlington/"
                     className={palette.linkHover}
                   >
                     Downtown Burlington
@@ -112,7 +112,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="/popcorn-ceiling-removal/burlington/"
+                    href="/services/popcorn-ceiling-removal/burlington/aldershot/"
                     className={palette.linkHover}
                   >
                     Aldershot
@@ -120,7 +120,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="/popcorn-ceiling-removal/burlington/"
+                    href="/services/popcorn-ceiling-removal/burlington/tyandaga/"
                     className={palette.linkHover}
                   >
                     Tyandaga
@@ -128,7 +128,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="/popcorn-ceiling-removal/burlington/"
+                    href="/services/popcorn-ceiling-removal/burlington/headon-forest/"
                     className={palette.linkHover}
                   >
                     Headon Forest
@@ -136,7 +136,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="/popcorn-ceiling-removal/burlington/"
+                    href="/services/popcorn-ceiling-removal/burlington/millcroft/"
                     className={palette.linkHover}
                   >
                     Millcroft
@@ -144,7 +144,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="/popcorn-ceiling-removal/burlington/"
+                    href="/services/popcorn-ceiling-removal/burlington/brant-hills/"
                     className={palette.linkHover}
                   >
                     Brant Hills
@@ -152,7 +152,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="/popcorn-ceiling-removal/burlington/"
+                    href="/services/popcorn-ceiling-removal/burlington/orchard/"
                     className={palette.linkHover}
                   >
                     The Orchard
@@ -160,7 +160,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="/popcorn-ceiling-removal/burlington/"
+                    href="/services/popcorn-ceiling-removal/burlington/appleby/"
                     className={palette.linkHover}
                   >
                     Appleby

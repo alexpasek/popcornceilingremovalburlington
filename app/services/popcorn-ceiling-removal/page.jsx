@@ -458,6 +458,330 @@ export default function Page() {
         </div>
       </section>
 
+      {/* LOCAL CONTENT */}
+      <section className="container-x py-12">
+        <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-xl">
+          <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            Burlington & Aldershot Field Notes
+          </h2>
+          <div className="space-y-6 text-base leading-relaxed text-slate-700">
+            <p>
+              Burlington ceilings behave differently depending on how close you
+              are to the lake. In Downtown, humidity from the waterfront
+              saturates old plaster, so we run dehumidifiers overnight before
+              priming and we stage our crews earlier in the morning to beat
+              condo elevator rush hour. Tyandaga bungalows tend to have cedar
+              beams that need paper masking, while Millcroft 1990s builds hide
+              drywall seams under heavy knockdown texture. Documenting these
+              patterns lets us quote accurately, set containment footprints fast,
+              and keep traffic flowing even when families stay home during the
+              project.
+            </p>
+            <p>
+              Aldershot is our most requested pocket because homeowners there
+              are juggling original stucco, crown profiles, and mid-century
+              layouts that zigzag sightlines. When someone taps our{" "}
+              <Link
+                href="/services/popcorn-ceiling-removal/burlington/aldershot/"
+                className="text-red-600 underline underline-offset-4"
+              >
+                Aldershot popcorn ceiling removal
+              </Link>{" "}
+              guide, they usually send photos showing painted texture hugging
+              around curved hallways or low-slung beams. We reply with a markup
+              that explains how we protect maple floors, disconnect century-old
+              light boxes, and skim over patched plaster without flashing seams.
+              Sharing these Aldershot-specific playbooks builds trust before we
+              arrive and ensures the crew brings the right knives, dust walls,
+              and six-foot ladders to maneuver those tight split-level stairs.
+            </p>
+            <p>
+              Local insight also extends to logistics. In Brant Hills and Headon
+              Forest we can stage our trailer right on the driveway and run
+              vacuums through a window. In Aldershot&apos;s core, driveways are
+              shorter, so we load compact negative-air units that squeeze
+              through side-yard gates and we tape zipper doors to isolate the
+              traffic zone between kitchen and back mudroom. When patios sit two
+              steps below the main floor, we build a mini ramp so we are not
+              scraping buckets across patio stone at six in the morning.
+            </p>
+            <p>
+              Many Burlington homes are undergoing stacked renovations, so we
+              coordinate with electricians handling pot lights or insulation
+              crews re-blowing attic bays. In Millcroft we often remove popcorn
+              while the homeowner waits on new cabinets, so we extend our
+              containment over the kitchen boxes to stop overspray from landing
+              on fresh shaker doors. In Aldershot, basements frequently have new
+              egress windows, so we staple vent masks and keep dehumidifiers
+              away from the trim paint that is still curing to avoid peeling
+              corners during our sanding phase.
+            </p>
+            <p>
+              Downtown condo runs require precise scheduling. Paletta
+              Mansion-area towers limit booking windows to two hours for freight
+              elevators, and many property managers insist on masonite along the
+              entire lobby path. We preload our dollies with containment poles,
+              HEPA sanders, and LED panel lights so we can roll everything
+              upstairs in a single trip. Once inside, we create negative
+              pressure by venting out a balcony slider, keep balcony doors
+              latched to appease condo security, and log every clean-up photo so
+              the concierge has documentation that hallways stayed spotless.
+            </p>
+            <p>
+              The finish expectations inside Burlington dining rooms are high
+              because natural light pours in from lake-facing bay windows. We
+              use raking light at multiple angles and keep a detailed punch list
+              in Notion with checkboxes for feathering around crown returns,
+              tightening the joint along skylight wells, and touch-up sanding
+              near pot light rings. Aldershot homes often have walnut built-ins
+              or shiplap accent walls, so we cover furniture with breathable
+              wraps and we vacuum every ledge before primer so dust doesn't fall
+              onto freshly sprayed trim.
+            </p>
+            <p>
+              A recent LaSalle Park project is a good example of how our
+              Aldershot plans unfold. The homeowner submitted a request through
+              our{" "}
+              <Link
+                href="/services/popcorn-ceiling-removal/burlington/aldershot/"
+                className="text-red-600 underline underline-offset-4"
+              >
+                Aldershot smooth ceiling team
+              </Link>{" "}
+              form at 9 a.m., we replied with a same-day video call, and by
+              evening she had a scope that listed scrape depth, skim passes,
+              primer type, and optional hallway repaint. Because the ceilings
+              had been painted twice, we shifted to an encapsulation skim method
+              that saved her from demo noise. We still delivered a 24-hour
+              turnaround by running two crews in staggered shifts and returning
+              at 7 p.m. for the final vacuum.
+            </p>
+            <p>
+              Our notes also cover smaller Aldershot detachments north of Plains
+              Road where homeowners have rental suites downstairs. We schedule
+              quiet sanding blocks during nap times, set up separate containment
+              to keep tenants comfortable, and text picture updates so landlords
+              can share progress with them. When there is only street parking,
+              we bring a folding loading dock so we can unload HEPA vacuums
+              without blocking bus stops. These little adjustments are the
+              difference between a chaotic reno and a renovation that feels like
+              a white-glove service.
+            </p>
+            <p>
+              All of this local playbook content lives in the binder we bring to
+              every meeting, and you can preview most of it online. Browse the{" "}
+              <Link
+                href="/services/popcorn-ceiling-removal/burlington/aldershot/"
+                className="text-red-600 underline underline-offset-4"
+              >
+                Aldershot popcorn ceiling removal breakdown
+              </Link>{" "}
+              for neighborhood-specific FAQs, then compare it with our
+              Burlington-wide plan above. When you&apos;re ready, send photos
+              with square footage and ceiling height, and we will send back a
+              day-by-day timeline that coordinates with your painters, movers,
+              or kitchen deliveries. The more local data you share, the more
+              precise we can be with prep, manpower, and cleanup.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* LOCAL LINKS & SIGNALS */}
+      <section className="container-x py-12">
+        <div className="rounded-[32px] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-8 shadow-lg">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            Burlington neighborhood routes & resources
+          </h2>
+          <p className="text-base text-slate-700">
+            Google looks for tight topical clusters, so we built a Burlington-first link path that
+            connects every neighborhood playbook with our main popcorn ceiling hub. Tap any area
+            below to see street-specific logistics, photos, and project breakdowns, or jump to the
+            supporting services we pair with smooth ceiling turnovers.
+          </p>
+          <div className="mt-6 space-y-5 text-slate-700">
+            <p>
+              <Link
+                href="/services/popcorn-ceiling-removal/burlington/aldershot/"
+                className="text-red-600 font-semibold underline underline-offset-4"
+              >
+                Aldershot popcorn ceiling removal
+              </Link>{" "}
+              covers LaSalle Park split-levels and condos off Plains Rd., with driveway staging tips
+              for short lots. We reference it from every Halton quote so homeowners see photos of
+              zipper doors, HEPA scrubbers, and how we coordinate with movers coming down Waterdown
+              Rd.
+            </p>
+            <p>
+              Renovating north of Upper Middle? Our{" "}
+              <Link
+                href="/services/popcorn-ceiling-removal/burlington/headon-forest/"
+                className="text-red-600 font-semibold underline underline-offset-4"
+              >
+                Headon Forest guide
+              </Link>{" "}
+              focuses on vaulted great rooms off Walkers Line, stairs that need scaffold towers, and
+              the bright wet-look photos inspired by Pot Light Kings. It links back here, plus to our{" "}
+              <Link
+                href="/services/interior-painting/"
+                className="text-red-600 underline underline-offset-4"
+              >
+                Burlington ceiling painting
+              </Link>{" "}
+              page for homeowners booking colour-matched top coats.
+            </p>
+            <p>
+              Millcroft, Tyandaga, and Appleby each have new subpages outlining driveway access,
+              golf-course humidity, and condo board rules. Use{" "}
+              <Link
+                href="/services/popcorn-ceiling-removal/burlington/millcroft/"
+                className="text-red-600 underline underline-offset-4"
+              >
+                Millcroft popcorn removal
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="/services/popcorn-ceiling-removal/burlington/tyandaga/"
+                className="text-red-600 underline underline-offset-4"
+              >
+                Tyandaga skim coat walkthrough
+              </Link>{" "}
+              to show how we keep golf-course mud out of foyers and run negative air through garage
+              entries. Each post links back to{" "}
+              <Link href="/services/drywall-installation/" className="text-red-600 underline">
+                Burlington drywall repairs
+              </Link>{" "}
+              for larger crack stitching.
+            </p>
+            <p>
+              Downtown condo requests tie into{" "}
+              <Link
+                href="/services/popcorn-ceiling-removal/burlington/downtown-burlington/"
+                className="text-red-600 underline underline-offset-4"
+              >
+                our condo-ready workflow
+              </Link>{" "}
+              with elevator booking notes, while South Burlington leads get routed through{" "}
+              <Link
+                href="/services/popcorn-ceiling-removal/burlington/appleby/"
+                className="text-red-600 underline underline-offset-4"
+              >
+                Appleby smooth ceiling
+              </Link>{" "}
+              to highlight Lakeview humidity prep. Internal links between these pages, plus this
+              service hub, strengthen crawl depth and show Google the localized expertise your crew
+              brings from Guelph Line to Burloak.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* RAINBOW SEO TEMPLATE */}
+      <section className="py-16 bg-slate-900">
+        <div className="container-x space-y-8">
+          <div className="text-center space-y-4">
+            <p className="inline-flex rounded-full border border-white/20 px-4 py-1 text-xs uppercase tracking-[0.4em] text-white/80">
+              Burlington rainbow template
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-amber-300 via-emerald-300 via-sky-300 to-violet-400">
+                Popcorn ceiling removal Burlington SEO hub
+              </span>
+            </h2>
+            <p className="text-white/80 max-w-3xl mx-auto">
+              A reusable block of Burlington-first copy you can drop anywhere—stacked with keywords,
+              color-forward styling, and internal links to every neighbourhood.
+            </p>
+          </div>
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div className="space-y-4 text-white/80">
+              <p>
+                From downtown condos to The Orchard townhomes, Burlington homeowners search for{" "}
+                <strong>popcorn ceiling removal Burlington</strong>,{" "}
+                <strong>Level 5 skim Burlington</strong>, and{" "}
+                <strong>dust free ceiling scraping Burlington</strong>. We answer every intent with
+                internal links: visit{" "}
+                <Link
+                  href="/services/popcorn-ceiling-removal/burlington/tyandaga/"
+                  className="underline decoration-pink-200"
+                >
+                  Tyandaga
+                </Link>
+                ,{" "}
+                <Link
+                  href="/services/popcorn-ceiling-removal/burlington/millcroft/"
+                  className="underline decoration-amber-200"
+                >
+                  Millcroft
+                </Link>
+                ,{" "}
+                <Link
+                  href="/services/popcorn-ceiling-removal/burlington/orchard/"
+                  className="underline decoration-emerald-200"
+                >
+                  The Orchard
+                </Link>
+                ,{" "}
+                <Link
+                  href="/services/popcorn-ceiling-removal/burlington/aldershot/"
+                  className="underline decoration-sky-200"
+                >
+                  Aldershot
+                </Link>{" "}
+                or{" "}
+                <Link
+                  href="/services/popcorn-ceiling-removal/burlington/brant-hills/"
+                  className="underline decoration-violet-200"
+                >
+                  Brant Hills
+                </Link>
+                . Each rainbow link tells search engines how our service footprint surrounds
+                Burlington.
+              </p>
+              <p>
+                Use this template for meta descriptions, landing sections, or social captions. Layer
+                in supporting services like{" "}
+                <Link href="/services/drywall-installation/" className="underline decoration-emerald-200">
+                  drywall repairs
+                </Link>{" "}
+                and{" "}
+                <Link href="/services/interior-painting/" className="underline decoration-rose-200">
+                  ceiling painting
+                </Link>{" "}
+                so your topical authority beams across Google like a gradient.
+              </p>
+            </div>
+            <div className="rounded-[32px] border border-white/15 bg-white/5 p-6 text-white/85 space-y-4">
+              <h3 className="text-2xl font-semibold">Rainbow bullet recipe</h3>
+              <ul className="space-y-3 text-sm">
+                {[
+                  "Add gradient text on the H2 to catch eyes.",
+                  "Mention Burlington + popcorn ceiling removal every 60 words.",
+                  "Link to at least three neighbourhood pages and two service pages.",
+                  "Close with a call-to-action referencing PHONE_NUMBER or /quote/.",
+                ].map((tip) => (
+                  <li key={tip} className="flex gap-3">
+                    <span className="h-2 w-2 rounded-full bg-gradient-to-r from-pink-400 via-emerald-300 to-violet-400 mt-2" />
+                    <span>{tip}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-3">
+                <a href={PHONE_HREF} className="btn-cta bg-white text-slate-900 hover:bg-slate-200">
+                  📞 {PHONE_NUMBER}
+                </a>
+                <Link
+                  href="/quote/"
+                  className="btn-cta border border-white/50 text-white hover:bg-white/10"
+                >
+                  Get rainbow quote
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* WHAT'S INCLUDED */}
       <section className="container-x py-12">
         <div className="grid gap-6 lg:grid-cols-3">
