@@ -1,9 +1,56 @@
 export const posts=[
   {
+    title: 'Popcorn Ceiling Removal Process: Photo Walkthrough',
+    slug: 'popcorn-ceiling-removal-process-photos',
+    date: '2025-10-01',
+    excerpt:
+      'Step-by-step look at how we protect, scrape, skim, and prime Burlington ceilings-complete with HEPA sanding photos.',
+    content: [
+      {
+        type: 'text',
+        value:
+          'Every popcorn ceiling removal Burlington homeowners book follows a strict sequence. Here's a visual guide so you can see exactly what happens once we arrive-whether it's an Appleby condo or Tyandaga estate home.',
+      },
+      {
+        type: 'image',
+        src: '/photo/00005popcorn-ceiling-removal-burlington.JPG',
+        alt: 'Containment walls protecting a Burlington living room during popcorn ceiling removal',
+        caption: 'Step 1: Color-coded containment keeps traffic flowing while we prep ceilings.',
+      },
+      {
+        type: 'text',
+        value:
+          'We start with surface protection, zipper doors, and vent masks. Families can still move through the home because we label walkways and close off only the active rooms.',
+      },
+      {
+        type: 'image',
+        src: '/photo/00012popcorn-ceiling-removal-burlington.JPG',
+        alt: 'Scraping popcorn texture with HEPA extraction hose connected',
+        caption: 'Step 2: Scrape or encapsulate texture with HEPA extraction attached to every tool.',
+      },
+      {
+        type: 'text',
+        value:
+          'Once texture is down, we skim coat two to three times, sanding with vacuum-assisted planers. Level 5 smoothness means no flashing when daylight hits the ceiling.',
+      },
+      {
+        type: 'image',
+        src: '/photo/00024popcorn-ceiling-removal-burlington.JPG',
+        alt: 'Level 5 skim coat under raking light in Burlington home',
+        caption: 'Step 3: Raking light inspection. We mark any imperfections before primer goes on.',
+      },
+      {
+        type: 'text',
+        value:
+          'Finally we prime with a high-build sealer, touch up edges, and leave the home tidy. Ceilings are paint-ready within 24 hours for most rooms under 400 sq ft.',
+      },
+    ],
+  },
+  {
     title:'Wallpaper Removal in Toronto: Cost, Timeline & Process',
     slug:'wallpaper-removal-toronto-guide',
     date:'2025-10-01',
-    excerpt:'Exactly how we remove wallpaper in GTA homes—prep, removal, repairs, skim and paint.',
+    excerpt:'Exactly how we remove wallpaper in GTA homes-prep, removal, repairs, skim and paint.',
     content:[
       'We start with floor and furniture protection, outlet covers off and dust containment.',
       'Depending on material we score, soak or steam, then remove the paper in sections.',
@@ -16,7 +63,7 @@ export const posts=[
     title:'Popcorn Ceiling Removal: What Affects Cost?',
     slug:'popcorn-ceiling-removal-cost-timeline',
     date:'2025-10-01',
-    excerpt:'Square footage, height, access and repairs drive price. Here’s how to plan your project.',
+    excerpt:'Square footage, height, access and repairs drive price. Here's how to plan your project.',
     content:[
       'We isolate the room, protect surfaces and scrape texture clean.',
       'Where needed we skim coat, sand with extraction, then prime and paint for a bright finish.',
@@ -28,7 +75,7 @@ export const posts=[
     title:'Drywall Installation: Studs to Paint-Ready',
     slug:'drywall-installation-steps',
     date:'2025-10-01',
-    excerpt:'From layout checks to taped seams and sanding—our complete drywall workflow.',
+    excerpt:'From layout checks to taped seams and sanding-our complete drywall workflow.',
     content:[
       'We verify framing, moisture zones and blocking for fixtures.',
       'We install the right board type, fasten properly, and tape with paper or Fibatape as appropriate.',
@@ -40,7 +87,7 @@ export const posts=[
     title:'Interior Painting Sheens & Where to Use Them',
     slug:'interior-painting-sheen-guide',
     date:'2025-10-01',
-    excerpt:'Matte vs. eggshell vs. satin—what lasts and looks best.',
+    excerpt:'Matte vs. eggshell vs. satin-what lasts and looks best.',
     content:[
       'Washable matte/eggshell on walls for easy touch-ups; satin/semi-gloss on trim and doors.',
       'Good paint + good prep beats more coats of cheap paint every time.'

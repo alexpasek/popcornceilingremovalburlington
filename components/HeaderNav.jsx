@@ -346,6 +346,11 @@ export default function HeaderNav() {
                 label="CONTACT"
                 active={isActive("/contact/")}
               />
+              <NavItem
+                href="/blog/"
+                label="BLOG"
+                active={isActive("/blog/")}
+              />
             </nav>
           </div>
         </div>
