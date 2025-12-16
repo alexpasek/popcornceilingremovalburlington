@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { posts } from '@/data/posts';
 
 export function generateStaticParams(){ return posts.map(p=>({slug:p.slug})); }
@@ -30,17 +29,23 @@ export default function Post({ params }){
         if(block.type === 'text'){
           return <p key={i}>{block.value}</p>;
         }
-        if(block.type === 'image'){
+        if(block.type === 'video'){
           return (
             <figure key={i} className='space-y-3'>
-              <div className='relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden border border-slate-200'>
-                <Image
-                  src={block.src}
-                  alt={block.alt || post.title}
-                  fill
-                  className='object-cover'
-                  sizes="(max-width: 768px) 100vw, 70vw"
-                />
+              <div className='relative w-full rounded-[32px] overflow-hidden bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 shadow-[0_25px_60px_rgba(15,23,42,0.4)] aspect-[4/3]'>
+                <video
+                  className='h-full w-full object-cover'
+                  controls
+                  loop
+                  muted
+                  playsInline
+                  poster={block.poster}
+                >
+                  <source src={block.src} type="video/mp4" />
+                  <source src={block.src} type="video/quicktime" />
+                  Your browser does not support the video tag.
+                </video>
+                <div className='pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent' />
               </div>
               {block.caption && (
                 <figcaption className='text-sm text-gray-500'>{block.caption}</figcaption>
