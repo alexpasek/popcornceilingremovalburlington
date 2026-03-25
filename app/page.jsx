@@ -1,5 +1,7 @@
+import Link from "next/link";
 import QuoteForm from "@/components/QuoteForm";
 import ReviewScroller from "@/components/ReviewScroller";
+import { posts } from "@/data/posts";
 import { PHONE_HREF, PHONE_NUMBER } from "./config";
 
 export const revalidate = 86400;
@@ -213,7 +215,17 @@ const postReviewCopy = [
   "Downtown Burlington condos need elevator bookings and quiet hours. We stage material in bins, protect hallways, and finish ceilings in 1–2 visits to minimize board meetings and concierge check-ins.",
 ];
 
+const featuredGuideSlugs = [
+  "burlington-popcorn-ceiling-removal-pricing-guide",
+  "painted-popcorn-ceilings-burlington-neighborhood-guide",
+  "level-4-vs-level-5-ceilings-burlington-ontario",
+];
+
 export default function Page() {
+  const featuredGuides = featuredGuideSlugs
+    .map((slug) => posts.find((post) => post.slug === slug))
+    .filter(Boolean);
+
   return (
     <div className="bg-gradient-to-b from-slate-900/5 via-white to-slate-50">
       <JsonLd />
@@ -437,6 +449,88 @@ export default function Page() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-rose-50/40 to-amber-50/70 p-6 shadow-lg">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-red-600">
+                Pricing Guide & authority flow
+              </p>
+              <h2 className="mt-2 text-3xl font-bold text-slate-900">
+                Help homeowners choose the right ceiling scope before they book.
+              </h2>
+              <p className="mt-4 text-sm text-slate-700">
+                The new pricing guide explains what changes popcorn ceiling removal cost in Burlington, what each finish level includes, and when a lower-cost removal makes sense versus a more complete skim coat package.
+              </p>
+              <p className="mt-4 text-sm text-slate-700">
+                It supports the main service page by answering pre-quote questions around painted popcorn, light repairs, skim coating, dust control, and the finish standard homeowners should expect before they commit.
+              </p>
+              <ul className="mt-5 space-y-3 text-sm text-slate-700">
+                <li className="flex items-start gap-3 rounded-2xl bg-white/80 px-4 py-3 shadow-sm">
+                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
+                  Dust control and HEPA-assisted work are framed as standard trust signals, not optional upsells.
+                </li>
+                <li className="flex items-start gap-3 rounded-2xl bg-white/80 px-4 py-3 shadow-sm">
+                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
+                  Option 2 is positioned as the budget sweet spot, while Options 3 and 4 pre-qualify smoother or painted-ceiling projects.
+                </li>
+                <li className="flex items-start gap-3 rounded-2xl bg-white/80 px-4 py-3 shadow-sm">
+                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
+                  Every article card below routes users back to the main popcorn ceiling removal page or the quote form.
+                </li>
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/services/popcorn-ceiling-removal/"
+                  className="btn-cta bg-gradient-to-r from-red-600 to-red-500 text-white"
+                >
+                  Main service page
+                </Link>
+                <Link
+                  href="/quote/"
+                  className="btn-cta border border-red-200 bg-white text-red-600"
+                >
+                  Get a quote
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              {featuredGuides.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}/`}
+                  className="group rounded-3xl border border-slate-200 bg-white/90 p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-red-300 hover:shadow-lg"
+                >
+                  <div className="flex flex-col gap-4 md:flex-row">
+                    <img
+                      src={post.image}
+                      alt={post.imageAlt || post.title}
+                      className="h-32 w-full rounded-2xl object-cover md:w-44"
+                      loading="lazy"
+                    />
+                    <div className="flex-1">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-red-600">
+                        {post.category}
+                      </div>
+                      <h3 className="mt-2 text-xl font-semibold text-slate-900 transition group-hover:text-red-600">
+                        {post.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-slate-600">
+                        {post.excerpt}
+                      </p>
+                      <div className="mt-4 flex items-center gap-3 text-sm text-slate-500">
+                        <span>{post.readTime}</span>
+                        <span>•</span>
+                        <span>{post.date}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
