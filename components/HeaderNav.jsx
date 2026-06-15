@@ -9,7 +9,7 @@ import { PHONE_HREF, PHONE_NUMBER } from "@/app/config";
 const ACCENT = {
   text: "text-slate-500",
   textStrong: "text-slate-900",
-  ring: "ring-rose-500/25",
+  ring: "ring-teal-700/25",
   border: "border-slate-200/80",
   linkHover: "hover:text-slate-900",
 };
@@ -150,19 +150,19 @@ export default function HeaderNav() {
   const crumbs = buildCrumbs(pathname);
 
   return (
-    <header className="sticky top-0 z-50 shadow-[0_25px_70px_rgba(15,23,42,0.25)]">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm">
       {/* Announcement / reach strip */}
       <div
         className={[
-          "bg-gradient-to-r from-slate-950 via-slate-900 to-rose-900 text-white text-[12px] sm:text-sm border-b border-white/10 transition duration-300 overflow-hidden",
+          "bg-slate-950 text-white text-[12px] sm:text-sm border-b border-white/10 transition duration-300 overflow-hidden",
           showOnlyMenu
             ? "h-0 opacity-0 pointer-events-none"
             : "h-auto opacity-100 pointer-events-auto",
         ].join(" ")}
       >
         <div className="container-x flex flex-wrap items-center gap-3 py-2">
-          <div className="flex items-center gap-2 tracking-[0.28em] uppercase text-[10px] sm:text-[11px] text-white/70">
-            <span className="text-base text-white/90">✦</span>
+          <div className="flex items-center gap-2 tracking-[0.24em] uppercase text-[10px] sm:text-[11px] text-white/70">
+            <span className="h-1.5 w-1.5 bg-teal-400" />
             Popcorn Ceiling Removal Burlington
           </div>
           <span className="flex items-center gap-2 text-white/80">
@@ -202,7 +202,7 @@ export default function HeaderNav() {
       </div>
 
       {/* Primary glass header */}
-      <div className="border-b border-white/60 bg-white/80 backdrop-blur-xl supports-[backdrop-filter]:bg-white/65 transition-all duration-300">
+      <div className="bg-white transition-all duration-300">
         <div className="container-x">
           {/* Brand block + CTAs + Hamburger (hide when showOnlyMenu) */}
           <div
@@ -214,24 +214,24 @@ export default function HeaderNav() {
             <div className="flex items-center gap-4">
               <Link
                 href="/"
-                className="flex flex-1 items-center gap-3 rounded-3xl p-1 pr-4 hover:bg-white/80 transition"
+                className="flex flex-1 items-center gap-3 p-1 pr-4 transition hover:bg-stone-50"
                 title="Popcorn Ceiling Removal Burlington Ontario— Home"
               >
-                <div className="h-20 w-20 md:h-24 md:w-24 rounded-2xl bg-gradient-to-br from-rose-500 via-orange-400 to-amber-300 p-[2px] shadow-[0_15px_35px_rgba(244,63,94,0.45)]">
-                  <div className="h-full w-full rounded-[26px] bg-white flex items-center justify-center">
+                <div className="h-14 w-14 border border-slate-200 bg-white p-1.5 shadow-sm md:h-16 md:w-16">
+                  <div className="flex h-full w-full items-center justify-center bg-white">
                     <img
-                      src="/logo.png"
+                      src="/popcorn%20_CELING_REMOVAL_.png"
                       alt="Popcorn Ceiling Removal Burlington Ontario"
-                      className="h-12 w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 object-contain"
+                      className="h-full w-full object-contain"
                     />
                   </div>
                 </div>
                 <div className="flex flex-col min-w-0 sm:items-start items-center text-center sm:text-left">
-                  <span className="text-lg md:text-2xl font-semibold text-slate-900 leading-tight">
+                  <span className="text-base font-semibold leading-tight text-slate-950 md:text-xl">
                     Popcorn Ceiling Removal
                     <span className="block sm:inline"> Burlington</span>
                   </span>
-                  <span className="text-[11px] uppercase tracking-[0.4em] text-slate-500">
+                  <span className="text-[10px] uppercase tracking-[0.32em] text-slate-500">
                     serving Burlington, Ontario
                   </span>
                   <span className="text-[12px] text-slate-500">
@@ -244,15 +244,15 @@ export default function HeaderNav() {
               <div className="hidden md:flex items-center gap-2 ml-auto">
                 <a
                   href={PHONE_HREF}
-                  className="inline-flex items-center gap-2 border-2 border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-md hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/50 transition"
+                  className="inline-flex items-center gap-2 border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-stone-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/30"
                   title="Call for a fast popcorn ceiling removal estimate"
                 >
-                  <span className="text-base">☎</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Call</span>
                   {PHONE_NUMBER}
                 </a>
                 <Link
                   href="/quote/"
-                  className="inline-flex items-center gap-2 bg-red-600 px-5 py-2 text-sm font-bold text-white shadow-lg hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/70 transition"
+                  className="inline-flex items-center gap-2 bg-slate-950 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/30"
                   title="Get a free popcorn ceiling removal quote"
                 >
                   Book Site Visit
@@ -262,7 +262,7 @@ export default function HeaderNav() {
               {/* Mobile hamburger */}
               <button
                 type="button"
-                className="lg:hidden inline-flex items-center justify-center p-3 ring-1 ring-slate-200/80 shadow-sm bg-white/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/50 ml-auto md:ml-3"
+                className="ml-auto inline-flex items-center justify-center border border-slate-200 bg-white p-3 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/30 md:ml-3 lg:hidden"
                 aria-label="Toggle menu"
                 aria-expanded={mobileOpen}
                 onClick={() => setMobileOpen((v) => !v)}
@@ -287,7 +287,7 @@ export default function HeaderNav() {
             ].join(" ")}
           >
             <nav
-              className="flex items-center gap-1 text-[13px] tracking-[0.2em]"
+              className="flex items-center gap-1 text-[13px] tracking-[0.18em]"
               aria-label="Primary navigation"
             >
               <NavItem href="/" label="HOME" active={isActive("/")} />
@@ -322,7 +322,7 @@ export default function HeaderNav() {
                     />
                     <Link
                       href="/quote/"
-                      className="inline-flex items-center px-4 py-2 bg-red-600 text-sm font-bold text-white hover:bg-red-700 transition"
+                      className="inline-flex items-center px-4 py-2 bg-slate-900 text-sm font-bold text-white hover:bg-slate-800 transition"
                     >
                       Schedule Quote →
                     </Link>
@@ -382,7 +382,7 @@ export default function HeaderNav() {
                       ) : (
                         <Link
                           href={c.href}
-                          className="rounded px-1 text-rose-600 hover:text-rose-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/30"
+                          className="rounded px-1 text-teal-800 hover:text-teal-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700/30"
                           title={c.label}
                         >
                           {c.label}
@@ -411,12 +411,11 @@ export default function HeaderNav() {
               href={PHONE_HREF}
               className="inline-flex items-center justify-center gap-2 border-2 border-white/30 bg-white/10 px-4 py-3 font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 hover:bg-white/15 transition"
             >
-              <span className="text-base">☎</span>
               Call {PHONE_NUMBER}
             </a>
             <Link
               href="/quote/"
-              className="inline-flex items-center justify-center bg-red-600 px-4 py-3 font-bold text-white shadow-lg hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 transition"
+              className="inline-flex items-center justify-center bg-slate-900 px-4 py-3 font-bold text-white shadow-lg hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 transition"
             >
               Book Site Visit
             </Link>
@@ -474,8 +473,8 @@ function NavItem({ href, label, active }) {
       href={href}
       aria-current={active ? "page" : undefined}
       className={[
-        "group relative px-3 py-2 rounded-full text-[11px] font-semibold tracking-[0.28em]",
-        "transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/30",
+        "group relative px-3 py-2 text-[11px] font-semibold tracking-[0.24em]",
+        "transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700/30",
         active ? ACCENT.textStrong : `${ACCENT.text} ${ACCENT.linkHover}`,
       ].join(" ")}
       title={label}
@@ -485,7 +484,7 @@ function NavItem({ href, label, active }) {
         <span
           aria-hidden="true"
           className={[
-            "absolute left-0 -bottom-1 h-1 w-full rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-300 transition-transform duration-200 origin-left",
+            "absolute left-0 -bottom-1 h-0.5 w-full bg-teal-700 transition-transform duration-200 origin-left",
             active
               ? "scale-x-100 opacity-90"
               : "scale-x-0 opacity-0 group-hover:opacity-70 group-hover:scale-x-100",
@@ -536,8 +535,8 @@ function SmoothDropdown({
         aria-haspopup="menu"
         aria-expanded={open}
         className={[
-          "group relative inline-flex items-center gap-2 px-3 py-2 rounded-full text-[11px] font-semibold tracking-[0.28em]",
-          "focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/30 transition-colors",
+          "group relative inline-flex items-center gap-2 px-3 py-2 text-[11px] font-semibold tracking-[0.24em]",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700/30 transition-colors",
           active || open
             ? ACCENT.textStrong
             : `${ACCENT.text} ${ACCENT.linkHover}`,
@@ -548,7 +547,7 @@ function SmoothDropdown({
           <span
             aria-hidden="true"
             className={[
-              "absolute left-0 -bottom-1 h-1 w-full rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-300 transition-transform duration-200 origin-left",
+              "absolute left-0 -bottom-1 h-0.5 w-full bg-teal-700 transition-transform duration-200 origin-left",
               active || open
                 ? "scale-x-100 opacity-90"
                 : "scale-x-0 opacity-0 group-hover:opacity-70 group-hover:scale-x-100",
@@ -594,9 +593,9 @@ function SmoothDropdown({
 function Panel({ children }) {
   return (
     <div
-      className={`p-4 md:p-5 rounded-3xl border ${ACCENT.border} bg-white/95 shadow-[0_45px_85px_-45px_rgba(15,23,42,0.9)] ring-1 ${ACCENT.ring} min-w-[320px] backdrop-blur`}
+      className={`min-w-[320px] border ${ACCENT.border} bg-white p-4 shadow-xl ring-1 ${ACCENT.ring} md:p-5`}
     >
-      <div className="h-1.5 w-16 rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-300 mb-4" />
+      <div className="h-px w-full bg-slate-200 mb-4" />
       {children}
     </div>
   );
@@ -615,7 +614,7 @@ function MenuItemCard({ href, label }) {
       title={label}
       aria-label={label}
       className={[
-        "group p-4 rounded-2xl border bg-gradient-to-br from-white via-slate-50 to-white",
+        "group border bg-white p-4",
         ACCENT.border,
         "hover:-translate-y-0.5 hover:shadow-[0_25px_55px_-35px_rgba(15,23,42,0.8)]",
         "transition duration-200",
@@ -623,12 +622,12 @@ function MenuItemCard({ href, label }) {
     >
       <div className="flex items-center justify-between gap-4">
         <div>
-          <div className="font-semibold text-slate-900 group-hover:text-rose-600">
+          <div className="font-semibold text-slate-900 group-hover:text-teal-800">
             {label}
           </div>
           <p className="text-sm text-slate-500">View details →</p>
         </div>
-        <span className="text-rose-500 opacity-0 group-hover:opacity-100 transition">
+        <span className="text-teal-700 opacity-0 group-hover:opacity-100 transition">
           ↗
         </span>
       </div>
@@ -643,9 +642,9 @@ function DropdownLink({ href, label, bold }) {
       role="menuitem"
       title={label}
       className={[
-        "block px-3 py-2 rounded-2xl text-[15px] transition",
+        "block px-3 py-2 text-[15px] transition",
         bold ? "font-semibold text-slate-900" : ACCENT.text,
-        `hover:bg-slate-100/70 ${ACCENT.linkHover} focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/30`,
+        `hover:bg-slate-100/70 ${ACCENT.linkHover} focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700/30`,
       ].join(" ")}
     >
       {label}

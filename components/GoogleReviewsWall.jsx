@@ -26,7 +26,7 @@ function Stars({ value = 5, size = 18 }) {
 
 function ReviewCard({ r }) {
   return (
-    <div className="p-5 bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
+    <div className="bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <div className="flex items-start gap-3">
         {r.profilePhotoUrl ? (
           <img
@@ -79,28 +79,28 @@ export default function GoogleReviewsWall() {
   const mapsUrl = `https://www.google.com/maps?place_id=${placeId}`;
 
   return (
-    <section className="border-t border-slate-200 bg-gradient-to-b from-white to-slate-50">
-      <div className="container-x py-12">
+    <section className="border-t border-slate-200 bg-stone-100">
+      <div className="container-x py-16 lg:py-20">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 border border-red-200 text-red-700 text-xs font-semibold uppercase tracking-wider mb-3">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-red-600">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
               </svg>
               Verified Google Reviews
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+            <h2 className="text-3xl font-semibold text-slate-950 md:text-4xl">
               What Burlington Homeowners Say
             </h2>
-            <p className="mt-2 text-slate-600">
+            <p className="mt-3 text-slate-600">
               Real reviews from our Burlington customers—smooth ceilings, paint-ready in 24h
             </p>
           </div>
 
           {!loading && data && (
-            <div className="flex items-center gap-3 flex-shrink-0">
-              <div className="text-right">
+            <div className="flex flex-shrink-0 items-center gap-3 bg-white px-5 py-4 shadow-sm">
+              <div className="text-left">
                 <div className="flex items-center gap-2">
                   <Stars value={data.rating} size={20} />
                   <span className="text-2xl font-bold text-slate-900">
@@ -117,22 +117,22 @@ export default function GoogleReviewsWall() {
 
         {/* Reviews Grid */}
         {loading ? (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
-                className="h-48 bg-slate-100 border border-slate-200 animate-pulse"
+                className="h-48 animate-pulse bg-white"
               />
             ))}
           </div>
         ) : data?.reviews?.length ? (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {data.reviews.map((r, i) => (
               <ReviewCard key={i} r={r} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-12 bg-white border border-slate-200">
+          <div className="bg-white py-12 text-center shadow-sm">
             <p className="text-slate-600">
               Add <code className="px-2 py-1 bg-slate-100 text-sm">NEXT_PUBLIC_BURLINGTON_PLACE_ID</code> to{" "}
               <code className="px-2 py-1 bg-slate-100 text-sm">.env.local</code>
@@ -141,12 +141,12 @@ export default function GoogleReviewsWall() {
         )}
 
         {/* CTA Buttons */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <a
             href={writeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/60 transition"
+            className="inline-flex items-center justify-center bg-red-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/40"
           >
             Write a Review on Google
           </a>
@@ -154,7 +154,7 @@ export default function GoogleReviewsWall() {
             href={mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center border-2 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 font-bold px-6 py-3 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 transition"
+            className="inline-flex items-center justify-center border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-900 shadow-sm transition hover:bg-stone-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60"
           >
             View on Google Maps
           </a>

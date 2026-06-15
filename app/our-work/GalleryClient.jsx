@@ -64,10 +64,10 @@ export default function GalleryClient({ photos, filters }) {
           <div className="relative mt-auto space-y-6 text-center lg:text-left">
             <div className="flex flex-col items-center gap-3 rounded-2xl border border-white/20 bg-white/5 p-4 text-left lg:flex-row">
               <div className="flex items-center gap-3">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-rose-500 via-orange-400 to-amber-300 p-[2px] shadow-lg">
+                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-slate-900 via-teal-800 to-stone-500 p-[2px] shadow-lg">
                   <div className="flex h-full w-full items-center justify-center rounded-[18px] bg-slate-950">
                     <img
-                      src="/logo.png"
+                      src="/popcorn%20_CELING_REMOVAL_.png"
                       alt="Popcorn Ceiling Removal Burlington logo"
                       className="h-9 w-9 object-contain"
                     />

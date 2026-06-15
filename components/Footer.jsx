@@ -44,19 +44,6 @@ export default function Footer() {
             className={`flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-8 border-b ${palette.panelBorder}`}
           >
             <div className="flex items-center gap-4">
-              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-rose-500 via-orange-400 to-amber-300 p-[2px] shadow-lg">
-                <div
-                  className={`h-full w-full rounded-[14px] ${
-                    galleryTheme ? "bg-slate-950" : "bg-white"
-                  } flex items-center justify-center`}
-                >
-                  <img
-                    src="/logo.png"
-                    alt="Popcorn Ceiling Removal Burlington"
-                    className="h-8 w-8 object-contain"
-                  />
-                </div>
-              </div>
               <div className="min-w-0">
                 <div
                   className={`text-lg font-semibold truncate ${palette.textStrong}`}
@@ -73,7 +60,7 @@ export default function Footer() {
                 href={PHONE_HREF}
                 className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/60"
               >
-                📞 {PHONE_NUMBER}
+                {PHONE_NUMBER}
               </a>
               <a
                 href="/quote/"
@@ -350,13 +337,13 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <a
                 href={PHONE_HREF}
-                className="inline-flex items-center justify-center bg-red-600 hover:bg-red-500 text-white font-bold px-4 py-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/60 transition-all"
+                className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/60 transition-all"
               >
                 Call {PHONE_NUMBER}
               </a>
               <a
                 href="/quote/"
-                className="inline-flex items-center justify-center bg-red-600 hover:bg-red-500 text-white font-bold px-4 py-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/60 transition-all"
+                className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600/60 transition-all"
               >
                 Get Quote
               </a>

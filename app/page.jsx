@@ -1,6 +1,5 @@
 import Link from "next/link";
 import QuoteForm from "@/components/QuoteForm";
-import ReviewScroller from "@/components/ReviewScroller";
 import { posts } from "@/data/posts";
 import { PHONE_HREF, PHONE_NUMBER } from "./config";
 
@@ -227,116 +226,117 @@ export default function Page() {
     .filter(Boolean);
 
   return (
-    <div className="bg-gradient-to-b from-slate-900/5 via-white to-slate-50">
+    <div className="bg-stone-100 text-slate-900">
       <JsonLd />
-      <div className="container-x py-12 space-y-16">
-        {/* Hero + contact form */}
-        <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] items-start rounded-[32px] border border-red-100 bg-gradient-to-br from-rose-50 via-white to-amber-50/70 p-8 shadow-xl">
-          <div className="space-y-6">
-            <p className="inline-flex items-center gap-2 rounded-full bg-red-50 px-4 py-1 text-sm font-semibold text-red-700">
+      <section className="relative overflow-hidden bg-slate-950 text-white">
+        <div className="absolute inset-0">
+          <img
+            src="/home/1.webp"
+            alt="Smooth finished ceiling in a Burlington home"
+            className="h-full w-full object-cover opacity-45"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,.94),rgba(15,23,42,.78)_46%,rgba(15,23,42,.35))]" />
+        </div>
+        <div className="container-x relative grid min-h-[760px] gap-10 py-14 lg:grid-cols-[1fr_430px] lg:items-center lg:py-20">
+          <div className="max-w-3xl">
+            <p className="inline-flex items-center border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/80 backdrop-blur">
               Burlington crew • Popcorn Ceiling Removal & Level 5 Skim
             </p>
-            <div>
-              <h1 className="text-4xl font-bold leading-tight text-slate-900 md:text-5xl">
-                Smooth ceilings for Burlington homes in 24 hours.
-              </h1>
-              <p className="mt-4 text-lg text-slate-700">
-                Dust-controlled popcorn ceiling removal, drywall repairs and ceiling painting by a local insured crew. Fast quotes, tidy protection and a written warranty on every job.
-              </p>
-            </div>
-            <ul className="grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
-              <li className="flex items-start gap-2">
-                <span className="mt-1 h-2 w-2 rounded-full bg-red-500" />
-                Same-day photo estimates & site visits.
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="mt-1 h-2 w-2 rounded-full bg-red-500" />
-                Level 5 skim, prime & daylight inspection.
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="mt-1 h-2 w-2 rounded-full bg-red-500" />
-                Poly containment + HEPA extraction dust control.
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="mt-1 h-2 w-2 rounded-full bg-red-500" />
-                WSIB + $2M liability coverage.
-              </li>
-            </ul>
-            <div className="flex flex-wrap items-center gap-4">
-              <a href={PHONE_HREF} className="btn-cta text-base">
-                📞 {PHONE_NUMBER}
+            <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-normal text-white md:text-7xl">
+              Smooth ceilings for Burlington homes in 24 hours.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82">
+              Dust-controlled popcorn ceiling removal, drywall repairs and ceiling painting by a local insured crew. Fast quotes, tidy protection and a written warranty on every job.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a href={PHONE_HREF} className="inline-flex items-center justify-center bg-red-600 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-red-700">
+                {PHONE_NUMBER}
               </a>
-              <a href="/quote/" className="btn-cta text-base">
+              <a href="/quote/" className="inline-flex items-center justify-center border border-white/35 bg-white px-6 py-3 font-semibold text-red-600 transition hover:bg-stone-100">
                 Book a site visit
               </a>
-              <div className="text-sm text-slate-500">
-                Halton Region • 8am–6pm, 7 days a week
-              </div>
+              <span className="text-sm text-white/65">Halton Region • 8am–6pm, 7 days a week</span>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-10 grid max-w-4xl grid-cols-2 gap-px overflow-hidden border border-white/15 bg-white/15 md:grid-cols-4">
               {highlightStats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm"
-                >
-                  <div className="text-2xl font-semibold text-slate-900">{stat.value}</div>
-                  <div className="text-sm text-slate-600">{stat.label}</div>
+                <div key={stat.label} className="bg-slate-950/55 p-5 backdrop-blur">
+                  <div className="text-2xl font-semibold text-white">{stat.value}</div>
+                  <div className="mt-1 text-sm leading-5 text-white/68">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
-          <div className="rounded-3xl border border-red-100 bg-white/90 p-6 shadow-2xl backdrop-blur">
-            <h2 className="text-2xl font-semibold text-slate-900">
-              Get my Burlington quote
-            </h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Send photos + ceiling sizes. We reply with a labour-only range and confirmation call.
-            </p>
-            <QuoteForm />
-            <p className="mt-4 text-xs text-slate-500">
-              By submitting you agree to a quick follow-up call/text to review scope.
-            </p>
-          </div>
-        </section>
 
-        {/* Video proof */}
-        <section className="grid gap-8 lg:grid-cols-2 lg:items-stretch rounded-[32px] border border-slate-200 bg-white p-8 shadow-2xl">
-          <div className="order-1 space-y-6">
-            <p className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-100 to-amber-100 px-4 py-1 text-sm font-semibold text-amber-800">
+          <aside className="border border-white/12 bg-white p-5 text-slate-900 shadow-2xl lg:p-6">
+            <div className="grid grid-cols-3 gap-2">
+              {["/home/2.webp", "/home/3.webp", "/home/4.webp"].map((src) => (
+                <img key={src} src={src} alt="" className="h-24 w-full object-cover" />
+              ))}
+            </div>
+            <div className="mt-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-red-600">
+                Fast local estimate
+              </p>
+              <h2 className="mt-2 text-2xl font-semibold text-slate-950">
+                Get my Burlington quote
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                Send photos + ceiling sizes. We reply with a labour-only range and confirmation call.
+              </p>
+              <QuoteForm />
+              <p className="mt-4 border-t border-slate-200 pt-4 text-xs leading-5 text-slate-500">
+                By submitting you agree to a quick follow-up call/text to review scope.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="border-y border-slate-200 bg-white">
+        <div className="container-x grid gap-px bg-slate-200 md:grid-cols-4">
+          {[
+            "Same-day photo estimates & site visits.",
+            "Level 5 skim, prime & daylight inspection.",
+            "Poly containment + HEPA extraction dust control.",
+            "WSIB + $2M liability coverage.",
+          ].map((item) => (
+            <div key={item} className="bg-white px-5 py-5 text-sm font-medium text-slate-700">
+              <span className="mr-3 inline-block h-2 w-2 bg-red-600" />
+              {item}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-stone-100 py-16 lg:py-24">
+        <div className="container-x grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="space-y-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">
               Popcorn ceiling removal · Burlington
             </p>
-            <h2 className="text-3xl font-bold text-slate-900">
-            Popcorn ceiling removal Burlington:real Burlington ceilings going Level 5.
+            <h2 className="max-w-xl text-4xl font-semibold leading-tight text-slate-950">
+              Popcorn ceiling removal Burlington:real Burlington ceilings going Level 5.
             </h2>
-            <div className="space-y-4 text-sm text-slate-700">
+            <div className="space-y-4 text-base leading-7 text-slate-700">
               {videoSeoCopy.map((copy, idx) => (
                 <p key={idx}>{copy}</p>
               ))}
             </div>
-            <ul className="space-y-2 text-sm text-slate-700">
+            <div className="grid gap-3 sm:grid-cols-2">
               {videoHighlights.map((point) => (
-                <li key={point} className="flex items-start gap-2 rounded-2xl bg-gradient-to-r from-rose-50 to-white px-4 py-3">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
+                <div key={point} className="border-l-4 border-red-600 bg-white px-4 py-3 text-sm font-medium text-slate-700 shadow-sm">
                   {point}
-                </li>
+                </div>
               ))}
-            </ul>
-            <div className="rounded-2xl border border-slate-200 bg-slate-900/90 p-4 text-white shadow-lg">
-              <p className="text-xs uppercase tracking-wide text-white/70">Neighbourhood note</p>
-              <p className="mt-1 text-sm">
+            </div>
+            <div className="border border-slate-200 bg-slate-950 p-5 text-white">
+              <p className="text-xs uppercase tracking-[0.22em] text-white/55">Neighbourhood note</p>
+              <p className="mt-2 text-sm leading-6 text-white/82">
                 Shot between Guelph Line and Upper Middle. Tyandaga, Headon Forest and Roseland get the same quick setup—crew arrives at 8 AM, ceilings prime-ready by dusk.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <a href={PHONE_HREF} className="btn-cta border border-red-200 bg-white text-red-600">
-                📞 {PHONE_NUMBER}
-              </a>
-              <a href="/quote/" className="btn-cta bg-gradient-to-r from-red-600 to-amber-500 text-white">
-                Book my walkthrough
-              </a>
-            </div>
           </div>
-          <div className="order-2 relative overflow-hidden rounded-[28px] border border-slate-200 bg-slate-900/90 shadow-2xl h-full min-h-[320px] max-h-[920px]">
+          <div className="relative min-h-[560px] overflow-hidden bg-slate-950 shadow-2xl">
             <video
               className="absolute inset-0 h-full w-full object-cover"
               src="/video/IMG_1470.mov"
@@ -349,256 +349,234 @@ export default function Page() {
             >
               Your browser does not support the video tag.
             </video>
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
-            <div className="absolute top-4 left-4 rounded-2xl bg-white/90 p-4 text-slate-900 shadow-xl">
-              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                Real Burlington ceiling removal
-              </p>
-              <p className="text-base font-semibold">
-                Protection stays down; ceilings go paint-ready within a day.
-              </p>
-            </div>
-            <div className="absolute bottom-4 right-4 rounded-2xl bg-gradient-to-br from-red-500 to-amber-400 p-4 text-sm font-semibold text-white shadow-xl">
-              3 rooms · 24 hours · Level 5 finish
-            </div>
-          </div>
-        </section>
-
-        {/* Local proof after reviews */}
-        <section className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-amber-50 to-slate-50 p-6 shadow-lg">
-          <div className="grid gap-8 md:grid-cols-2">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-red-600">Burlington context</p>
-              <h2 className="mt-2 text-2xl font-bold text-slate-900">What we notice on local ceilings</h2>
-              <div className="mt-4 space-y-4 text-sm text-slate-700">
-                {postReviewCopy.map((copy, idx) => (
-                  <p key={idx}>{copy}</p>
-                ))}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div className="bg-white p-4 text-slate-950 shadow-xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                  Real Burlington ceiling removal
+                </p>
+                <p className="mt-1 max-w-sm text-base font-semibold">
+                  Protection stays down; ceilings go paint-ready within a day.
+                </p>
               </div>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-inner">
-              <h3 className="text-lg font-semibold text-slate-900">Local quick facts</h3>
-              <ul className="mt-4 space-y-3 text-sm text-slate-700">
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
-                  Most Burlington two-storey foyers are 18 ft high—we bring scaffold and wrap stairs to protect new railings.
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
-                  Condos on Lakeshore require elevator booking forms—we complete them for you and carry materials in sealed bins.
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
-                  Many Brant Hills homes have previous pot-light patches; we skim entire runs so you don’t see telegraphing.
-                </li>
-              </ul>
-              <div className="mt-4 rounded-2xl border border-red-100 bg-gradient-to-r from-rose-50 to-white p-4 text-xs text-slate-600">
-                Need a permit? Burlington building services confirms no permit is required for cosmetic popcorn removal, but we can coordinate if insulation or framing gets replaced.
+              <div className="bg-red-600 px-4 py-3 text-sm font-semibold text-white shadow-xl">
+                3 rooms · 24 hours · Level 5 finish
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Process */}
-        <section className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-amber-50 to-slate-50 p-8 shadow-lg">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <section className="bg-white py-16 lg:py-24">
+        <div className="container-x">
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-red-600">
-                Our 3-phase plan
-              </p>
-              <h2 className="text-3xl font-bold text-slate-900">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">Our 3-phase plan</p>
+              <h2 className="mt-3 text-4xl font-semibold leading-tight text-slate-950">
                 Burlington-friendly process, zero surprises.
               </h2>
+              <p className="mt-5 text-base leading-7 text-slate-600">
+                Daily updates, schedule check-ins and a clean turnover each night so you can keep living in the space while we work.
+              </p>
             </div>
-            <p className="text-sm text-slate-600 max-w-xl">
-              Daily updates, schedule check-ins and a clean turnover each night so you can keep living in the space while we work.
-            </p>
+            <div className="grid gap-0 border border-slate-200 md:grid-cols-3">
+              {processSteps.map((step, idx) => (
+                <article key={step.title} className="border-slate-200 p-6 md:border-l md:first:border-l-0">
+                  <div className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-400">
+                    Step {idx + 1}
+                  </div>
+                  <h3 className="mt-8 text-xl font-semibold text-slate-950">{step.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{step.text}</p>
+                </article>
+              ))}
+            </div>
           </div>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {processSteps.map((step, idx) => (
-              <article key={step.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-inner">
-                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  Step {idx + 1}
-                </div>
-                <h3 className="mt-2 text-lg font-semibold text-slate-900">{step.title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{step.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
+        </div>
+      </section>
 
-        {/* SEO copy & neighbourhood grid */}
-        <section className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-6 shadow-md">
-            <h2 className="text-2xl font-bold text-slate-900">Local SEO-rich copy (for Google + homeowners)</h2>
-            <div className="mt-4 space-y-4 text-sm text-slate-700">
+      <section className="bg-slate-950 py-16 text-white lg:py-24">
+        <div className="container-x grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:items-start">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-300">Burlington context</p>
+            <h2 className="mt-3 text-4xl font-semibold leading-tight">
+              What we notice on local ceilings
+            </h2>
+            <div className="mt-8 grid gap-5 text-base leading-7 text-white/76">
+              {postReviewCopy.map((copy, idx) => (
+                <p key={idx} className="border-l border-white/20 pl-5">{copy}</p>
+              ))}
+            </div>
+          </div>
+          <div className="bg-white p-6 text-slate-900 shadow-2xl">
+            <h3 className="text-xl font-semibold">Local quick facts</h3>
+            <ul className="mt-5 divide-y divide-slate-200 text-sm leading-6 text-slate-700">
+              <li className="py-4">Most Burlington two-storey foyers are 18 ft high—we bring scaffold and wrap stairs to protect new railings.</li>
+              <li className="py-4">Condos on Lakeshore require elevator booking forms—we complete them for you and carry materials in sealed bins.</li>
+              <li className="py-4">Many Brant Hills homes have previous pot-light patches; we skim entire runs so you don’t see telegraphing.</li>
+            </ul>
+            <div className="mt-5 bg-stone-100 p-4 text-xs leading-5 text-slate-600">
+              Need a permit? Burlington building services confirms no permit is required for cosmetic popcorn removal, but we can coordinate if insulation or framing gets replaced.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-stone-100 py-16 lg:py-24">
+        <div className="container-x grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <article className="bg-white p-8 shadow-sm lg:p-10">
+            <h2 className="text-3xl font-semibold text-slate-950">Local SEO-rich copy (for Google + homeowners)</h2>
+            <div className="mt-6 columns-1 gap-10 space-y-5 text-base leading-7 text-slate-700 lg:columns-2">
               {seoParagraphs.map((p, idx) => (
                 <p key={idx}>{p}</p>
               ))}
             </div>
-          </div>
-          <div className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-amber-50/60 p-6 shadow-md">
-            <h3 className="text-xl font-semibold text-slate-900">Burlington neighbourhoods</h3>
-            <p className="mt-2 text-sm text-slate-600">
+          </article>
+          <aside className="bg-slate-950 p-8 text-white shadow-sm lg:p-10">
+            <h3 className="text-2xl font-semibold">Burlington neighbourhoods</h3>
+            <p className="mt-3 text-sm leading-6 text-white/68">
               We work in condos, bungalows and custom builds across:
             </p>
-            <ul className="mt-4 grid grid-cols-2 gap-2 text-sm text-slate-700">
+            <ul className="mt-6 grid grid-cols-2 gap-px bg-white/15 text-sm">
               {burlingtonAreas.map((area) => (
-                <li key={area} className="rounded-full bg-slate-100 px-3 py-1">
+                <li key={area} className="bg-slate-950 px-3 py-3 text-white/82">
                   {area}
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
+          </aside>
+        </div>
+      </section>
 
-        <section className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-rose-50/40 to-amber-50/70 p-6 shadow-lg">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-red-600">
-                Pricing Guide & authority flow
-              </p>
-              <h2 className="mt-2 text-3xl font-bold text-slate-900">
-                Help homeowners choose the right ceiling scope before they book.
-              </h2>
-              <p className="mt-4 text-sm text-slate-700">
+      <section className="bg-white py-16 lg:py-24">
+        <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">
+              Pricing Guide & authority flow
+            </p>
+            <h2 className="mt-3 text-4xl font-semibold leading-tight text-slate-950">
+              Help homeowners choose the right ceiling scope before they book.
+            </h2>
+            <div className="mt-6 space-y-5 text-base leading-7 text-slate-700">
+              <p>
                 The new pricing guide explains what changes popcorn ceiling removal cost in Burlington, what each finish level includes, and when a lower-cost removal makes sense versus a more complete skim coat package.
               </p>
-              <p className="mt-4 text-sm text-slate-700">
+              <p>
                 It supports the main service page by answering pre-quote questions around painted popcorn, light repairs, skim coating, dust control, and the finish standard homeowners should expect before they commit.
               </p>
-              <ul className="mt-5 space-y-3 text-sm text-slate-700">
-                <li className="flex items-start gap-3 rounded-2xl bg-white/80 px-4 py-3 shadow-sm">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
-                  Dust control and HEPA-assisted work are framed as standard trust signals, not optional upsells.
-                </li>
-                <li className="flex items-start gap-3 rounded-2xl bg-white/80 px-4 py-3 shadow-sm">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
-                  Option 2 is positioned as the budget sweet spot, while Options 3 and 4 pre-qualify smoother or painted-ceiling projects.
-                </li>
-                <li className="flex items-start gap-3 rounded-2xl bg-white/80 px-4 py-3 shadow-sm">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-red-500" />
-                  Every article card below routes users back to the main popcorn ceiling removal page or the quote form.
-                </li>
-              </ul>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href="/services/popcorn-ceiling-removal/"
-                  className="btn-cta bg-gradient-to-r from-red-600 to-red-500 text-white"
-                >
-                  Main service page
-                </Link>
-                <Link
-                  href="/quote/"
-                  className="btn-cta border border-red-200 bg-white text-red-600"
-                >
-                  Get a quote
-                </Link>
-              </div>
             </div>
-
-            <div className="grid gap-4">
-              {featuredGuides.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}/`}
-                  className="group rounded-3xl border border-slate-200 bg-white/90 p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-red-300 hover:shadow-lg"
-                >
-                  <div className="flex flex-col gap-4 md:flex-row">
-                    <img
-                      src={post.image}
-                      alt={post.imageAlt || post.title}
-                      className="h-32 w-full rounded-2xl object-cover md:w-44"
-                      loading="lazy"
-                    />
-                    <div className="flex-1">
-                      <div className="text-xs font-semibold uppercase tracking-wide text-red-600">
-                        {post.category}
-                      </div>
-                      <h3 className="mt-2 text-xl font-semibold text-slate-900 transition group-hover:text-red-600">
-                        {post.title}
-                      </h3>
-                      <p className="mt-2 text-sm text-slate-600">
-                        {post.excerpt}
-                      </p>
-                      <div className="mt-4 flex items-center gap-3 text-sm text-slate-500">
-                        <span>{post.readTime}</span>
-                        <span>•</span>
-                        <span>{post.date}</span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+            <ul className="mt-7 space-y-3 text-sm text-slate-700">
+              <li className="border-l-4 border-red-600 bg-stone-100 px-4 py-3">Dust control and HEPA-assisted work are framed as standard trust signals, not optional upsells.</li>
+              <li className="border-l-4 border-red-600 bg-stone-100 px-4 py-3">Option 2 is positioned as the budget sweet spot, while Options 3 and 4 pre-qualify smoother or painted-ceiling projects.</li>
+              <li className="border-l-4 border-red-600 bg-stone-100 px-4 py-3">Every article card below routes users back to the main popcorn ceiling removal page or the quote form.</li>
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/services/popcorn-ceiling-removal/" className="btn-cta">
+                Main service page
+              </Link>
+              <Link href="/quote/" className="btn-cta border border-slate-300 bg-white text-slate-950 hover:bg-stone-100">
+                Get a quote
+              </Link>
             </div>
           </div>
-        </section>
 
-        {/* Resources */}
-        <section className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-6 shadow-md">
-          <h2 className="text-2xl font-bold text-slate-900">Local resources</h2>
-          <div className="mt-4 grid gap-4 md:grid-cols-3">
+          <div className="grid gap-5">
+            {featuredGuides.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}/`}
+                className="group grid gap-0 overflow-hidden border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl md:grid-cols-[220px_1fr]"
+              >
+                <img
+                  src={post.image}
+                  alt={post.imageAlt || post.title}
+                  className="h-52 w-full object-cover md:h-full"
+                  loading="lazy"
+                />
+                <div className="p-6">
+                  <div className="text-xs font-semibold uppercase tracking-[0.22em] text-red-600">
+                    {post.category}
+                  </div>
+                  <h3 className="mt-3 text-2xl font-semibold leading-snug text-slate-950 transition group-hover:text-red-600">
+                    {post.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{post.excerpt}</p>
+                  <div className="mt-5 flex items-center gap-3 text-sm text-slate-500">
+                    <span>{post.readTime}</span>
+                    <span>•</span>
+                    <span>{post.date}</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-stone-100 py-16 lg:py-24">
+        <div className="container-x grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
+          <div>
+            <h2 className="text-3xl font-semibold text-slate-950">Local resources</h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
             {resourceLinks.map((link) => (
               <a
                 key={link.title}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-2xl border border-slate-200 bg-gradient-to-r from-white to-slate-100 p-5 text-sm text-slate-700 transition hover:border-red-400"
+                className="bg-white p-6 text-sm text-slate-700 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="text-base font-semibold text-slate-900">{link.title}</div>
-                <p className="mt-2 text-sm text-slate-600">{link.desc}</p>
+                <div className="text-lg font-semibold text-slate-950">{link.title}</div>
+                <p className="mt-3 leading-6 text-slate-600">{link.desc}</p>
               </a>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* FAQ */}
-        <section className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-amber-50/70 p-6 shadow-lg">
-          <h2 className="text-2xl font-bold text-slate-900">FAQ — Popcorn ceiling removal Burlington</h2>
-          <div className="mt-4 space-y-4">
+      <section className="bg-white py-16 lg:py-24">
+        <div className="container-x grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div>
+            <h2 className="text-3xl font-semibold text-slate-950">FAQ — Popcorn ceiling removal Burlington</h2>
+          </div>
+          <div className="divide-y divide-slate-200 border-y border-slate-200">
             {faqs.map((faq) => (
-              <details key={faq.q} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <summary className="cursor-pointer text-lg font-semibold text-slate-900">
+              <details key={faq.q} className="group py-5">
+                <summary className="cursor-pointer list-none text-lg font-semibold text-slate-950">
                   {faq.q}
                 </summary>
-                <p className="mt-2 text-sm text-slate-700">{faq.a}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-700">{faq.a}</p>
               </details>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Final CTA */}
-        <section className="rounded-3xl border border-red-600 bg-gradient-to-br from-red-700 to-red-500 p-8 text-white shadow-lg">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <section className="bg-slate-950 py-16 text-white lg:py-24">
+        <div className="container-x">
+          <div className="grid gap-8 border border-white/15 p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:p-10">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-white/80">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/55">
                 Ready when you are
               </p>
-              <h2 className="mt-1 text-3xl font-bold">
+              <h2 className="mt-3 text-4xl font-semibold">
                 Let’s schedule your Burlington ceiling makeover.
               </h2>
-              <p className="mt-2 text-sm text-white/80 max-w-xl">
+              <p className="mt-4 max-w-xl text-sm leading-6 text-white/68">
                 Fast quote, clear start/finish plan, and paint-ready ceilings that brighten every room.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <a
-                href={PHONE_HREF}
-                className="inline-flex items-center justify-center bg-white text-red-600 font-bold px-6 py-3 rounded-lg shadow-lg ring-1 ring-white/30 hover:translate-y-[-1px] transition-transform"
-              >
-                📞 {PHONE_NUMBER}
+              <a href={PHONE_HREF} className="inline-flex items-center justify-center bg-red-600 px-6 py-3 font-semibold text-white transition hover:bg-red-700">
+                {PHONE_NUMBER}
               </a>
-              <a
-                href="/quote/"
-                className="inline-flex items-center justify-center bg-white text-red-600 font-bold px-6 py-3 rounded-lg shadow-2xl ring-1 ring-red-600/10 hover:scale-[1.02] transition-transform"
-              >
+              <a href="/quote/" className="inline-flex items-center justify-center bg-white px-6 py-3 font-semibold text-red-600 transition hover:bg-stone-100">
                 Get a fast quote
               </a>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

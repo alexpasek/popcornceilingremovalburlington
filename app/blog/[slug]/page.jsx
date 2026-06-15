@@ -70,7 +70,7 @@ export default async function Post({ params }) {
               name: "Popcorn Ceiling Removal Burlington",
               logo: {
                 "@type": "ImageObject",
-                url: "https://popcorn-ceiling-removal-burlington.com/logo.png",
+                url: "https://popcorn-ceiling-removal-burlington.com/popcorn%20_CELING_REMOVAL_.png",
               },
             },
           }),

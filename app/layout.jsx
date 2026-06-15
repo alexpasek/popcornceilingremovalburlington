@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
         />
         <SEOJsonLd />
       </head>
-      <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900">
+      <body className="min-h-screen flex flex-col bg-[#f6f4ef] text-slate-900">
         <HeaderNav /> {/* ✅ use the client header */}
         <TrustBar />
         <main className="flex-1">{children}</main>

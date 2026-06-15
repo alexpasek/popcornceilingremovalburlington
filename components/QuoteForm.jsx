@@ -41,29 +41,28 @@ export default function QuoteForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 "
+      className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2"
     >
-      {/* your inputs... */}
       <input
-        className=" border shadow-md border-gray-500 rounded-2xl p-3"
+        className="border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-600 focus:ring-4 focus:ring-red-600/10"
         name="name"
         placeholder="Name"
         required
       />
       <input
-        className="border shadow-md  border-gray-500 rounded-2xl p-3"
+        className="border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-600 focus:ring-4 focus:ring-red-600/10"
         name="phone"
         placeholder="Phone"
         required
       />
       <input
-        className="border shadow-md border-gray-500 rounded-2xl p-3 md:col-span-2"
+        className="border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-600 focus:ring-4 focus:ring-red-600/10 md:col-span-2"
         type="email"
         name="email"
         placeholder="Email"
       />
       <textarea
-        className="border shadow-md border-gray-500 rounded-2xl p-3 md:col-span-2"
+        className="border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-600 focus:ring-4 focus:ring-red-600/10 md:col-span-2"
         rows={5}
         name="details"
         placeholder="Project details"
@@ -72,8 +71,7 @@ export default function QuoteForm() {
       <button
         type="submit"
         disabled={sending}
-        className="md:col-span-2 w-full px-6 py-4 text-white font-bold
-                   bg-red-600 hover:bg-red-700 shadow-lg transition
+        className="w-full bg-red-600 px-6 py-4 font-semibold text-white shadow-sm transition hover:bg-red-700 md:col-span-2
                    disabled:opacity-70 disabled:cursor-not-allowed"
       >
         {sending ? "Sending..." : "Send My Request"}

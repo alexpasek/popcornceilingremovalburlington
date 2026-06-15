@@ -295,7 +295,7 @@ export default function ChatWidgetAgent() {
           <header className="px-4 py-3 flex items-center justify-between gap-3 rounded-t-3xl bg-white border-b border-black/10">
             <div className="flex items-center gap-3">
               <img
-                src="/logo-mark.svg"
+                src="/popcorn%20_CELING_REMOVAL_.png"
                 alt="Popcorn ceiling removal logo"
                 className="h-16 w-16 rounded-full bg-white p-1 shadow"
               />
