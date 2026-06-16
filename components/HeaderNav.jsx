@@ -220,7 +220,7 @@ export default function HeaderNav() {
                 <div className="h-14 w-14 border border-slate-200 bg-white p-1.5 shadow-sm md:h-16 md:w-16">
                   <div className="flex h-full w-full items-center justify-center bg-white">
                     <img
-                      src="/popcorn%20_CELING_REMOVAL_.png"
+                      src="/logo-popcorn-ceiling-removal.png"
                       alt="Popcorn Ceiling Removal Burlington Ontario"
                       className="h-full w-full object-contain"
                     />

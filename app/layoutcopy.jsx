@@ -71,7 +71,7 @@ function Header() {
       <div className=" container-x py-2 md:py-3 flex h-16 items-center gap-3">
         <Link href="/" className="flex items-center gap-2 min-w-0">
           <img
-            src="/popcorn%20_CELING_REMOVAL_.png"
+            src="/logo-popcorn-ceiling-removal.png"
             alt="Popcorn Ceiling Removal Burlington"
             className="w-auto h-14 md:h-15 object-contain"
           />

@@ -67,7 +67,7 @@ export default function GalleryClient({ photos, filters }) {
                 <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-slate-900 via-teal-800 to-stone-500 p-[2px] shadow-lg">
                   <div className="flex h-full w-full items-center justify-center rounded-[18px] bg-slate-950">
                     <img
-                      src="/popcorn%20_CELING_REMOVAL_.png"
+                      src="/logo-popcorn-ceiling-removal.png"
                       alt="Popcorn Ceiling Removal Burlington logo"
                       className="h-9 w-9 object-contain"
                     />
